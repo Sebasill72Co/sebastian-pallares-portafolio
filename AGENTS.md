@@ -106,7 +106,7 @@ Realizar una auditoría sin rediseñar. Crear `docs/AUDITORIA_INICIAL.md` con pr
 
 Codex solo puede trabajar con:
 
-- Escritura: `/Users/MPT5/Desarrollo/sebastian-pallares-portafolio`
+- Escritura: `/Users/MPT5/Desarrollo/sebastian-pallares-portafolio-trabajo` (sitio y material fuente de cada proyecto en `proyectos/<proyecto>/<año>/`)
 - Solo lectura: `/Users/MPT5/Downloads/Material grafico temporal portafolio sebastian pallares`
 
 Está prohibido:

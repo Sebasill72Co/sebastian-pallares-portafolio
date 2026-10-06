@@ -1,1 +1,8 @@
 .DS_Store
+
+# Material fuente de trabajo (PDF, PNG, fuentes, recursos): no forma parte del sitio
+proyectos/**/*.*
+!proyectos/**/*.html
+
+# Archivos retirados del sitio, conservados como respaldo local
+_obsoletos/
