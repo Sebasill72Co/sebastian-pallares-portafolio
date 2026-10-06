@@ -1,0 +1,3003 @@
+@font-face {
+  font-family: "Gopher MM25";
+  src: url("../fonts/mm2025/gopher-regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gopher MM25";
+  src: url("../fonts/mm2025/gopher-medium.otf") format("opentype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gopher MM25";
+  src: url("../fonts/mm2025/gopher-bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gopher MM25";
+  src: url("../fonts/mm2025/gopher-black.otf") format("opentype");
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gopher MM25";
+  src: url("../fonts/mm2025/gopher-italic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gopher MM25";
+  src: url("../fonts/mm2025/gopher-medium-italic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gopher MM25";
+  src: url("../fonts/mm2025/gopher-bold-italic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gopher MM25";
+  src: url("../fonts/mm2025/gopher-black-italic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+}
+
+:root {
+  --mm25-cyan: #00b7ce;
+  --mm25-pink: #efc7bd;
+  --mm25-purple: #391459;
+  --mm25-lime: #4cf77c;
+  --mm25-white: #fffdf9;
+  --mm25-ink: #1d1029;
+  --mm25-line: rgba(57, 20, 89, 0.2);
+  --mm25-shell: min(1220px, calc(100vw - 48px));
+  --mm25-radius: 22px;
+  --mm25-header-h: 72px;
+  --mm25-editions-h: 78px;
+  --mm25-anchor-gap: 16px;
+  --mm25-anchor-offset: calc(var(--mm25-header-h) + var(--mm25-editions-h) + var(--mm25-anchor-gap));
+  --mm-editions-bg: var(--mm25-cyan);
+  --mm-editions-text: var(--mm25-purple);
+  --mm-editions-border: rgba(57, 20, 89, 0.22);
+  --mm-editions-hover-bg: rgba(255, 255, 255, 0.28);
+  --mm-editions-hover-text: var(--mm25-purple);
+  --mm-editions-active-bg: var(--mm25-purple);
+  --mm-editions-active-text: var(--mm25-lime);
+  --mm25-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--mm25-anchor-offset);
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--mm25-purple);
+  color: var(--mm25-purple);
+  font-family: "Gopher MM25", Arial, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--mm25-lime);
+  outline-offset: 4px;
+}
+
+.mm25-skip-link {
+  position: fixed;
+  left: 16px;
+  top: 12px;
+  z-index: 1000;
+  padding: 10px 14px;
+  transform: translateY(-150%);
+  border-radius: 999px;
+  background: var(--mm25-white);
+  color: var(--mm25-purple);
+  font-weight: 700;
+}
+
+.mm25-skip-link:focus {
+  transform: translateY(0);
+}
+
+.mm25-shell {
+  width: var(--mm25-shell);
+  margin-inline: auto;
+}
+
+.mm25-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  min-height: var(--mm25-header-h);
+  padding: 10px max(24px, calc((100vw - 1220px) / 2));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  background: color-mix(in srgb, var(--mm25-purple) 92%, transparent);
+  color: var(--mm25-white);
+  backdrop-filter: blur(18px);
+}
+
+.mm25-header__personal,
+.mm25-header__flower {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.mm25-header__personal img {
+  width: 38px;
+  height: 38px;
+}
+
+.mm25-header__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 2.4vw, 36px);
+}
+
+.mm25-header__nav a,
+.mm25-header__back {
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.mm25-header__nav a:not(.mm25-header__flower) {
+  position: relative;
+  padding-block: 8px;
+}
+
+.mm25-header__nav a:not(.mm25-header__flower)::after {
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: var(--mm25-lime);
+  content: "";
+  transition: transform 220ms var(--mm25-ease);
+}
+
+.mm25-header__nav a:hover::after,
+.mm25-header__nav a[aria-current="location"]::after {
+  transform: scaleX(1);
+}
+
+.mm25-header__flower img {
+  width: 34px;
+  height: 34px;
+}
+
+.mm25-header__back {
+  justify-self: end;
+}
+
+.mm25-editions {
+  position: sticky;
+  top: var(--mm25-header-h);
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  min-height: var(--mm25-editions-h);
+  padding: 7px 24px;
+  border-bottom: 1px solid rgba(57, 20, 89, 0.12);
+  background: color-mix(in srgb, var(--mm25-white) 93%, transparent);
+  color: var(--mm25-purple);
+  backdrop-filter: blur(14px);
+}
+
+.mm25-editions > span {
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.mm25-editions div {
+  display: flex;
+  gap: 8px;
+}
+
+.mm25-editions a {
+  padding: 8px 15px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.mm25-editions a[aria-current="page"] {
+  background: var(--mm25-purple);
+  color: var(--mm25-lime);
+}
+
+.mm25-hero {
+  position: relative;
+  min-height: calc(100svh - var(--mm25-header-h) - var(--mm25-editions-h));
+  overflow: hidden;
+  background: var(--mm25-cyan) url("../images/projects/maraton-medellin/2025/fondos/hero-principal.webp") center / cover no-repeat;
+  color: var(--mm25-purple);
+}
+
+.mm25-hero::after,
+.mm25-system::before,
+.mm25-credits::before,
+.mm25-footer::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.12;
+  background: url("../images/projects/maraton-medellin/2025/fondos/textura.webp") center / 900px auto;
+  content: "";
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+}
+
+.mm25-hero__veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 183, 206, 0.04) 0%, rgba(0, 183, 206, 0.04) 50%, rgba(57, 20, 89, 0.18) 100%),
+    linear-gradient(0deg, rgba(57, 20, 89, 0.4) 0%, transparent 43%);
+}
+
+.mm25-hero__inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(360px, 0.8fr);
+  grid-template-rows: auto 1fr auto;
+  min-height: inherit;
+  padding-block: clamp(34px, 6vw, 90px) 32px;
+}
+
+.mm25-kicker {
+  margin: 0 0 12px;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.mm25-hero > .mm25-shell > .mm25-kicker,
+.mm25-hero__inner > .mm25-kicker {
+  grid-column: 1 / -1;
+  justify-self: start;
+  width: max-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--mm25-pink) 90%, transparent);
+}
+
+.mm25-hero__logo {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: center;
+  width: min(680px, 92%);
+  margin-top: 0;
+}
+
+.mm25-hero__copy {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: center;
+  max-width: 560px;
+  padding: clamp(24px, 3vw, 42px);
+  border-radius: var(--mm25-radius);
+  background: color-mix(in srgb, var(--mm25-purple) 91%, transparent);
+  color: var(--mm25-white);
+}
+
+.mm25-hero__copy h1 {
+  max-width: 13ch;
+  margin: 0;
+  font-size: clamp(2.8rem, 4vw, 4.6rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+}
+
+.mm25-hero__copy p {
+  max-width: 54ch;
+  margin: 24px 0 0;
+  font-size: clamp(1rem, 1.4vw, 1.32rem);
+  line-height: 1.45;
+}
+
+.mm25-hero__meta {
+  grid-column: 1;
+  grid-row: 3;
+  align-self: end;
+  justify-self: start;
+  display: grid;
+  gap: 8px;
+  padding: 20px 24px;
+  border: 1px solid rgba(57, 20, 89, 0.28);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--mm25-pink) 86%, transparent);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.mm25-hero__scroll {
+  grid-column: 2;
+  grid-row: 3;
+  align-self: end;
+  justify-self: end;
+  color: var(--mm25-white);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.mm25-hero__scroll span {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-left: 8px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+.mm25-section {
+  position: relative;
+  padding-block: clamp(86px, 10vw, 150px);
+}
+
+.mm25-story,
+.mm25-campaign {
+  background: var(--mm25-white);
+}
+
+.mm25-heading {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1.35fr) minmax(260px, 0.65fr);
+  gap: clamp(24px, 4vw, 72px);
+  align-items: start;
+  margin-bottom: clamp(48px, 7vw, 92px);
+}
+
+.mm25-heading__index {
+  margin: 0;
+  color: var(--mm25-cyan);
+  font-size: clamp(3rem, 5.8vw, 6rem);
+  font-weight: 900;
+  line-height: 0.82;
+}
+
+.mm25-heading h2 {
+  max-width: 17ch;
+  margin: 0;
+  font-size: clamp(2.8rem, 5.7vw, 6.4rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+}
+
+.mm25-heading > p:last-child {
+  margin: 28px 0 0;
+  font-size: clamp(1rem, 1.25vw, 1.18rem);
+  line-height: 1.65;
+}
+
+.mm25-story__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.mm25-story-card {
+  min-height: 360px;
+  padding: 28px;
+  border: 1px solid var(--mm25-line);
+  border-radius: var(--mm25-radius);
+  background: #fff;
+  transition: transform 260ms var(--mm25-ease), background 260ms var(--mm25-ease), color 260ms var(--mm25-ease);
+}
+
+.mm25-story-card:nth-child(2) {
+  background: var(--mm25-pink);
+}
+
+.mm25-story-card:nth-child(3) {
+  background: var(--mm25-cyan);
+}
+
+.mm25-story-card:nth-child(4) {
+  background: var(--mm25-lime);
+}
+
+.mm25-story-card:hover,
+.mm25-story-card:focus {
+  z-index: 2;
+  transform: translateY(-10px);
+  background: var(--mm25-purple);
+  color: var(--mm25-white);
+}
+
+.mm25-story-card span,
+.mm25-credit-grid span {
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mm25-story-card h3 {
+  margin: 80px 0 18px;
+  font-size: clamp(1.45rem, 2.1vw, 2.1rem);
+  line-height: 1.02;
+}
+
+.mm25-story-card p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.mm25-interlude {
+  position: relative;
+  min-height: clamp(310px, 43vw, 670px);
+  overflow: hidden;
+  background: var(--mm25-purple);
+}
+
+.mm25-interlude > img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+}
+
+.mm25-interlude__copy {
+  position: absolute;
+  inset: auto max(24px, calc((100vw - 1220px) / 2)) 44px auto;
+  display: grid;
+  color: var(--mm25-white);
+  font-size: clamp(1.2rem, 2vw, 2.2rem);
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.mm25-interlude__copy strong {
+  color: var(--mm25-lime);
+  font-size: clamp(2.6rem, 6vw, 7rem);
+  line-height: 0.9;
+}
+
+.mm25-system,
+.mm25-credits {
+  overflow: hidden;
+  background: var(--mm25-purple);
+  color: var(--mm25-white);
+}
+
+.mm25-system > .mm25-shell,
+.mm25-credits > .mm25-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.mm25-heading--light .mm25-heading__index,
+.mm25-heading--light .mm25-kicker {
+  color: var(--mm25-lime);
+}
+
+.mm25-kv {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
+  overflow: hidden;
+  margin-bottom: 18px;
+  border-radius: var(--mm25-radius);
+  background: var(--mm25-cyan);
+  color: var(--mm25-purple);
+}
+
+.mm25-kv__stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 560px;
+  padding: 50px;
+  background: url("../images/projects/maraton-medellin/2025/fondos/hero-principal.webp") center / cover no-repeat;
+}
+
+.mm25-kv__stage::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(57, 20, 89, 0.18));
+  content: "";
+}
+
+.mm25-kv__stage img {
+  position: relative;
+  z-index: 1;
+  width: min(540px, 70%);
+}
+
+.mm25-kv__stage p {
+  position: absolute;
+  z-index: 1;
+  right: 28px;
+  bottom: 24px;
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.mm25-kv__copy {
+  align-content: end;
+  padding: clamp(30px, 4vw, 56px);
+  background: var(--mm25-lime);
+}
+
+.mm25-kv__copy h3,
+.mm25-lab h3,
+.mm25-logo-lab h3,
+.mm25-distance-lab h3,
+.mm25-moment-panel h3 {
+  margin: 0;
+  font-size: clamp(2rem, 3.4vw, 4.2rem);
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+}
+
+.mm25-kv__copy > p:last-child,
+.mm25-logo-lab__intro > p:last-child,
+.mm25-distance-lab__copy > p:last-of-type {
+  margin: 24px 0 0;
+  line-height: 1.6;
+}
+
+.mm25-lab-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 18px;
+}
+
+.mm25-lab {
+  min-width: 0;
+  padding: clamp(28px, 4vw, 50px);
+  border-radius: var(--mm25-radius);
+}
+
+.mm25-palette-lab {
+  background: var(--mm25-white);
+  color: var(--mm25-purple);
+}
+
+.mm25-swatches {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.mm25-swatch {
+  position: relative;
+  min-height: 150px;
+  padding: 12px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 14px;
+  background: var(--swatch);
+  cursor: pointer;
+}
+
+.mm25-swatch::after {
+  position: absolute;
+  inset: auto 10px 10px;
+  color: var(--swatch-text, var(--mm25-purple));
+  content: attr(data-short);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+
+.mm25-swatch[aria-pressed="true"] {
+  box-shadow: inset 0 0 0 4px currentColor;
+}
+
+.mm25-color-readout {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 18px;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--mm25-line);
+  font-size: 0.8rem;
+}
+
+.mm25-color-readout strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.mm25-type-lab {
+  display: flex;
+  flex-direction: column;
+  background: var(--mm25-pink);
+  color: var(--mm25-purple);
+}
+
+.mm25-type-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 34px;
+}
+
+.mm25-type-controls button,
+.mm25-distance-controls button,
+.mm25-race-controls button {
+  padding: 10px 15px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.mm25-type-controls button[aria-pressed="true"],
+.mm25-distance-controls button[aria-pressed="true"] {
+  background: var(--mm25-purple);
+  color: var(--mm25-white);
+}
+
+.mm25-type-controls label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.mm25-type-controls input {
+  width: 110px;
+  accent-color: var(--mm25-purple);
+}
+
+.mm25-type-sample {
+  min-height: 1.9em;
+  margin: auto 0 0;
+  padding-top: 34px;
+  overflow-wrap: anywhere;
+  font-size: 70px;
+  font-weight: 500;
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+}
+
+.mm25-logo-lab {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.6fr) minmax(0, 1.4fr);
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.mm25-logo-lab__intro {
+  padding: clamp(32px, 4vw, 52px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--mm25-radius);
+}
+
+.mm25-logo-apps {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.mm25-logo-app {
+  display: grid;
+  place-items: center;
+  min-height: 230px;
+  margin: 0;
+  padding: 30px;
+  border-radius: var(--mm25-radius);
+}
+
+.mm25-logo-app img {
+  width: min(280px, 80%);
+}
+
+.mm25-logo-app--cyan {
+  background: var(--mm25-cyan);
+}
+
+.mm25-logo-app--cyan img {
+  filter: brightness(0) invert(1);
+}
+
+.mm25-logo-app--pink {
+  background: var(--mm25-pink);
+}
+
+.mm25-logo-app--purple {
+  background: var(--mm25-purple);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+.mm25-logo-app--purple img {
+  width: 90%;
+}
+
+.mm25-logo-app--lime {
+  background: var(--mm25-lime);
+}
+
+.mm25-distance-lab {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.65fr) minmax(0, 1.35fr);
+  gap: 18px;
+  margin-top: 18px;
+  overflow: hidden;
+  border-radius: var(--mm25-radius);
+  background: var(--mm25-white);
+  color: var(--mm25-purple);
+}
+
+.mm25-distance-lab__copy {
+  align-content: center;
+  padding: clamp(34px, 5vw, 70px);
+}
+
+.mm25-distance-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 36px;
+}
+
+.mm25-distance-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 590px;
+  margin: 0;
+  overflow: hidden;
+  background: var(--mm25-cyan);
+}
+
+.mm25-distance-stage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 180ms ease, transform 360ms var(--mm25-ease);
+}
+
+.mm25-distance-stage.is-changing img {
+  opacity: 0;
+  transform: scale(0.97);
+}
+
+.mm25-distance-stage figcaption {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  padding: 9px 13px;
+  border-radius: 999px;
+  background: var(--mm25-white);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.mm25-campaign .mm25-heading__index,
+.mm25-campaign .mm25-kicker {
+  color: var(--mm25-purple);
+}
+
+.mm25-moment-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.mm25-moment-tabs button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 82px;
+  padding: 20px 24px;
+  border: 1px solid var(--mm25-line);
+  border-radius: 18px;
+  background: #fff;
+  color: var(--mm25-purple);
+  cursor: pointer;
+  font-weight: 700;
+  text-align: left;
+}
+
+.mm25-moment-tabs button span {
+  color: var(--mm25-cyan);
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.mm25-moment-tabs button[aria-selected="true"] {
+  background: var(--mm25-purple);
+  color: var(--mm25-white);
+}
+
+.mm25-moment-tabs button[aria-selected="true"] span {
+  color: var(--mm25-lime);
+}
+
+.mm25-moment-panel {
+  padding: clamp(24px, 4vw, 52px);
+  border-radius: var(--mm25-radius);
+  background: var(--mm25-pink);
+}
+
+.mm25-moment-panel[hidden] {
+  display: none;
+}
+
+.mm25-moment-panel__intro {
+  display: grid;
+  grid-template-columns: 0.6fr 1fr 1fr;
+  gap: 30px;
+  align-items: end;
+  margin-bottom: 38px;
+}
+
+.mm25-moment-panel__intro h3 {
+  max-width: 12ch;
+}
+
+.mm25-moment-panel__intro > p:last-child {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.mm25-piece-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mm25-piece-grid--pair {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.mm25-piece {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--mm25-white);
+}
+
+.mm25-piece img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 420ms var(--mm25-ease);
+}
+
+.mm25-piece:hover img {
+  transform: scale(1.025);
+}
+
+.mm25-piece--landscape img,
+.mm25-piece-grid--pair .mm25-piece img {
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: #f5f2ef;
+}
+
+.mm25-piece figcaption {
+  display: grid;
+  gap: 3px;
+  padding: 14px 16px 17px;
+  color: var(--mm25-purple);
+}
+
+.mm25-piece figcaption strong {
+  font-size: 0.9rem;
+}
+
+.mm25-piece figcaption span {
+  font-size: 0.72rem;
+  opacity: 0.72;
+}
+
+.mm25-race-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.mm25-race-controls button[aria-pressed="true"] {
+  background: var(--mm25-purple);
+  color: var(--mm25-white);
+}
+
+.mm25-credits {
+  padding-bottom: clamp(70px, 8vw, 120px);
+}
+
+.mm25-credit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.mm25-credit-grid article {
+  min-height: 260px;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--mm25-radius);
+}
+
+.mm25-credit-grid article:nth-child(2) {
+  background: var(--mm25-cyan);
+  color: var(--mm25-purple);
+}
+
+.mm25-credit-grid article:nth-child(3) {
+  background: var(--mm25-lime);
+  color: var(--mm25-purple);
+}
+
+.mm25-credit-grid article:nth-child(4) {
+  background: var(--mm25-pink);
+  color: var(--mm25-purple);
+}
+
+.mm25-credit-grid h3 {
+  margin: 72px 0 14px;
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  line-height: 1;
+}
+
+.mm25-credit-grid p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.mm25-footer {
+  position: relative;
+  overflow: hidden;
+  min-height: 440px;
+  background: var(--mm25-purple) url("../images/projects/maraton-medellin/2025/fondos/fondo-variacion-01.webp") center / cover no-repeat;
+  color: var(--mm25-white);
+}
+
+.mm25-footer__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  min-height: 440px;
+  padding-block: 70px 42px;
+}
+
+.mm25-footer p {
+  margin: 0;
+  font-size: clamp(2.8rem, 6.5vw, 7rem);
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+.mm25-footer p strong {
+  color: var(--mm25-lime);
+}
+
+.mm25-footer__inner > div {
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+  font-size: 0.75rem;
+}
+
+.mm25-footer a {
+  margin-top: 12px;
+  font-weight: 700;
+}
+
+@media (max-width: 1080px) {
+  :root {
+    --mm25-shell: min(100% - 36px, 940px);
+  }
+
+  .mm25-heading {
+    grid-template-columns: 72px 1fr;
+  }
+
+  .mm25-heading > p:last-child {
+    grid-column: 2;
+    max-width: 60ch;
+    margin-top: 0;
+  }
+
+  .mm25-story__grid,
+  .mm25-credit-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mm25-kv {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+
+  .mm25-kv__stage {
+    min-height: 480px;
+  }
+
+  .mm25-lab-grid,
+  .mm25-logo-lab,
+  .mm25-distance-lab {
+    grid-template-columns: 1fr;
+  }
+
+  .mm25-type-sample {
+    margin-top: 50px;
+  }
+
+  .mm25-distance-stage {
+    min-height: auto;
+    aspect-ratio: 16 / 10;
+  }
+
+  .mm25-moment-panel__intro {
+    grid-template-columns: 0.45fr 0.85fr 1fr;
+  }
+
+  .mm25-piece-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 780px) {
+  :root {
+    --mm25-shell: calc(100% - 28px);
+    --mm25-header-h: 64px;
+    --mm25-editions-h: 50px;
+  }
+
+  .mm25-header {
+    grid-template-columns: auto 1fr;
+    padding-inline: 14px;
+  }
+
+  .mm25-header__nav {
+    justify-content: flex-end;
+    gap: 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .mm25-header__nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mm25-header__nav a:not(.mm25-header__flower) {
+    display: none;
+  }
+
+  .mm25-header__back {
+    display: none;
+  }
+
+  .mm25-editions {
+    justify-content: flex-start;
+    gap: 12px;
+    overflow-x: auto;
+    padding-inline: 14px;
+    scrollbar-width: none;
+  }
+
+  .mm25-editions::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mm25-editions a {
+    padding-inline: 12px;
+  }
+
+  .mm25-hero {
+    min-height: calc(100svh - var(--mm25-header-h) - var(--mm25-editions-h));
+    background-position: 58% center;
+  }
+
+  .mm25-hero__inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto 1fr;
+    padding-block: 26px 22px;
+  }
+
+  .mm25-hero__logo {
+    grid-row: 2;
+    width: min(520px, 82vw);
+    margin-top: 16px;
+  }
+
+  .mm25-hero__copy {
+    grid-column: 1;
+    grid-row: 4;
+    align-self: end;
+    padding: 24px;
+  }
+
+  .mm25-hero__meta {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: start;
+    margin-top: 16px;
+    padding: 12px 16px;
+  }
+
+  .mm25-hero__scroll {
+    display: none;
+  }
+
+  .mm25-section {
+    padding-block: 76px;
+  }
+
+  .mm25-heading {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-bottom: 44px;
+  }
+
+  .mm25-heading > p:last-child {
+    grid-column: 1;
+    margin-top: 0;
+  }
+
+  .mm25-story__grid,
+  .mm25-credit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mm25-story-card {
+    min-height: auto;
+  }
+
+  .mm25-story-card h3,
+  .mm25-credit-grid h3 {
+    margin-top: 52px;
+  }
+
+  .mm25-interlude__copy {
+    right: 20px;
+    bottom: 24px;
+  }
+
+  .mm25-kv {
+    grid-template-columns: 1fr;
+  }
+
+  .mm25-kv__stage {
+    min-height: 380px;
+  }
+
+  .mm25-logo-apps {
+    grid-template-columns: 1fr;
+  }
+
+  .mm25-logo-app {
+    min-height: 190px;
+  }
+
+  .mm25-distance-stage {
+    aspect-ratio: 1 / 1;
+  }
+
+  .mm25-moment-tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .mm25-moment-tabs button {
+    min-height: 64px;
+  }
+
+  .mm25-moment-panel__intro {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .mm25-piece-grid,
+  .mm25-piece-grid--pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mm25-footer__inner {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .mm25-footer__inner > div {
+    justify-items: start;
+  }
+}
+
+@media (max-width: 480px) {
+  .mm25-editions > span {
+    display: none;
+  }
+
+  .mm25-hero__copy h1 {
+    font-size: clamp(2.55rem, 13vw, 4rem);
+  }
+
+  .mm25-hero__copy p {
+    margin-top: 16px;
+  }
+
+  .mm25-heading h2 {
+    font-size: clamp(2.55rem, 13vw, 4.2rem);
+  }
+
+  .mm25-lab {
+    padding: 24px;
+  }
+
+  .mm25-swatches {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mm25-swatch {
+    min-height: 110px;
+  }
+
+  .mm25-type-controls label {
+    width: 100%;
+    margin: 10px 0 0;
+  }
+
+  .mm25-type-controls input {
+    flex: 1;
+  }
+
+  .mm25-type-sample {
+    font-size: 52px;
+  }
+
+  .mm25-piece-grid,
+  .mm25-piece-grid--pair {
+    grid-template-columns: 1fr;
+  }
+
+  .mm25-piece img {
+    aspect-ratio: 4 / 5;
+  }
+
+  .mm25-piece--landscape img,
+  .mm25-piece-grid--pair .mm25-piece img {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* Fase V3: color por secciones, Hero rosa y ajuste tipográfico. */
+.mm25-hero {
+  background-image: url("../images/projects/maraton-medellin/2025/fondos/hero-principal-rosa.webp");
+}
+
+.mm25-story {
+  background-color: var(--mm25-cyan);
+  background-image: url("../images/projects/maraton-medellin/2025/fondos/textura.webp");
+  background-position: center;
+  background-size: 900px auto;
+  background-blend-mode: soft-light;
+  color: var(--mm25-purple);
+}
+
+.mm25-system {
+  background-color: var(--mm25-pink);
+  color: var(--mm25-purple);
+}
+
+.mm25-system .mm25-heading--light .mm25-heading__index,
+.mm25-system .mm25-heading--light .mm25-kicker {
+  color: var(--mm25-purple);
+}
+
+.mm25-system::before {
+  opacity: .16;
+  mix-blend-mode: soft-light;
+}
+
+.mm25-campaign {
+  background-color: var(--mm25-lime);
+  background-image: url("../images/projects/maraton-medellin/2025/fondos/textura.webp");
+  background-position: center;
+  background-size: 900px auto;
+  background-blend-mode: soft-light;
+  color: var(--mm25-purple);
+}
+
+.mm25-credits {
+  background-color: var(--mm25-purple);
+  color: var(--mm25-white);
+}
+
+.mm25-hero__copy h1,
+.mm25-heading h2 {
+  letter-spacing: -.025em;
+}
+
+.mm25-footer__closing h2 {
+  letter-spacing: -.01em;
+}
+
+.mm25-type-sample[data-weight="900"] {
+  letter-spacing: -.012em;
+}
+
+.mm25-distance-lab__copy {
+  padding: 22px 24px;
+}
+
+.mm25-distance-lab__copy h3 {
+  font-size: clamp(1.6rem, 1.85vw, 2.1rem);
+  line-height: 1;
+}
+
+.mm25-distance-lab__copy > p:last-of-type {
+  margin-top: 14px;
+  font-size: .9rem;
+  line-height: 1.4;
+}
+
+.mm25-distance-controls {
+  gap: 6px;
+  margin-top: 18px;
+}
+
+.mm25-distance-controls button {
+  padding: 8px 12px;
+}
+
+@media (max-width: 780px) {
+  .mm25-story,
+  .mm25-campaign {
+    background-size: 660px auto;
+  }
+
+  .mm25-distance-lab__copy {
+    padding: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* Fase: refinamiento editorial MM2025 y navegación persistente. */
+.mm25-editions {
+  justify-content: stretch;
+  padding: 0 24px;
+}
+
+.mm25-editions__inner {
+  width: min(1220px, 100%);
+  min-height: var(--mm25-editions-h);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) auto;
+  align-items: stretch;
+  gap: 28px;
+}
+
+.mm25-editions__inner > p {
+  max-width: 480px;
+  align-self: center;
+  margin: 0;
+  color: color-mix(in srgb, var(--mm25-purple) 72%, transparent);
+  font-size: .76rem;
+  line-height: 1.35;
+}
+
+.mm25-editions__inner > p strong {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--mm25-purple);
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.mm25-editions__track {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.mm25-editions__track::-webkit-scrollbar {
+  display: none;
+}
+
+.mm25-editions__track a {
+  min-width: 68px;
+  min-height: 44px;
+  display: grid;
+  place-items: center;
+  padding-inline: 14px;
+  border-left: 1px solid var(--mm25-line);
+  border-radius: 0;
+}
+
+.mm25-editions__track a:last-child {
+  border-right: 1px solid var(--mm25-line);
+}
+
+.mm25-editions__track a:hover,
+.mm25-editions__track a:focus-visible {
+  background: color-mix(in srgb, var(--mm25-cyan) 18%, transparent);
+}
+
+.mm25-editions__track a[aria-current="page"] {
+  background: var(--mm25-purple);
+  color: var(--mm25-lime);
+}
+
+.mm25-hero {
+  min-height: clamp(570px, calc(100svh - var(--mm25-header-h) - var(--mm25-editions-h)), 720px);
+  background-position: 50% center;
+}
+
+.mm25-hero__veil {
+  background:
+    linear-gradient(90deg, rgba(0, 183, 206, .08) 0%, rgba(0, 183, 206, .03) 52%, rgba(57, 20, 89, .14) 100%),
+    linear-gradient(0deg, rgba(57, 20, 89, .3) 0%, transparent 38%);
+}
+
+.mm25-hero__inner {
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr);
+  grid-template-rows: auto 1fr auto;
+  gap: 24px clamp(32px, 6vw, 88px);
+  padding-block: 24px 26px;
+}
+
+.mm25-hero__labels {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(57, 20, 89, .24);
+  font-size: .65rem;
+  font-weight: 900;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.mm25-hero__copy {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: center;
+  max-width: 720px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--mm25-purple);
+}
+
+.mm25-hero__copy .mm25-kicker {
+  margin-bottom: 16px;
+}
+
+.mm25-hero__copy h1 {
+  max-width: 13ch;
+  font-size: clamp(3.15rem, 5.5vw, 5.8rem);
+  line-height: .9;
+}
+
+.mm25-hero__copy > p:last-child {
+  max-width: 48ch;
+  margin-top: 18px;
+  color: var(--mm25-purple);
+  font-size: clamp(.96rem, 1.2vw, 1.16rem);
+}
+
+.mm25-hero__brand {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: center;
+  justify-self: end;
+  width: min(100%, 440px);
+  padding: clamp(22px, 3vw, 38px);
+  border: 1px solid rgba(57, 20, 89, .22);
+  background: color-mix(in srgb, var(--mm25-pink) 80%, transparent);
+}
+
+.mm25-hero__logo {
+  width: 100%;
+  margin: 0 0 34px;
+}
+
+.mm25-hero__brand p {
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px solid rgba(57, 20, 89, .22);
+  font-size: .75rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+.mm25-hero__brand p + p {
+  margin-top: 8px;
+}
+
+.mm25-hero__scroll {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  color: var(--mm25-purple);
+}
+
+#inicio,
+#historia,
+#sistema-visual,
+#campana,
+#creditos {
+  scroll-margin-top: var(--mm25-anchor-offset);
+}
+
+.mm25-section {
+  padding-block: clamp(68px, 7vw, 104px);
+}
+
+.mm25-heading {
+  grid-template-columns: 66px minmax(0, 1.4fr) minmax(240px, .6fr);
+  gap: clamp(20px, 3vw, 48px);
+  margin-bottom: clamp(34px, 4vw, 54px);
+}
+
+.mm25-heading__index {
+  font-size: clamp(2.5rem, 4.2vw, 4.7rem);
+}
+
+.mm25-heading h2 {
+  font-size: clamp(2.65rem, 4.7vw, 5.35rem);
+}
+
+.mm25-heading > p:last-child {
+  margin-top: 16px;
+  line-height: 1.5;
+}
+
+.mm25-story__grid {
+  gap: 1px;
+  border: 1px solid var(--mm25-line);
+  background: var(--mm25-line);
+}
+
+.mm25-story-card {
+  min-height: 292px;
+  padding: 24px;
+  border: 0;
+  border-radius: 0;
+  transform: none;
+}
+
+.mm25-story-card h3 {
+  margin: 46px 0 14px;
+  font-size: clamp(1.3rem, 1.8vw, 1.8rem);
+}
+
+.mm25-story-card p {
+  font-size: .91rem;
+  line-height: 1.5;
+}
+
+.mm25-story__grid:has(.mm25-story-card:is(:hover, :focus-visible)) .mm25-story-card:not(:is(:hover, :focus-visible)) {
+  opacity: .58;
+}
+
+.mm25-story-card:is(:hover, :focus-visible) {
+  transform: none;
+}
+
+.mm25-interlude {
+  min-height: 0;
+  overflow: visible;
+}
+
+.mm25-interlude > img {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
+}
+
+.mm25-system .mm25-heading {
+  margin-bottom: 38px;
+}
+
+.mm25-kv {
+  grid-template-columns: minmax(0, 1.55fr) minmax(260px, .45fr);
+}
+
+.mm25-kv__stage {
+  min-height: 460px;
+}
+
+.mm25-kv__copy {
+  padding: clamp(28px, 3vw, 44px);
+}
+
+.mm25-kv__copy h3,
+.mm25-lab h3,
+.mm25-logo-lab h3,
+.mm25-distance-lab h3,
+.mm25-moment-panel h3 {
+  font-size: clamp(1.8rem, 2.8vw, 3.4rem);
+}
+
+.mm25-lab {
+  padding: clamp(26px, 3vw, 42px);
+}
+
+.mm25-swatches {
+  display: flex;
+  min-height: 190px;
+  gap: 0;
+  margin-top: 28px;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.mm25-swatch {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 190px;
+  border-radius: 0;
+  transition: flex-grow 320ms var(--mm25-ease), filter 240ms ease;
+}
+
+.mm25-swatch:is(:hover, :focus-visible),
+.mm25-swatch[aria-pressed="true"] {
+  flex-grow: 2.35;
+  box-shadow: none;
+}
+
+.mm25-color-readout {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  position: relative;
+}
+
+.mm25-color-readout::before {
+  grid-column: 1 / -1;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--active-color);
+  color: var(--active-text);
+  content: "Aa 2025";
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+.mm25-color-context {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--mm25-line);
+}
+
+.mm25-color-context p {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.mm25-color-context strong {
+  margin-bottom: 3px;
+}
+
+.mm25-type-controls output {
+  min-width: 48px;
+  font-variant-numeric: tabular-nums;
+}
+
+.mm25-type-sample {
+  font-size: 70px;
+}
+
+.mm25-type-sample small {
+  display: block;
+  margin-top: .45em;
+  font-size: .28em;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: .01em;
+}
+
+.mm25-logo-lab {
+  grid-template-columns: minmax(250px, .55fr) minmax(0, 1.45fr);
+}
+
+.mm25-logo-apps {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.mm25-logo-app {
+  min-height: 210px;
+  border-radius: 14px;
+}
+
+.mm25-distance-lab {
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr);
+  align-items: stretch;
+  background: var(--mm25-white);
+}
+
+.mm25-distance-lab__active {
+  min-width: 0;
+}
+
+.mm25-distance-stage {
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+  background: var(--distance-accent, var(--mm25-cyan));
+}
+
+.mm25-distance-lab__copy {
+  padding: clamp(28px, 4vw, 54px);
+}
+
+.mm25-distance-route {
+  min-height: 100%;
+  padding: clamp(28px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-left: 1px solid var(--mm25-line);
+  background:
+    linear-gradient(var(--mm25-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--mm25-line) 1px, transparent 1px),
+    var(--mm25-pink);
+  background-size: 42px 42px;
+}
+
+.mm25-distance-route span {
+  font-size: .67rem;
+  font-weight: 900;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.mm25-distance-route p {
+  margin: 0;
+  color: color-mix(in srgb, var(--mm25-purple) 60%, transparent);
+  font-size: .78rem;
+}
+
+.mm25-campaign .mm25-heading {
+  margin-bottom: 32px;
+}
+
+.mm25-moment-tabs button {
+  min-height: 64px;
+  padding: 15px 20px;
+  border-radius: 12px;
+}
+
+.mm25-moment-panel {
+  padding: clamp(22px, 3vw, 38px);
+  border-radius: 16px;
+}
+
+.mm25-moment-panel__intro {
+  margin-bottom: 26px;
+}
+
+.mm25-piece figcaption {
+  padding: 11px 13px 14px;
+}
+
+.mm25-credits {
+  padding-block: clamp(58px, 6vw, 82px);
+}
+
+.mm25-credits .mm25-heading {
+  margin-bottom: 32px;
+}
+
+.mm25-credit-grid article {
+  min-height: 190px;
+  padding: 22px;
+  border-radius: 14px;
+}
+
+.mm25-credit-grid h3 {
+  margin: 44px 0 12px;
+  font-size: clamp(1.2rem, 1.7vw, 1.7rem);
+}
+
+.mm25-credit-grid p {
+  font-size: .88rem;
+  line-height: 1.45;
+}
+
+.mm25-footer,
+.mm25-footer__inner {
+  min-height: 390px;
+}
+
+@media (max-width: 1080px) {
+  .mm25-editions__inner {
+    width: min(100%, 940px);
+  }
+
+  .mm25-heading {
+    grid-template-columns: 60px 1fr;
+  }
+
+  .mm25-logo-apps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .mm25-distance-lab {
+    grid-template-columns: minmax(0, 1.25fr) minmax(230px, .75fr);
+  }
+}
+
+@media (max-width: 780px) {
+  :root {
+    --mm25-editions-h: 54px;
+  }
+
+  .mm25-editions {
+    padding-inline: 0;
+  }
+
+  .mm25-editions__inner {
+    min-width: 0;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .mm25-editions__inner > p {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .mm25-editions__track {
+    width: 100%;
+    padding-inline: 8px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .mm25-editions__track a {
+    flex: 0 0 72px;
+    min-height: var(--mm25-editions-h);
+    scroll-snap-align: center;
+  }
+
+  .mm25-hero {
+    min-height: auto;
+    background-position: 58% center;
+  }
+
+  .mm25-hero__inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    min-height: auto;
+    gap: 24px;
+    padding-block: 20px 28px;
+  }
+
+  .mm25-hero__labels {
+    gap: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .mm25-hero__copy {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: auto;
+    padding-top: 12px;
+  }
+
+  .mm25-hero__copy h1 {
+    font-size: clamp(2.7rem, 11vw, 4.4rem);
+  }
+
+  .mm25-hero__brand {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: stretch;
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 18px;
+    align-items: end;
+    padding: 20px;
+  }
+
+  .mm25-hero__logo {
+    grid-row: 1 / 3;
+    width: min(48vw, 260px);
+    margin: 0;
+  }
+
+  .mm25-hero__brand p {
+    min-width: 138px;
+  }
+
+  .mm25-hero__scroll {
+    display: none;
+  }
+
+  .mm25-section {
+    padding-block: 64px;
+  }
+
+  .mm25-heading {
+    grid-template-columns: 1fr;
+    margin-bottom: 32px;
+  }
+
+  .mm25-story__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mm25-story-card {
+    min-height: 0;
+  }
+
+  .mm25-story-card h3 {
+    margin-top: 34px;
+  }
+
+  .mm25-kv__stage {
+    min-height: 340px;
+  }
+
+  .mm25-color-readout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mm25-color-context {
+    grid-template-columns: 1fr;
+  }
+
+  .mm25-logo-apps {
+    grid-template-columns: 1fr;
+  }
+
+  .mm25-distance-lab {
+    grid-template-columns: 1fr;
+  }
+
+  .mm25-distance-route {
+    min-height: 220px;
+    border-top: 1px solid var(--mm25-line);
+    border-left: 0;
+  }
+
+  .mm25-credit-grid article {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .mm25-hero__labels span:nth-child(2) {
+    display: none;
+  }
+
+  .mm25-hero__brand {
+    grid-template-columns: 1fr;
+  }
+
+  .mm25-hero__logo {
+    grid-row: auto;
+    width: min(70vw, 260px);
+  }
+
+  .mm25-hero__brand p {
+    min-width: 0;
+  }
+
+  .mm25-swatches {
+    min-height: 154px;
+  }
+
+  .mm25-swatch {
+    min-height: 154px;
+  }
+
+  .mm25-swatch::after {
+    writing-mode: vertical-rl;
+    inset: auto 8px 9px auto;
+  }
+
+  .mm25-type-controls label {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .mm25-type-sample {
+    font-size: 48px;
+  }
+}
+
+@media (hover: none) {
+  .mm25-story__grid:has(.mm25-story-card:is(:hover, :focus-visible)) .mm25-story-card:not(:is(:hover, :focus-visible)) {
+    opacity: 1;
+  }
+}
+
+/* Fase V2: ancho editorial, módulos apilados y cierre limpio. */
+:root {
+  --mm25-wide: min(1440px, calc(100vw - 48px));
+}
+
+.mm25-story > .mm25-shell,
+.mm25-system > .mm25-shell,
+.mm25-campaign > .mm25-shell,
+.mm25-credits > .mm25-shell,
+.mm25-hero > .mm25-shell {
+  width: var(--mm25-wide);
+}
+
+.mm25-editions > .mm25-editions__inner {
+  width: var(--mm25-wide);
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) auto;
+  gap: 28px;
+}
+
+.mm25-editions .mm25-editions__track {
+  width: max-content;
+  display: flex;
+  justify-self: end;
+  gap: 0;
+}
+
+.mm25-editions .mm25-editions__track a {
+  width: 72px;
+  min-width: 72px;
+  padding: 0;
+  border-radius: 0;
+}
+
+.mm25-hero::after {
+  display: none;
+}
+
+.mm25-hero {
+  background-color: var(--mm25-cyan);
+  background-position: center;
+  background-size: cover;
+}
+
+.mm25-hero__veil {
+  background: linear-gradient(90deg, rgba(0, 183, 206, .02), rgba(0, 183, 206, .08));
+}
+
+.mm25-hero__inner {
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, .65fr);
+  gap: 22px clamp(44px, 7vw, 112px);
+}
+
+.mm25-hero__copy {
+  max-width: 780px;
+}
+
+.mm25-hero__copy h1 {
+  max-width: 12.6ch;
+  font-size: clamp(3.1rem, 5.15vw, 5.65rem);
+}
+
+.mm25-hero__brand {
+  width: min(100%, 430px);
+  padding: 20px 0 20px clamp(28px, 4vw, 58px);
+  border: 0;
+  border-left: 1px solid rgba(57, 20, 89, .28);
+    background: transparent;
+  }
+
+  .mm25-hero__logo {
+    margin-bottom: 24px;
+  }
+
+.mm25-hero__logo {
+  width: min(100%, 390px);
+  margin-bottom: 42px;
+}
+
+.mm25-story__grid,
+.mm25-credit-grid {
+  width: 100%;
+}
+
+.mm25-story-card {
+  padding-inline: clamp(24px, 2.2vw, 36px);
+}
+
+.mm25-lab-grid {
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.mm25-palette-lab,
+.mm25-type-lab {
+  min-height: 420px;
+}
+
+.mm25-palette-lab {
+  display: grid;
+  grid-template-columns: minmax(220px, .32fr) minmax(0, .68fr);
+  grid-template-rows: auto auto;
+  gap: 20px clamp(30px, 5vw, 76px);
+  align-items: start;
+}
+
+.mm25-palette-lab > header {
+  grid-row: 1 / -1;
+  align-self: center;
+}
+
+.mm25-palette-lab .mm25-swatches,
+.mm25-palette-lab .mm25-color-readout {
+  margin-top: 0;
+}
+
+.mm25-type-lab {
+  display: grid;
+  grid-template-columns: minmax(260px, .34fr) minmax(0, .66fr);
+  grid-template-rows: auto 1fr;
+  gap: 22px clamp(30px, 5vw, 76px);
+}
+
+.mm25-type-lab > header {
+  grid-row: 1 / -1;
+  align-self: center;
+}
+
+.mm25-type-controls {
+  margin-top: 0;
+}
+
+.mm25-type-sample {
+  align-self: end;
+  margin: 0;
+}
+
+.mm25-logo-lab {
+  grid-template-columns: 1fr;
+}
+
+.mm25-logo-lab__intro {
+  display: grid;
+  grid-template-columns: minmax(220px, .42fr) minmax(0, .58fr);
+  gap: 24px clamp(32px, 5vw, 80px);
+  align-items: end;
+}
+
+.mm25-logo-lab__intro > .mm25-kicker {
+  grid-column: 1 / -1;
+}
+
+.mm25-logo-lab__intro > p:last-child {
+  margin: 0;
+}
+
+.mm25-logo-apps {
+  gap: 1px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, .18);
+}
+
+.mm25-logo-app {
+  min-height: clamp(230px, 21vw, 320px);
+  border-radius: 0;
+}
+
+.mm25-distance-lab {
+  grid-template-columns: minmax(290px, 2fr) minmax(0, 5fr);
+}
+
+.mm25-distance-stage {
+  aspect-ratio: 1 / 1;
+}
+
+.mm25-distance-stage img {
+  object-fit: cover;
+}
+
+.mm25-distance-lab__copy {
+  padding: clamp(26px, 3vw, 44px);
+}
+
+.mm25-distance-route {
+  min-height: 100%;
+}
+
+.mm25-moment-panel,
+.mm25-moment-tabs {
+  width: 100%;
+}
+
+.mm25-credit-grid {
+  gap: 1px;
+  border: 1px solid rgba(255, 255, 255, .18);
+  background: rgba(255, 255, 255, .18);
+}
+
+.mm25-credit-grid article {
+  border: 0;
+  border-radius: 0;
+}
+
+.mm25-credit-grid__highlight {
+  background: var(--mm25-purple) !important;
+  color: var(--mm25-lime) !important;
+}
+
+.mm25-story-card,
+.mm25-credit-grid article,
+.mm25-kv__copy,
+.mm25-palette-lab,
+.mm25-type-lab,
+.mm25-logo-app,
+.mm25-moment-panel,
+.mm25-distance-route {
+  isolation: isolate;
+}
+
+.mm25-story-card::before,
+.mm25-credit-grid article::before,
+.mm25-kv__copy::before,
+.mm25-palette-lab::before,
+.mm25-type-lab::before,
+.mm25-logo-app::before,
+.mm25-moment-panel::before,
+.mm25-distance-route::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .12;
+  background: url("../images/projects/maraton-medellin/2025/fondos/textura.webp") center / 720px auto;
+  content: "";
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+}
+
+.mm25-story-card,
+.mm25-credit-grid article,
+.mm25-kv__copy,
+.mm25-palette-lab,
+.mm25-type-lab,
+.mm25-logo-app,
+.mm25-moment-panel,
+.mm25-distance-route {
+  position: relative;
+  overflow: hidden;
+}
+
+.mm25-footer {
+  min-height: 0;
+  background: var(--mm25-purple);
+  color: var(--mm25-white);
+  font-size: .68rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.mm25-footer::before {
+  display: none;
+}
+
+.mm25-footer__closing {
+  min-height: 54svh;
+  padding: clamp(72px, 8vw, 118px) 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    linear-gradient(rgba(57, 20, 89, .12), rgba(57, 20, 89, .3)),
+    url("../images/projects/maraton-medellin/2025/fondos/fondo-variacion-01.webp") center / cover no-repeat;
+}
+
+.mm25-footer__closing > p {
+  margin: 0;
+  color: var(--mm25-lime);
+  font-size: .72rem;
+  letter-spacing: .13em;
+}
+
+.mm25-footer__closing h2 {
+  margin: 24px 0 0;
+  font-size: clamp(3rem, 6.3vw, 7.2rem);
+  line-height: .88;
+}
+
+.mm25-footer__closing h2 strong {
+  color: var(--mm25-lime);
+}
+
+.mm25-footer__closing > a {
+  margin-top: 44px;
+  padding: 13px 17px;
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.mm25-footer__visual {
+  min-height: clamp(72px, 9vw, 132px);
+  background: url("../images/projects/maraton-medellin/2025/fondos/hero-principal.webp") center 68% / cover no-repeat;
+}
+
+.mm25-footer__meta {
+  min-height: 92px;
+  padding: 24px max(24px, calc((100vw - 1440px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid rgba(255, 255, 255, .18);
+  color: rgba(255, 255, 255, .72);
+}
+
+.mm25-footer__meta a {
+  color: var(--mm25-white);
+  text-decoration: none;
+}
+
+@media (max-width: 1080px) {
+  .mm25-palette-lab,
+  .mm25-type-lab {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .mm25-palette-lab > header,
+  .mm25-type-lab > header {
+    grid-row: auto;
+  }
+
+  .mm25-palette-lab .mm25-swatches {
+    margin-top: 6px;
+  }
+
+  .mm25-type-sample {
+    margin-top: 20px;
+  }
+
+  .mm25-distance-lab {
+    grid-template-columns: minmax(270px, 2fr) minmax(0, 4fr);
+  }
+}
+
+@media (max-width: 800px) {
+  :root {
+    --mm25-wide: calc(100vw - 28px);
+  }
+
+  .mm25-editions > .mm25-editions__inner {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .mm25-editions .mm25-editions__track {
+    width: 100%;
+    justify-self: stretch;
+    padding-inline: 0;
+  }
+
+  .mm25-editions .mm25-editions__track a {
+    flex: 0 0 72px;
+  }
+
+  .mm25-hero {
+    min-height: auto;
+    background-position: 58% center;
+  }
+
+  .mm25-hero__inner {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 24px;
+    padding-block: 20px 28px;
+  }
+
+  .mm25-hero__labels {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .mm25-hero__copy {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .mm25-hero__brand {
+    grid-column: 1;
+    grid-row: 3;
+    padding: 20px 0 0;
+    border-top: 1px solid rgba(57, 20, 89, .28);
+    border-left: 0;
+  }
+
+  .mm25-logo-lab__intro {
+    grid-template-columns: 1fr;
+  }
+
+  .mm25-logo-lab__intro > .mm25-kicker {
+    grid-column: auto;
+  }
+
+  .mm25-distance-lab {
+    grid-template-columns: 1fr;
+  }
+
+  .mm25-distance-stage {
+    width: min(100%, 520px);
+  }
+
+  .mm25-footer__closing {
+    min-height: 480px;
+  }
+
+  .mm25-footer__meta {
+    min-height: 0;
+    padding: 26px 18px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .mm25-hero__brand {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .mm25-hero__copy h1 {
+    font-size: clamp(2.55rem, 11.5vw, 3.15rem);
+  }
+
+  .mm25-hero__logo {
+    width: min(62vw, 230px);
+    margin-bottom: 12px;
+  }
+
+  .mm25-footer__closing h2 {
+    font-size: clamp(2.75rem, 14vw, 4.4rem);
+  }
+}
+
+/* Fase V4: navegación uniforme, contraste editorial y cierre visual. */
+:root {
+  --mm25-page-pad: clamp(18px, 3vw, 48px);
+  --mm25-texture-opacity: .12;
+}
+
+.mm25-header {
+  width: 100%;
+  grid-template-columns: 1fr auto 1fr;
+  gap: clamp(18px, 3vw, 48px);
+  padding: 10px var(--mm25-page-pad);
+}
+
+.mm25-header__personal {
+  justify-self: start;
+  width: 48px;
+  height: 48px;
+}
+
+.mm25-header__personal img {
+  width: 48px;
+  height: 48px;
+}
+
+.mm25-header__nav {
+  width: auto;
+  justify-self: center;
+  gap: clamp(18px, 3vw, 42px);
+}
+
+.mm25-header__flower {
+  flex: 0 0 44px;
+  padding: 2px;
+}
+
+.mm25-header__back {
+  justify-self: end;
+}
+
+.mm25-hero,
+.mm25-story,
+.mm25-system,
+.mm25-campaign,
+.mm25-credits {
+  isolation: isolate;
+}
+
+.mm25-story,
+.mm25-campaign {
+  overflow: hidden;
+  background-image: none;
+}
+
+.mm25-hero::after,
+.mm25-story::before,
+.mm25-system::before,
+.mm25-campaign::before,
+.mm25-credits::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  opacity: var(--mm25-texture-opacity);
+  background: url("../images/projects/maraton-medellin/2025/fondos/textura.webp") center / 720px auto;
+  content: "";
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+}
+
+.mm25-story > .mm25-shell,
+.mm25-system > .mm25-shell,
+.mm25-campaign > .mm25-shell,
+.mm25-credits > .mm25-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.mm25-hero {
+  box-shadow: inset 0 -2px 0 var(--mm25-cyan);
+}
+
+.mm25-story {
+  margin-top: -1px;
+}
+
+.mm25-story .mm25-heading__index {
+  color: color-mix(in srgb, var(--mm25-purple) 84%, var(--mm25-white));
+}
+
+.mm25-story-card:nth-child(1) {
+  background: var(--mm25-cyan);
+  color: var(--mm25-purple);
+}
+
+.mm25-story-card:nth-child(2) {
+  background: var(--mm25-pink);
+  color: var(--mm25-purple);
+}
+
+.mm25-story-card:nth-child(3) {
+  background: var(--mm25-lime);
+  color: var(--mm25-purple);
+}
+
+.mm25-story-card:nth-child(4) {
+  background: var(--mm25-purple);
+  color: var(--mm25-white);
+}
+
+.mm25-story-card:is(:hover, :focus, :focus-visible) {
+  background: var(--mm25-white);
+  color: var(--mm25-purple);
+}
+
+.mm25-palette-lab {
+  background: color-mix(in srgb, var(--mm25-cyan) 88%, var(--mm25-white));
+  color: var(--mm25-purple);
+}
+
+.mm25-type-lab {
+  background: var(--mm25-purple);
+  color: var(--mm25-pink);
+}
+
+.mm25-type-lab .mm25-kicker,
+.mm25-type-lab .mm25-type-controls,
+.mm25-type-lab .mm25-type-sample small {
+  color: var(--mm25-lime);
+}
+
+.mm25-type-lab .mm25-type-controls button[aria-pressed="true"] {
+  background: var(--mm25-lime);
+  color: var(--mm25-purple);
+}
+
+.mm25-type-lab .mm25-type-controls input {
+  accent-color: var(--mm25-lime);
+}
+
+.mm25-logo-lab {
+  background: color-mix(in srgb, var(--mm25-cyan) 26%, transparent);
+}
+
+.mm25-logo-lab__intro {
+  border-color: color-mix(in srgb, var(--mm25-purple) 28%, transparent);
+  background: var(--mm25-lime);
+  color: var(--mm25-purple);
+}
+
+.mm25-logo-apps {
+  background: color-mix(in srgb, var(--mm25-purple) 28%, transparent);
+}
+
+.mm25-distance-lab {
+  background: var(--mm25-purple);
+  color: var(--mm25-white);
+}
+
+.mm25-distance-lab__copy .mm25-kicker {
+  color: var(--mm25-lime);
+}
+
+.mm25-distance-controls button {
+  border-color: var(--mm25-pink);
+  background: var(--mm25-pink);
+  color: var(--mm25-purple);
+}
+
+.mm25-distance-controls button[aria-pressed="true"] {
+  border-color: var(--mm25-lime);
+  background: var(--mm25-lime);
+  color: var(--mm25-purple);
+}
+
+.mm25-distance-route {
+  border-color: color-mix(in srgb, var(--mm25-purple) 32%, transparent);
+  background:
+    linear-gradient(color-mix(in srgb, var(--mm25-purple) 18%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--mm25-purple) 18%, transparent) 1px, transparent 1px),
+    var(--mm25-cyan);
+  background-size: 42px 42px;
+  color: var(--mm25-purple);
+}
+
+.mm25-moment-tabs button,
+.mm25-race-controls button {
+  border-color: color-mix(in srgb, var(--mm25-purple) 38%, transparent);
+  background: var(--mm25-pink);
+  color: var(--mm25-purple);
+}
+
+.mm25-moment-tabs button span {
+  color: var(--mm25-purple);
+}
+
+.mm25-moment-tabs button[aria-selected="true"],
+.mm25-race-controls button[aria-pressed="true"] {
+  border-color: var(--mm25-purple);
+  background: var(--mm25-purple);
+  color: var(--mm25-pink);
+}
+
+.mm25-moment-tabs button[aria-selected="true"] span {
+  color: var(--mm25-lime);
+}
+
+.mm25-credits .mm25-heading {
+  grid-template-columns: 66px minmax(0, 1fr);
+}
+
+.mm25-credit-grid article:nth-child(1) {
+  background: var(--mm25-cyan);
+  color: var(--mm25-purple);
+}
+
+.mm25-credit-grid article:nth-child(2) {
+  background: var(--mm25-pink);
+  color: var(--mm25-purple);
+}
+
+.mm25-credit-grid article:nth-child(3) {
+  background: var(--mm25-lime);
+  color: var(--mm25-purple);
+}
+
+.mm25-credit-grid article:nth-child(4),
+.mm25-credit-grid__highlight {
+  background: var(--mm25-purple) !important;
+  color: var(--mm25-white) !important;
+}
+
+.mm25-credit-grid__highlight span {
+  color: var(--mm25-lime);
+}
+
+.mm25-footer__visual {
+  min-height: clamp(150px, 27.625vw, 530px);
+  background: var(--mm25-purple) url("../images/projects/maraton-medellin/2025/fondos/mini-banner.webp") center / cover no-repeat;
+}
+
+@media (max-width: 800px) {
+  :root {
+    --mm25-editions-h: 52px;
+  }
+
+  :root {
+    --mm25-header-h: 72px;
+  }
+
+  .mm25-header {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 12px;
+    padding-inline: var(--mm25-page-pad);
+  }
+
+  .mm25-header__personal,
+  .mm25-header__personal img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .mm25-header__nav {
+    min-width: 0;
+    justify-self: stretch;
+    justify-content: flex-start;
+    gap: 14px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+  }
+
+  .mm25-header__nav a:not(.mm25-header__flower) {
+    display: block;
+    flex: 0 0 auto;
+  }
+
+  .mm25-header__back {
+    display: none;
+  }
+
+  .mm25-header__flower {
+    flex-basis: 44px;
+    width: 44px;
+    min-width: 44px;
+  }
+
+  .mm25-credits .mm25-heading {
+    grid-template-columns: 60px minmax(0, 1fr);
+  }
+
+  .mm25-footer__visual {
+    min-height: clamp(126px, 34vw, 210px);
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --mm25-header-h: 64px;
+  }
+
+  .mm25-header__personal,
+  .mm25-header__personal img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .mm25-header__nav {
+    gap: 10px;
+  }
+
+  .mm25-header__nav a,
+  .mm25-header__back {
+    font-size: .6rem;
+  }
+
+  .mm25-credits .mm25-heading {
+    grid-template-columns: 46px minmax(0, 1fr);
+  }
+}
+
+/* Fase V5: base final MM2025 y navegación compartida entre ediciones. */
+:root {
+  --mm25-nav-accent: #ffffff;
+}
+
+.mm25-header__nav a:not(.mm25-header__flower)::after {
+  background: var(--mm25-nav-accent);
+}
+
+.mm25-editions {
+  min-height: var(--mm25-editions-h);
+  padding: 0 var(--mm25-page-pad);
+  border-bottom-color: var(--mm-editions-border);
+  background: var(--mm-editions-bg);
+  color: var(--mm-editions-text);
+}
+
+.mm25-editions > .mm25-editions__inner,
+.mm25-editions .mm25-editions__track,
+.mm25-editions .mm25-editions__track a {
+  min-height: var(--mm25-editions-h);
+}
+
+.mm25-editions__inner > p,
+.mm25-editions__inner > p strong,
+.mm25-editions .mm25-editions__track a {
+  color: var(--mm-editions-text);
+}
+
+.mm25-editions .mm25-editions__track a {
+  border-color: var(--mm-editions-border);
+}
+
+.mm25-editions__track a:hover,
+.mm25-editions__track a:focus-visible {
+  color: var(--mm-editions-hover-text);
+  background: var(--mm-editions-hover-bg);
+}
+
+.mm25-editions .mm25-editions__track a[aria-current="page"] {
+  color: var(--mm-editions-active-text);
+  background: var(--mm-editions-active-bg);
+}
+
+.mm25-story .mm25-heading__index {
+  color: var(--mm25-purple);
+}
+
+.mm25-palette-lab {
+  background: var(--palette-surface, var(--mm25-pink));
+  color: var(--palette-surface-text, var(--mm25-purple));
+  transition: background-color 260ms var(--mm25-ease), color 260ms var(--mm25-ease);
+}
+
+.mm25-palette-lab .mm25-kicker,
+.mm25-palette-lab .mm25-color-readout,
+.mm25-palette-lab .mm25-color-context {
+  color: inherit;
+  border-color: color-mix(in srgb, currentColor 28%, transparent);
+}
+
+.mm25-footer__closing {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--mm25-purple);
+}
+
+.mm25-footer__closing::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: var(--mm25-texture-opacity);
+  background: url("../images/projects/maraton-medellin/2025/fondos/textura.webp") center / 720px auto;
+  content: "";
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+}
+
+.mm25-footer__visual {
+  min-height: clamp(72px, 9vw, 132px);
+  background: var(--mm25-purple) url("../images/projects/maraton-medellin/2025/fondos/fondo-variacion-01.webp") center / cover no-repeat;
+}
+
+@media (max-width: 800px) {
+  .mm25-editions {
+    padding-inline: 0;
+  }
+
+  .mm25-footer__visual {
+    min-height: clamp(72px, 18vw, 110px);
+  }
+}
+
+/* Fase 29-sep-2026: las piezas se muestran completas (regla: no recortar piezas gráficas).
+   El contenedor adopta la proporción real del archivo. */
+.mm25-piece img {
+  aspect-ratio: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Fase 29-sep-2026: todas las muestras de la paleta muestran su límite (la muestra Rosa desaparecía
+   sobre el fondo rosa de Sistema visual). */
+.mm25-swatch { box-shadow: inset 0 0 0 1px rgba(57, 20, 89, .28); }
+.mm25-swatch[aria-pressed="true"] { box-shadow: inset 0 0 0 4px currentColor; }
+
+/* Fase 29-sep-2026: Sistema por distancia sin panel vacío. Mientras no exista el recorrido oficial,
+   el módulo ocupa todo el ancho: pieza a la izquierda, texto y selector a la derecha. */
+.mm25-distance-lab.mm25-distance-lab--compacto { grid-template-columns: minmax(0, 1fr); }
+.mm25-distance-lab--compacto .mm25-distance-lab__active {
+  display: grid;
+  grid-template-columns: minmax(240px, 440px) minmax(0, 1fr);
+  align-items: center;
+}
+.mm25-distance-lab--compacto .mm25-distance-lab__copy { padding: clamp(24px, 4vw, 56px); }
+@media (max-width: 760px) {
+  .mm25-distance-lab--compacto .mm25-distance-lab__active { grid-template-columns: minmax(0, 1fr); }
+}
+/* La etiqueta de la distancia heredaba texto blanco sobre fondo blanco (se veía como una píldora vacía). */
+.mm25-distance-lab .mm25-distance-stage figcaption { color: var(--mm25-purple); }
+
+/* Fase 5-oct-2026: créditos estándar en tres tarjetas (cian · rosa · verde). */
+@media (min-width: 761px) { .mm25-credit-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }

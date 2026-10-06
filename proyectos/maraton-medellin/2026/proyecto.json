@@ -1,0 +1,40 @@
+{
+  "proyecto": "Maratón Medellín 2026",
+  "tipo": [
+    "Campaña",
+    "Evento deportivo",
+    "Sistema visual"
+  ],
+  "ubicacion": "Medellín, Colombia",
+  "concepto_resumido": "El ritmo del corredor se transforma en ondas que ascienden y se reinterpretan como las montañas de Medellín.",
+  "secuencia_conceptual": [
+    "Ritmo",
+    "Ondas",
+    "Montañas",
+    "Identidad 2026"
+  ],
+  "distancias": [
+    "42K",
+    "21K",
+    "10K",
+    "5K"
+  ],
+  "fecha_42k_21k_10k": "2026-09-06",
+  "fecha_5k": "2026-09-05",
+  "creditos": {
+    "direccion_creativa": "Pablo Molina",
+    "equipo_habitual": [
+      "Jorge Zapata",
+      "Santiago Ospina",
+      "Sebastian Pallares"
+    ],
+    "rol_sebastian": "Diseño gráfico y ejecución visual"
+  },
+  "rutas_clave": {
+    "hero": "assets/images/projects/maraton-medellin/2026/hero/",
+    "campana_redes": "assets/images/projects/maraton-medellin/2026/campaña/redes/",
+    "campana_vistas": "assets/images/projects/maraton-medellin/2026/campaña/vistas/",
+    "impresos": "assets/images/projects/maraton-medellin/2026/impresos/",
+    "merchandising": "assets/images/projects/maraton-medellin/2026/merchandising/"
+  }
+}

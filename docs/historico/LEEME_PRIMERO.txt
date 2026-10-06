@@ -1,0 +1,16 @@
+PROJECT ATLAS — INICIO EN CODEX
+
+Copia en la raíz del repositorio oficial:
+- AGENTS.md
+- PRIMER_PROMPT_CODEX.txt
+- carpeta docs/
+
+Después:
+1. Abre Codex.
+2. Inicia sesión con tu cuenta de ChatGPT.
+3. Selecciona `sebastian-pallares-portafolio`.
+4. Verifica que sea la carpeta conectada a GitHub.
+5. Copia el contenido de `PRIMER_PROMPT_CODEX.txt`.
+6. Pégalo como primera tarea.
+7. No autorices push.
+8. Revisa `docs/AUDITORIA_INICIAL.md`.

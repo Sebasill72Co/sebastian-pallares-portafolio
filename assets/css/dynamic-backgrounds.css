@@ -1,0 +1,105 @@
+/* PROJECT ATLAS — Motor paramétrico aislado para fondos MM2026 */
+.dynamic-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--dynamic-base-color, #641e28);
+}
+
+.dynamic-background__base,
+.dynamic-background__columns,
+.dynamic-background__noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.dynamic-background__base {
+  z-index: 0;
+  background: linear-gradient(
+    var(--dynamic-base-angle, 180deg),
+    var(--dynamic-base-start, #641e28),
+    var(--dynamic-base-end, #3e1730)
+  );
+}
+
+.dynamic-background__columns {
+  z-index: 1;
+  display: grid;
+  grid-template-columns: var(--dynamic-column-template);
+  gap: 0;
+  overflow: hidden;
+}
+
+.dynamic-background__column {
+  position: relative;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.dynamic-background__segment {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--segment-height);
+  opacity: var(--segment-opacity, 1);
+  background: linear-gradient(
+    180deg,
+    var(--segment-start) 0%,
+    var(--segment-mid) 56%,
+    var(--segment-end) 100%
+  );
+  background-size: 100% 116%;
+  animation: dynamic-segment-breathe var(--segment-duration, 28s) ease-in-out var(--segment-delay, 0s) infinite alternate;
+  will-change: transform, background-position, filter;
+}
+
+.dynamic-background__segment[data-origin="top"] {
+  top: 0;
+  transform-origin: 50% 0%;
+  background-position: 50% 0%;
+}
+
+.dynamic-background__segment[data-origin="bottom"] {
+  bottom: 0;
+  transform-origin: 50% 100%;
+  background-position: 50% 100%;
+}
+
+.dynamic-background__noise {
+  z-index: 2;
+  opacity: var(--dynamic-noise-opacity, .8);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 260 260' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");
+  background-size: 260px 260px;
+  mix-blend-mode: soft-light;
+}
+
+.dynamic-background[data-motion="paused"] .dynamic-background__segment {
+  animation-play-state: paused;
+}
+
+@keyframes dynamic-segment-breathe {
+  from {
+    transform: scaleY(var(--segment-scale-from, .97));
+    background-position: 50% 0%;
+    filter: saturate(.98) brightness(.99);
+  }
+
+  to {
+    transform: scaleY(var(--segment-scale-to, 1.03));
+    background-position: 50% 100%;
+    filter: saturate(1.025) brightness(1.01);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dynamic-background__segment {
+    animation: none;
+    transform: none;
+    background-position: 50% 50%;
+    filter: none;
+    will-change: auto;
+  }
+}

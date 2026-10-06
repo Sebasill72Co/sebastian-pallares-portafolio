@@ -1,38 +1,279 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Portafolio profesional de Sebastian Pallares Ruiz.">
-<title>Sebastian Pallares Ruiz — Portafolio</title>
-<link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portafolio profesional de Sebastian Pallares Ruiz, diseñador gráfico y creativo especializado en campañas, eventos e identidad visual.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:site_name" content="Sebastian Pallares Ruiz — Portafolio">
+  <meta property="og:title" content="Sebastian Pallares Ruiz — Diseñador gráfico y creativo">
+  <meta property="og:description" content="Portafolio profesional: campañas, eventos e identidad visual desde Medellín, Colombia.">
+  <meta name="twitter:card" content="summary">
+  <title>Sebastian Pallares Ruiz — Portafolio</title>
+  <link rel="icon" href="assets/images/brand/logo-personal-sebastian-pallares.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/shared-components.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/home-editorial.css?v=20261005-1">
 </head>
-<body>
-<div class="progress" id="progress"></div>
-<header class="topbar"><div class="container nav"><a class="brand" href="#inicio">Sebastian<span>.</span></a>
-<nav class="nav-links"><a href="#proyectos">Proyectos</a><a href="#perfil">Perfil</a><a href="#contacto">Contacto</a></nav></div></header>
-<main>
-<section class="hero" id="inicio"><div class="container hero-grid"><div>
-<span class="eyebrow">Diseñador gráfico y creativo</span>
-<h1>Diseño ideas que <span class="accent">conectan.</span></h1>
-<p class="hero-copy">Diseño experiencias visuales para marcas, campañas y eventos, combinando concepto, identidad y producción gráfica.</p>
-<div class="hero-actions"><a class="btn btn-primary" href="#proyectos">Ver proyectos ↓</a><a class="btn btn-secondary" href="mailto:sebasill72@gmail.com">Hablemos</a></div>
-</div><div class="hero-visual"><figure class="portrait-frame"><img src="assets/images/profile/sebastian-pallares.webp" alt="Sebastian Pallares Ruiz"></figure></div></div></section>
+<body class="home-editorial">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
 
-<section class="section section-dark" id="proyectos"><div class="container">
-<div class="section-head"><div><div class="section-kicker">Selección inicial</div><h2>Proyectos destacados</h2></div>
-<p class="section-note">Cada proyecto se organiza como caso de estudio. Maratón Medellín se presenta por años.</p></div>
-<div class="project-grid">
-<a href="proyectos/maraton-medellin/2026/" class="project-card large green"><div class="project-meta"><span class="pill">Campaña</span><span class="pill">Evento</span><span class="pill">2026</span></div><div class="project-title"><h3>Maratón Medellín</h3><p>Campaña, redes, merchandising, números, gran formato y kit del corredor.</p></div></a>
-<a href="proyectos/media-maraton-del-mar/" class="project-card small orange"><div class="project-meta"><span class="pill">Running</span></div><div class="project-title"><h3>Media Maratón del Mar</h3><p>Proyecto en construcción.</p></div></a>
-<a href="proyectos/expoinmobiliaria/" class="project-card small blue"><div class="project-meta"><span class="pill">Feria</span></div><div class="project-title"><h3>ExpoInmobiliaria</h3><p>Proyecto en construcción.</p></div></a>
-<a href="proyectos/tres-trigos/" class="project-card large ink"><div class="project-meta"><span class="pill">Marca</span><span class="pill">Empaques</span></div><div class="project-title"><h3>Tres Trigos</h3><p>Proyecto en construcción.</p></div></a>
-</div></div></section>
+  <header class="site-header atlas-nav">
+    <div class="container nav home-nav">
+      <a class="brand brand-logo" href="#inicio" aria-label="Ir al inicio">
+        <img src="assets/images/brand/logo-personal-sebastian-pallares.svg" alt="" width="44" height="44">
+      </a>
 
-<section class="section" id="perfil"><div class="container"><div class="section-kicker">Perfil</div><h2>Diseño con intención y aplicación real.</h2>
-<p class="hero-copy">Soy Sebastian Pallares Ruiz, diseñador gráfico y creativo. Desde 2019 hago parte del equipo de MIRAPALTECHO, participando en proyectos de identidad, campañas, eventos, redes, impresos, merchandising y producción gráfica.</p></div></section>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navegacion-principal">
+        <span class="nav-toggle__label">Menú</span>
+        <span class="nav-toggle__icon" aria-hidden="true"><i></i><i></i></span>
+      </button>
 
-<section class="section" id="contacto"><div class="container"><div class="contact-box"><div class="section-kicker">Contacto</div><h2>Construyamos algo que se vea bien y funcione mejor.</h2><div class="contact-links"><a href="mailto:sebasill72@gmail.com">sebasill72@gmail.com</a><a href="tel:+573505458566">+57 350 545 8566</a><a href="https://instagram.com/sebasill72" target="_blank">@sebasill72</a></div></div></div></section>
-</main>
-<footer class="container"><span>© <span id="year"></span> Sebastian Pallares Ruiz</span><span>Diseñador gráfico y creativo</span></footer>
-<script src="assets/js/main.js"></script>
-</body></html>
+      <nav class="nav-links" id="navegacion-principal" aria-label="Navegación principal">
+        <a href="#proyectos">Proyectos</a>
+        <a href="#sobre-mi">Perfil</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <span class="availability">Disponible para proyectos</span>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="home-hero atlas-hero" id="inicio" aria-labelledby="hero-title">
+      <div class="home-hero__noise" aria-hidden="true"></div>
+      <div class="container home-hero__grid">
+        <div class="home-hero__index" aria-hidden="true">
+          <span>AT—01</span>
+          <span>Portafolio / 2026</span>
+        </div>
+
+        <div class="home-hero__copy reveal">
+          <p class="eyebrow">Diseñador gráfico y creativo · Medellín, Colombia</p>
+          <p class="home-hero__name">Sebastian<br>Pallares Ruiz</p>
+          <h1 id="hero-title">Diseño sistemas visuales <span>que las personas viven, no solo ven.</span></h1>
+          <p class="intro">Desarrollo campañas, identidades y experiencias gráficas para marcas, eventos y proyectos culturales, combinando concepto, sistema visual y ejecución.</p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#proyectos">Explorar proyectos <span aria-hidden="true">↘</span></a>
+            <a class="button button-ghost" href="#sobre-mi">Conocer mi perfil</a>
+          </div>
+        </div>
+
+        <figure class="home-portrait reveal">
+          <div class="home-portrait__frame">
+            <img src="assets/images/brand/foto-perfil.webp" alt="Retrato de Sebastian Pallares Ruiz" width="960" height="1280" fetchpriority="high">
+          </div>
+          <figcaption>
+            <span>Perfil / Diseñador gráfico</span>
+            <span>Medellín, Colombia</span>
+          </figcaption>
+        </figure>
+
+        <dl class="home-hero__facts reveal">
+          <div><dt>Enfoque</dt><dd>Sistemas visuales, campañas y eventos</dd></div>
+          <div><dt>Experiencia</dt><dd>MIRAPALTECHO · Desde 2019</dd></div>
+          <div><dt>Modalidad</dt><dd>Equipo creativo + proyectos independientes</dd></div>
+        </dl>
+      </div>
+
+      <div class="container home-hero__footer">
+        <span>Selección de trabajos · 2019—2026</span>
+        <a href="#proyectos">Continuar hacia proyectos <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+
+    <section class="brands" aria-labelledby="brands-title">
+      <div class="container brands-inner">
+        <p class="brands-label" id="brands-title">He trabajado con</p>
+        <div class="brands-grid">
+          <a class="brand-item" href="proyectos/maraton-medellin/2026/" aria-label="Ver proyecto Maratón Medellín">
+            <img src="assets/images/logos/maraton-medellin.svg" alt="Maratón Medellín" loading="lazy">
+          </a>
+          <a class="brand-item" href="proyectos/media-maraton-del-mar/2027/index.html" aria-label="Ver proyecto Media Maratón del Mar">
+            <img class="logo-color" src="assets/images/logos/media-maraton-del-mar-mono.svg" alt="Media Maratón del Mar" loading="lazy">
+          </a>
+          <a class="brand-item" href="proyectos/expoinmobiliaria/2025/index.html" aria-label="Ver proyecto ExpoInmobiliaria">
+            <img src="assets/images/logos/expoinmobiliaria.svg" alt="ExpoInmobiliaria" loading="lazy">
+          </a>
+          <span class="brand-item" aria-label="Tres Trigos">
+            <img src="assets/images/logos/tres-trigos.svg" alt="Tres Trigos" loading="lazy">
+          </span>
+          <span class="brand-item" aria-label="KÒRSWILL">
+            <img src="assets/images/logos/korswill.svg" alt="KÒRSWILL" loading="lazy">
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section home-work" id="proyectos" aria-labelledby="work-title">
+      <div class="container">
+        <header class="home-section__header reveal">
+          <div><p class="section-label">01 / Proyectos seleccionados</p><h2 id="work-title">Trabajo con escala, contexto y aplicación real.</h2></div>
+          <p>Una selección de proyectos desarrollados en equipo y de forma independiente, presentados como sistemas visuales y casos de estudio.</p>
+        </header>
+
+        <div class="project-grid">
+          <a class="project-tile project-tile--featured reveal" href="proyectos/maraton-medellin/2026/">
+            <span class="project-tile__number">01</span>
+            <div class="project-tile__logo"><img src="assets/images/logos/maraton-medellin.svg" alt="Maratón Medellín"></div>
+            <div class="project-tile__meta"><span>Campaña · Evento</span><span>Ediciones 2021—2026</span></div>
+            <div class="project-tile__summary"><h3>Maratón Medellín</h3><p>Sistema gráfico aplicado a comunicación, merchandising, gran formato y experiencia de carrera.</p><span class="project-tile__action">Ver caso <b aria-hidden="true">↗</b></span></div>
+          </a>
+
+          <article class="project-tile project-tile--korswill reveal">
+            <span class="project-tile__number">02</span>
+            <div class="project-tile__logo"><img src="assets/images/logos/korswill.svg" alt="KÒRSWILL" loading="lazy"></div>
+            <div class="project-tile__meta"><span>Proyecto independiente · Marca</span><span>En desarrollo</span></div>
+            <div class="project-tile__summary"><h3>KÒRSWILL</h3><p>Evolución de marca, sistema visual y experiencia digital.</p><span class="project-tile__status">Caso en preparación</span></div>
+          </article>
+
+          <a class="project-tile project-tile--mar reveal" href="proyectos/media-maraton-del-mar/2027/index.html">
+            <span class="project-tile__number">03</span>
+            <div class="project-tile__logo"><img class="logo-color" src="assets/images/logos/media-maraton-del-mar-blanco.svg" alt="Media Maratón del Mar" loading="lazy"></div>
+            <div class="project-tile__meta"><span>Campaña · Running</span><span>Key Visual 2027</span></div>
+            <div class="project-tile__summary"><h3>Media Maratón del Mar</h3><p>Identidad de campaña para los diez años de la carrera en Cartagena.</p><span class="project-tile__action">Ver caso <b aria-hidden="true">↗</b></span></div>
+          </a>
+
+          <a class="project-tile project-tile--expo reveal" href="proyectos/expoinmobiliaria/2025/index.html">
+            <span class="project-tile__number">04</span>
+            <div class="project-tile__logo"><img src="assets/images/logos/expoinmobiliaria.svg" alt="ExpoInmobiliaria" loading="lazy"></div>
+            <div class="project-tile__meta"><span>Campaña · Feria</span><span>Desde 2020</span></div>
+            <div class="project-tile__summary"><h3>ExpoInmobiliaria</h3><p>Campaña gráfica 2025 para la feria de vivienda nueva de CAMACOL Antioquia.</p><span class="project-tile__action">Ver caso <b aria-hidden="true">↗</b></span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section home-profile" id="sobre-mi" aria-labelledby="profile-title">
+      <div class="container">
+        <header class="home-section__header home-section__header--light reveal">
+          <div><p class="section-label">02 / Perfil profesional</p><h2 id="profile-title">Pensamiento creativo convertido en sistemas visuales.</h2></div>
+        </header>
+
+        <div class="profile-layout">
+          <p class="about-lead reveal">Soy Sebastian Pallares Ruiz, diseñador gráfico y creativo con experiencia en campañas, eventos, identidad visual, piezas digitales, impresos, merchandising y producción gráfica.</p>
+          <div class="profile-copy reveal">
+            <p>Desde junio de 2019 hago parte del equipo de MIRAPALTECHO como creativo, participando en proyectos para marcas y eventos de alcance regional y nacional. Estos procesos se han desarrollado bajo la dirección creativa de <strong>Pablo Molina</strong>, con su acompañamiento, orientación, dirección y contribuciones a lo largo de cada proyecto.</p>
+            <p>En este recorrido he trabajado habitualmente junto a <strong>Jorge Zapata</strong> y <strong>Santiago Ospina</strong>. En los proyectos de MIRAPALTECHO los tres participamos como equipo de ejecución en partes iguales, bajo la dirección creativa de Pablo Molina.</p>
+            <p>De manera independiente desarrollo proyectos como KÒRSWILL, donde trabajo directamente con la marca en su evolución visual, piezas de comunicación y experiencia digital.</p>
+          </div>
+        </div>
+
+        <dl class="profile-facts reveal">
+          <div><dt>Ubicación</dt><dd>Medellín, Colombia</dd></div>
+          <div><dt>Especialidad</dt><dd>Diseño gráfico y creatividad</dd></div>
+          <div><dt>Experiencia actual</dt><dd>MIRAPALTECHO · Desde 2019</dd></div>
+          <div><dt>Modalidad</dt><dd>Equipo creativo + proyectos independientes</dd></div>
+        </dl>
+
+        <div class="services reveal" aria-label="Áreas de trabajo">
+          <span>Sistemas de campaña</span><span>Identidad visual</span><span>Diseño para eventos</span><span>Dirección de arte</span><span>Merchandising</span><span>Diseño editorial</span><span>Contenido para redes</span><span>Producción gráfica</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section home-experience" id="experiencia" aria-labelledby="experience-title">
+      <div class="container">
+        <header class="home-section__header reveal">
+          <div><p class="section-label">03 / Experiencia</p><h2 id="experience-title">Trayectoria profesional y participación en proyectos reales.</h2></div>
+          <p>Diferencio claramente el trabajo desarrollado dentro de equipos creativos y los proyectos que lidero de manera independiente.</p>
+        </header>
+
+        <div class="experience-list">
+          <article class="experience-row reveal">
+            <div class="experience-row__period"><span>2019—Actualidad</span><small>Experiencia en equipo</small></div>
+            <div class="experience-row__body">
+              <h3>Creativo · MIRAPALTECHO</h3>
+              <p>Diseño y desarrollo de piezas para campañas, eventos, redes sociales, material impreso, merchandising, gran formato y aplicaciones de marca. Todos los proyectos presentados dentro de MIRAPALTECHO se acreditan bajo la dirección creativa de <strong>Pablo Molina</strong>.</p>
+              <dl class="experience-credits atlas-credits">
+                <div><dt>Dirección creativa</dt><dd>Pablo Molina</dd></div>
+                <div><dt>Equipo de ejecución</dt><dd>Jorge Zapata · Santiago Ospina · Sebastian Pallares</dd></div>
+              </dl>
+              <ul class="experience-projects">
+                <li><strong>Maratón Medellín</strong><span>Equipo gráfico desde 2021: redes, merchandising, camiseta oficial, medalla, números y materiales de carrera.</span></li>
+                <li><strong>Media Maratón del Mar</strong><span>Piezas gráficas para comunicación y experiencia de evento.</span></li>
+                <li><strong>ExpoInmobiliaria</strong><span>Campañas gráficas de la feria de CAMACOL Antioquia desde 2020.</span></li>
+                <li><strong>Tres Trigos</strong><span>Piezas para redes sociales, empaques y requerimientos gráficos de la marca.</span></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="experience-row reveal">
+            <div class="experience-row__period"><span>En desarrollo</span><small>Proyecto independiente</small></div>
+            <div class="experience-row__body"><h3>KÒRSWILL · Evolución de marca</h3><p>Trabajo directo con la encargada de la marca para fortalecer su identidad, mejorar las piezas existentes y desarrollar un sistema visual más consistente.</p><p class="experience-row__details">Identidad visual · Manual de marca · Landing page · Piezas de comunicación</p></div>
+          </article>
+
+          <article class="experience-row reveal">
+            <div class="experience-row__period"><span>Práctica universitaria</span><small>Experiencia inicial</small></div>
+            <div class="experience-row__body"><h3>Corporación Industrial Minuto de Dios</h3><p>Apoyo al área de diseño y multimedia mediante piezas gráficas, brochures, tarjetas, volantes, plantillas de video, convocatorias, emailing, retoque fotográfico y otros requerimientos de comunicación.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section home-education" id="formacion" aria-labelledby="education-title">
+      <div class="container">
+        <header class="home-section__header home-section__header--light reveal"><div><p class="section-label">04 / Formación</p><h2 id="education-title">Base académica enfocada en diseño y gestión de la imagen.</h2></div><p>Formación técnica y conceptual aplicada posteriormente a campañas, sistemas gráficos y proyectos de comunicación visual.</p></header>
+        <div class="education-list">
+          <article class="education-row reveal"><span>2013—2018</span><div><h3>Institución Universitaria Pascual Bravo</h3><strong>Tecnología en Diseño y Gestión de la Imagen</strong></div><p>Formación en diseño gráfico, producción visual, comunicación, herramientas digitales y gestión de proyectos de imagen.</p></article>
+          <article class="education-row reveal"><span>2007—2012</span><div><h3>Institución Educativa Simón Bolívar</h3><strong>Bachiller</strong></div><p>Formación secundaria y base académica previa al desarrollo profesional en el campo creativo.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section home-capabilities" id="capacidades" aria-labelledby="capabilities-title">
+      <div class="container">
+        <header class="home-section__header reveal"><div><p class="section-label">05 / Capacidades</p><h2 id="capabilities-title">Del concepto a la aplicación final.</h2></div><p>Mi perfil combina pensamiento visual, producción y adaptación de un mismo sistema a diferentes puntos de contacto.</p></header>
+        <div class="capability-list">
+          <article class="capability-row reveal"><span>01</span><h3>Concepto y sistema visual</h3><p>Desarrollo de ideas, lenguajes gráficos, jerarquías, recursos visuales y criterios que permiten mantener coherencia entre múltiples piezas.</p></article>
+          <article class="capability-row reveal"><span>02</span><h3>Campañas y eventos</h3><p>Adaptación del concepto a redes, impresión, merchandising, señalización, números, camisetas, medallas, empaques y formatos de gran escala.</p></article>
+          <article class="capability-row reveal"><span>03</span><h3>Producción y contenido</h3><p>Preparación de artes, retoque, edición, piezas audiovisuales y acompañamiento del proceso hasta su aplicación final.</p></article>
+        </div>
+        <div class="tools-editorial reveal"><div><p class="tools-label">Herramientas principales</p><h3>Software y flujo de trabajo</h3></div><ul><li>Adobe Illustrator</li><li>Adobe Photoshop</li><li>Adobe InDesign</li><li>Adobe Premiere Pro</li><li>Adobe After Effects</li><li>HTML y CSS básico</li><li>GitHub</li><li>Herramientas de IA</li></ul></div>
+      </div>
+    </section>
+
+    <section class="home-section home-process" id="proceso" aria-labelledby="process-title">
+      <div class="container">
+        <header class="home-section__header home-section__header--light reveal"><div><p class="section-label">06 / Forma de trabajo</p><h2 id="process-title">Un proceso claro para convertir necesidades en soluciones visuales.</h2></div></header>
+        <ol class="process-sequence">
+          <li class="reveal"><span>01</span><div><h3>Entender</h3><p>Reviso el contexto, la audiencia, el objetivo y las necesidades reales del proyecto.</p></div></li>
+          <li class="reveal"><span>02</span><div><h3>Definir</h3><p>Organizo referencias, concepto, dirección visual, jerarquías y criterios de aplicación.</p></div></li>
+          <li class="reveal"><span>03</span><div><h3>Desarrollar</h3><p>Construyo el sistema gráfico y lo adapto a los formatos requeridos.</p></div></li>
+          <li class="reveal"><span>04</span><div><h3>Entregar y mejorar</h3><p>Preparo archivos, verifico consistencia y ajusto el resultado según su uso real.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="contact atlas-contact" id="contacto" aria-labelledby="contact-title">
+      <div class="container contact-editorial reveal">
+        <p class="section-label">07 / Contacto</p>
+        <div class="contact-editorial__grid"><div><h2 id="contact-title">¿Tienes un proyecto, una vacante o una colaboración en mente?</h2><p>Estoy disponible para conversar sobre oportunidades profesionales, proyectos de diseño y colaboraciones independientes.</p></div>
+          <div class="contact-links">
+            <a href="mailto:sebasill72@gmail.com" aria-label="Enviar correo a Sebastian Pallares"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3V5Zm1.8 1.8L12 12l7.2-5.2M4.8 17.2l5.3-4.1m9.1 4.1-5.3-4.1"/></svg><span><small>Correo</small>sebasill72@gmail.com</span></a>
+            <a href="https://wa.me/573505458566" target="_blank" rel="noopener noreferrer" aria-label="Escribir a Sebastian Pallares por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.3L3 20.2l1.4-5A8.4 8.4 0 1 1 20.5 11.6Z"/><path d="M8.2 7.7c.2-.5.4-.5.8-.5h.4l1 2.3c.1.3 0 .5-.2.7l-.7.8c.8 1.6 2 2.8 3.6 3.6l.8-.9c.2-.2.4-.3.7-.2l2.2 1c.3.1.4.4.4.7-.1.8-.5 1.5-1.2 1.9-.6.4-1.4.5-2.2.3-3.6-.9-6.4-3.7-7.3-7.3-.2-.8-.1-1.7.3-2.4Z"/></svg><span><small>WhatsApp</small>+57 350 545 8566</span></a>
+            <a href="https://instagram.com/sebasill72" target="_blank" rel="noopener noreferrer" aria-label="Ver perfil de Sebastian Pallares en Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" class="icon-fill"/></svg><span><small>Instagram</small>@sebasill72</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer atlas-footer">
+    <span class="footer-identity"><img src="assets/images/brand/logo-personal-sebastian-pallares.svg" alt="" aria-hidden="true" width="26" height="26">© <span id="year"></span> Sebastian Pallares Ruiz</span>
+    <span>PROJECT ATLAS · v0.2</span>
+  </footer>
+
+  <script src="assets/js/shared-components.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

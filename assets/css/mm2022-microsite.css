@@ -1,0 +1,212 @@
+/* PROJECT ATLAS — Maratón Medellín 2022 · "¡Corramos más!"
+   Recursos oficiales: Elementos gráficos MM2022, formato historia, plantillas con patrocinadores,
+   camisetas, dorsales, bolsa kit, individual gastronómico, valla, pasacalles y banner web. */
+
+@font-face { font-family: "Brunches MM22"; src: url("../fonts/mm2022/brunches-round-slanted.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Gilroy MM22"; src: url("../fonts/mm2022/gilroy-regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Gilroy MM22"; src: url("../fonts/mm2022/gilroy-medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Gilroy MM22"; src: url("../fonts/mm2022/gilroy-bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Gilroy MM22"; src: url("../fonts/mm2022/gilroy-extrabold.woff2") format("woff2"); font-weight: 800; font-display: swap; }
+@font-face { font-family: "Gilroy MM22"; src: url("../fonts/mm2022/gilroy-black.woff2") format("woff2"); font-weight: 900; font-display: swap; }
+@font-face { font-family: "Gilroy MM22"; src: url("../fonts/mm2022/gilroy-black-italic.woff2") format("woff2"); font-weight: 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Gilroy MM22"; src: url("../fonts/mm2022/gilroy-heavy-italic.woff2") format("woff2"); font-weight: 800; font-style: italic; font-display: swap; }
+
+:root {
+  --mm22-blue: #003FCC;
+  --mm22-sky: #8DF2FB;
+  --mm22-navy: #071A57;
+  --mm22-ink: #0A1E5C;
+  --mm22-coral: #E48361;
+  --mm22-yellow: #F7E94A;
+  --mm22-green: #59AE37;
+  --mm22-white: #FFFFFF;
+  --mm22-shell: min(1440px, calc(100vw - 2 * var(--mm-ed-pad)));
+  --mm22-ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+html[data-mm-edition="2022"] body { background: var(--mm22-navy); color: #fff; font-family: "Gilroy MM22", Inter, Arial, sans-serif; }
+html[data-mm-edition="2022"] .edition-header { background: var(--mm22-ink); }
+.mm22 *, .mm22 *::before, .mm22 *::after { box-sizing: border-box; }
+.mm22 img { max-width: 100%; display: block; }
+.mm22-shell { width: var(--mm22-shell); margin-inline: auto; }
+.mm22-kicker { margin: 0; color: var(--mm22-sky); font-size: .7rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.mm22-title { margin: 16px 0 0; font-family: "Gilroy MM22", Arial, sans-serif; font-style: italic; font-weight: 900; font-size: clamp(2.4rem, 4.6vw, 5rem); line-height: .95; letter-spacing: -.01em; text-transform: uppercase; text-shadow: .06em .06em 0 var(--mm22-blue); }
+.mm22-lead { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr); gap: clamp(28px, 6vw, 110px); align-items: end; }
+.mm22-lead > p { margin: 0; color: rgba(255,255,255,.78); font-size: clamp(1rem, 1.2vw, 1.15rem); line-height: 1.7; }
+@media (max-width: 860px) { .mm22-lead { grid-template-columns: 1fr; gap: 18px; } }
+.mm22-section { padding: clamp(72px, 8vw, 120px) var(--mm-ed-pad); }
+
+/* Hero */
+.mm22-hero { position: relative; overflow: hidden; isolation: isolate; min-height: min(86svh, 860px); padding: clamp(48px, 6vw, 90px) var(--mm-ed-pad) clamp(30px, 4vw, 48px); display: grid; align-content: space-between; background: var(--mm22-blue) url("../images/projects/maraton-medellin/2022/sistema/textura-azul.webp") center / 900px repeat; }
+.mm22-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: url("../images/projects/maraton-medellin/2022/sistema/marco-azul.webp") center / cover no-repeat; opacity: .9; mix-blend-mode: screen; }
+.mm22-hero::after { content: ""; position: absolute; inset: auto -10% -30% -10%; height: 60%; z-index: -1; background: radial-gradient(60% 60% at 50% 100%, rgba(141,242,251,.35), transparent 70%); }
+.mm22-hero__grid { width: var(--mm22-shell); margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(240px, .75fr); gap: clamp(24px, 5vw, 80px); align-items: center; }
+.mm22-hero h1 { margin: 22px 0 0; }
+.mm22-hero h1 img { width: min(100%, 720px); height: auto; filter: drop-shadow(0 20px 40px rgba(7,26,87,.35)); }
+.mm22-hero h1 span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.mm22-hero__claim { margin: 26px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: clamp(14px, 2vw, 28px); }
+.mm22-hero__claim img:first-child { width: clamp(160px, 18vw, 250px); }
+.mm22-hero__claim img:last-child { width: clamp(220px, 26vw, 380px); }
+.mm22-hero__seal { justify-self: center; width: min(100%, 420px); animation: mm22-spin 40s linear infinite; }
+@keyframes mm22-spin { to { transform: rotate(360deg); } }
+.mm22-hero__foot { width: var(--mm22-shell); margin: clamp(30px, 4vw, 54px) auto 0; padding-top: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px; border-top: 1px solid rgba(141,242,251,.45); }
+.mm22-hero__foot p { margin: 0; max-width: 680px; color: rgba(255,255,255,.85); line-height: 1.7; }
+.mm22-hero__foot a { align-self: end; color: #fff; font-size: .78rem; font-weight: 800; text-decoration: none; }
+.mm22-hero__foot a span { margin-left: 10px; color: var(--mm22-sky); }
+@media (max-width: 860px) {
+  .mm22-hero__grid { grid-template-columns: 1fr; }
+  .mm22-hero__seal { width: min(64vw, 300px); order: -1; justify-self: start; }
+}
+
+/* Historia */
+.mm22-story { background: var(--mm22-navy); }
+.mm22-story__grid { margin-top: clamp(40px, 5vw, 70px); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid rgba(141,242,251,.35); }
+.mm22-story__grid article { padding: clamp(22px, 2.4vw, 34px) clamp(16px, 1.8vw, 26px); transition: background .3s ease; }
+.mm22-story__grid article + article { border-left: 1px solid rgba(141,242,251,.35); }
+.mm22-story__grid article:hover { background: rgba(0,63,204,.45); }
+.mm22-story__grid span { color: var(--mm22-sky); font-size: .64rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.mm22-story__grid h3 { margin: 16px 0 0; font-size: clamp(1.25rem, 1.7vw, 1.6rem); font-weight: 800; line-height: 1.12; }
+.mm22-story__grid p { margin: 14px 0 0; color: rgba(255,255,255,.74); font-size: .92rem; line-height: 1.65; }
+@media (max-width: 960px) { .mm22-story__grid { grid-template-columns: repeat(2, 1fr); } .mm22-story__grid article:nth-child(3) { border-left: 0; } .mm22-story__grid article:nth-child(n+3) { border-top: 1px solid rgba(141,242,251,.35); } }
+@media (max-width: 560px) { .mm22-story__grid { grid-template-columns: 1fr; } .mm22-story__grid article + article { border-left: 0; border-top: 1px solid rgba(141,242,251,.35); } }
+
+/* Sistema */
+.mm22-system { background: var(--mm22-blue); }
+.mm22-block { margin-top: clamp(48px, 6vw, 84px); }
+.mm22-block__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px 28px; padding-bottom: 16px; border-bottom: 1px solid rgba(141,242,251,.45); }
+.mm22-block__head h3 { margin: 6px 0 0; font-size: clamp(1.5rem, 2.4vw, 2.3rem); font-weight: 800; line-height: 1.05; }
+.mm22-block__head p { margin: 0; max-width: 520px; color: rgba(255,255,255,.78); font-size: .92rem; line-height: 1.6; }
+
+.mm22-logos { margin-top: 22px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.mm22-logos figure { margin: 0; aspect-ratio: 4 / 3; display: grid; grid-template-rows: 1fr auto; border-radius: 18px; overflow: hidden; }
+.mm22-logos figure > div { display: grid; place-items: center; padding: 12%; }
+.mm22-logos img { max-height: 100%; width: auto; max-width: 100%; transition: transform .5s var(--mm22-ease); }
+.mm22-logos figure:hover img { transform: scale(1.05) rotate(-2deg); }
+.mm22-logos figcaption { padding: 10px 14px; font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.mm22-on-white { background: #fff; color: var(--mm22-blue); }
+.mm22-on-blue { background: var(--mm22-navy); color: var(--mm22-sky); }
+.mm22-on-sky { background: var(--mm22-sky); color: var(--mm22-blue); }
+@media (max-width: 760px) { .mm22-logos { grid-template-columns: repeat(2, 1fr); } }
+
+.mm22-palette { margin-top: 22px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 12px; }
+.mm22-palette__swatches { display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: 1fr auto; gap: 8px; }
+.mm22-palette__swatches button { position: relative; min-height: 210px; padding: 16px; border: 0; border-radius: 16px; background: var(--c); color: var(--t); text-align: left; font: 800 .74rem/1.3 "Gilroy MM22", Arial, sans-serif; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; display: flex; align-items: flex-end; outline-offset: 3px; transition: transform .3s var(--mm22-ease); }
+.mm22-palette__swatches .is-small { min-height: 92px; }
+.mm22-palette__swatches .mm22-palette__row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.mm22-palette__swatches button[aria-pressed="true"] { transform: translateY(-4px); box-shadow: 0 0 0 3px #fff; }
+.mm22-palette__info { padding: clamp(20px, 2.4vw, 32px); border-radius: 16px; background: var(--mm22-navy); display: grid; align-content: space-between; gap: 18px; }
+.mm22-palette__info strong { font-size: clamp(1.6rem, 2.6vw, 2.6rem); font-weight: 900; font-style: italic; text-transform: uppercase; }
+.mm22-palette__info dl { margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.mm22-palette__info dt { color: var(--mm22-sky); font-size: .62rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.mm22-palette__info dd { margin: 6px 0 0; font-size: 1rem; font-weight: 700; }
+.mm22-palette__info p { margin: 0; color: rgba(255,255,255,.72); font-size: .86rem; line-height: 1.6; }
+.mm22-palette__chip { width: 100%; height: 10px; border-radius: 999px; background: var(--pick, var(--mm22-blue)); }
+@media (max-width: 860px) { .mm22-palette { grid-template-columns: 1fr; } .mm22-palette__swatches button { min-height: 140px; } }
+
+.mm22-type { margin-top: 22px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.mm22-type article { padding: clamp(20px, 2.4vw, 32px); border-radius: 18px; background: var(--mm22-navy); display: grid; gap: 14px; }
+.mm22-type span { color: var(--mm22-sky); font-size: .64rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.mm22-type__sample { min-height: 2.2em; font-size: clamp(2.2rem, 4.6vw, 4.4rem); line-height: 1; overflow-wrap: anywhere; }
+.mm22-type__sample--brunches { font-family: "Brunches MM22", Arial, sans-serif; text-shadow: .05em .05em 0 var(--mm22-blue); }
+.mm22-type__sample--gilroy { font-family: "Gilroy MM22", Arial, sans-serif; font-weight: 900; font-style: italic; text-transform: uppercase; text-shadow: .05em .05em 0 var(--mm22-blue); }
+.mm22-type__chars { color: rgba(255,255,255,.7); font-size: .95rem; line-height: 1.6; letter-spacing: .04em; }
+.mm22-type__weights { display: flex; flex-wrap: wrap; gap: 6px 14px; color: rgba(255,255,255,.85); font-size: 1.05rem; }
+.mm22-type input { width: 100%; min-height: 44px; padding: 0 14px; border: 1px solid rgba(141,242,251,.45); border-radius: 12px; background: transparent; color: #fff; font: 500 .95rem "Gilroy MM22", Arial, sans-serif; }
+.mm22-type input::placeholder { color: rgba(255,255,255,.5); }
+@media (max-width: 860px) { .mm22-type { grid-template-columns: 1fr; } }
+
+.mm22-resources { margin-top: 22px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 12px; }
+.mm22-resources figure { margin: 0; position: relative; overflow: hidden; border-radius: 18px; background: var(--mm22-navy); }
+.mm22-resources figure img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--mm22-ease); }
+.mm22-resources figure:hover img { transform: scale(1.04); }
+.mm22-resources figcaption { position: absolute; left: 12px; bottom: 12px; padding: 7px 11px; border-radius: 999px; background: rgba(7,26,87,.82); font-size: .66rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.mm22-resources .r-a { grid-column: span 7; aspect-ratio: 1.45; }
+.mm22-resources .r-b { grid-column: span 5; aspect-ratio: 1.04; }
+.mm22-resources .r-c { grid-column: span 4; aspect-ratio: 1; }
+.mm22-resources .r-c.is-art { display: grid; place-items: center; padding: 10%; background: #fff; }
+.mm22-resources .r-c.is-art img { height: auto; object-fit: contain; }
+.mm22-resources .r-c.is-art figcaption { background: var(--mm22-blue); color: #fff; }
+@media (max-width: 860px) { .mm22-resources .r-a, .mm22-resources .r-b { grid-column: 1 / -1; } .mm22-resources .r-c { grid-column: span 6; } }
+
+/* Distancias: dorsal + camiseta */
+.mm22-distances { margin-top: 22px; display: grid; grid-template-columns: minmax(260px, .7fr) minmax(0, 1.3fr); gap: 12px; }
+.mm22-distances__panel { padding: clamp(20px, 2.4vw, 32px); border-radius: 18px; background: var(--mm22-navy); display: flex; flex-direction: column; gap: 14px; }
+.mm22-distances__tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.mm22-distances__tabs button { min-height: 44px; border: 1px solid rgba(141,242,251,.45); border-radius: 999px; background: transparent; color: #fff; font: 900 italic 1rem/1 "Gilroy MM22", Arial, sans-serif; cursor: pointer; transition: background .25s ease, color .25s ease; }
+.mm22-distances__tabs button[aria-selected="true"] { background: var(--dist, var(--mm22-sky)); border-color: var(--dist, var(--mm22-sky)); color: var(--mm22-navy); }
+.mm22-distances__mark { font-family: "Gilroy MM22", Arial, sans-serif; font-weight: 900; font-style: italic; font-size: clamp(4.4rem, 8vw, 7.4rem); line-height: .85; color: var(--dist, var(--mm22-sky)); text-shadow: .05em .05em 0 var(--mm22-blue); transition: color .3s ease; }
+.mm22-distances__panel p { margin: 0; color: rgba(255,255,255,.76); font-size: .9rem; line-height: 1.6; }
+.mm22-distances__swap { margin-top: auto; display: flex; gap: 6px; }
+.mm22-distances__swap button { flex: 1; min-height: 40px; border: 1px solid rgba(141,242,251,.45); border-radius: 999px; background: transparent; color: #fff; font: 800 .7rem "Gilroy MM22", Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+.mm22-distances__swap button[aria-pressed="true"] { background: #fff; color: var(--mm22-navy); }
+.mm22-distances__stage { display: grid; grid-template-columns: 1.15fr .85fr; gap: 12px; }
+.mm22-distances__stage figure { margin: 0; position: relative; display: grid; place-items: center; padding: clamp(14px, 2vw, 26px); border-radius: 18px; background: #e9eef8; overflow: hidden; }
+.mm22-distances__stage figure:last-child { background: var(--mm22-navy); }
+.mm22-distances__stage img { width: 100%; height: auto; transition: opacity .25s ease, transform .4s var(--mm22-ease); }
+.mm22-distances__stage img.is-swapping { opacity: 0; transform: translateY(8px); }
+.mm22-distances__stage figcaption { position: absolute; left: 12px; top: 12px; padding: 6px 10px; border-radius: 999px; background: rgba(7,26,87,.85); font-size: .62rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+@media (max-width: 960px) { .mm22-distances { grid-template-columns: 1fr; } }
+@media (max-width: 620px) { .mm22-distances__stage { grid-template-columns: 1fr; } }
+
+/* Campaña */
+.mm22-campaign { background: var(--mm22-navy); }
+.mm22-moments { margin-top: clamp(36px, 4vw, 56px); }
+.mm22-moments__tabs { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid rgba(141,242,251,.35); border-radius: 999px; overflow: hidden; }
+.mm22-moments__tabs button { min-height: 56px; border: 0; background: transparent; color: #fff; font: 800 .82rem "Gilroy MM22", Arial, sans-serif; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; transition: background .25s ease, color .25s ease; }
+.mm22-moments__tabs button + button { border-left: 1px solid rgba(141,242,251,.35); }
+.mm22-moments__tabs button[aria-selected="true"] { background: var(--mm22-sky); color: var(--mm22-blue); }
+.mm22-moments__tabs small { display: block; margin-bottom: 2px; opacity: .7; font-size: .6rem; }
+.mm22-panel { margin-top: 18px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 12px; }
+.mm22-panel[hidden] { display: none; }
+.mm22-panel > p { grid-column: 1 / -1; margin: 6px 0 8px; max-width: 760px; color: rgba(255,255,255,.76); line-height: 1.65; }
+.mm22-panel figure { margin: 0; position: relative; overflow: hidden; border-radius: 18px; background: #0d2774; }
+.mm22-panel figure img { width: 100%; height: 100%; object-fit: cover; }
+.mm22-panel figure.is-contain { display: grid; place-items: center; padding: clamp(10px, 1.6vw, 22px); }
+.mm22-panel figure.is-contain img { height: auto; object-fit: contain; }
+.mm22-panel figcaption { position: absolute; left: 12px; bottom: 12px; padding: 7px 11px; border-radius: 999px; background: rgba(7,26,87,.85); font-size: .66rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.p-wide { grid-column: span 8; aspect-ratio: 16 / 9; }
+.p-side { grid-column: span 4; }
+.p-full { grid-column: 1 / -1; }
+.p-half { grid-column: span 6; }
+.p-third { grid-column: span 4; aspect-ratio: 1; }
+.mm22-stories { grid-column: 1 / -1; display: grid; grid-auto-flow: column; grid-auto-columns: clamp(150px, 15vw, 210px); gap: 10px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+.mm22-stories img { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 14px; scroll-snap-align: start; }
+@media (max-width: 860px) { .p-wide, .p-side, .p-half { grid-column: 1 / -1; } .p-third { grid-column: span 6; } .mm22-moments__tabs button { font-size: .68rem; } }
+
+/* Créditos */
+.mm22-credits { background: var(--mm22-blue); }
+.mm22-credits__grid { margin-top: clamp(28px, 3vw, 42px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-block: 1px solid rgba(141,242,251,.45); }
+.mm22-credits__grid article { padding: clamp(20px, 2.4vw, 32px) clamp(16px, 1.8vw, 26px); }
+.mm22-credits__grid article + article { border-left: 1px solid rgba(141,242,251,.45); }
+.mm22-credits__grid span { color: var(--mm22-sky); font-size: .64rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.mm22-credits__grid h3 { margin: 12px 0 0; font-size: clamp(1.2rem, 1.6vw, 1.5rem); font-weight: 800; line-height: 1.25; }
+.mm22-credits__grid p { margin: 12px 0 0; color: rgba(255,255,255,.78); font-size: .9rem; line-height: 1.6; }
+@media (max-width: 760px) { .mm22-credits__grid { grid-template-columns: 1fr; } .mm22-credits__grid article + article { border-left: 0; border-top: 1px solid rgba(141,242,251,.45); } }
+
+/* Kit compartido: tema 2022 */
+.mmk-theme-2022 {
+  --mmk-bg: #071A57; --mmk-surface: #0A1E5C; --mmk-deep: #003FCC; --mmk-ink: #ffffff; --mmk-muted: rgba(255,255,255,.74);
+  --mmk-line: rgba(141,242,251,.32); --mmk-accent: #8DF2FB; --mmk-accent-2: #003FCC; --mmk-accent-3: #E48361; --mmk-on-accent: #003FCC;
+  --mmk-display: "Gilroy MM22", Arial, sans-serif; --mmk-body: "Gilroy MM22", Arial, sans-serif; --mmk-radius: 18px;
+}
+.mmk-theme-2022.mmk-legacy { background: var(--mm22-blue) url("../images/projects/maraton-medellin/2022/sistema/textura-azul.webp") center / 900px repeat; }
+.mmk-theme-2022 .mmk-legacy__head strong { font-style: italic; text-shadow: .05em .05em 0 #071A57; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mm22-hero__seal { animation: none; }
+  .mm22 *, .mm22 *::before { transition: none !important; }
+}
+.mm22-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* Ajustes de medida de imágenes */
+.mm22 img { height: auto; }
+.mm22-logos figure > div { position: relative; padding: 0; min-height: 0; }
+.mm22-logos img { position: absolute; inset: 14%; width: 72%; height: 72%; max-width: none; object-fit: contain; }
+.mm22-resources figure img, .mm22-panel figure:not(.is-contain) img { height: 100%; }
+.mm22-hero { min-height: 0; }
+
+/* Sello del hero: el texto gira, la flor queda fija */
+.mm22-hero__seal.seal-split { position: relative; aspect-ratio: 1; animation: none; }
+.seal-split img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.seal-split__ring { animation: mm22-spin 40s linear infinite; -webkit-mask: radial-gradient(circle closest-side, transparent var(--seal-cut), #000 calc(var(--seal-cut) + .6%)); mask: radial-gradient(circle closest-side, transparent var(--seal-cut), #000 calc(var(--seal-cut) + .6%)); }
+.seal-split__core { -webkit-mask: radial-gradient(circle closest-side, #000 var(--seal-cut), transparent calc(var(--seal-cut) + .6%)); mask: radial-gradient(circle closest-side, #000 var(--seal-cut), transparent calc(var(--seal-cut) + .6%)); }
+@media (prefers-reduced-motion: reduce) { .seal-split__ring { animation: none; } }

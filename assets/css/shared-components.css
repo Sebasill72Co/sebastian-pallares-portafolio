@@ -1,0 +1,116 @@
+/* PROJECT ATLAS — Base compartida de componentes */
+:root {
+  --atlas-navy: #0b1e35;
+  --atlas-magenta: #d63d95;
+  --atlas-magenta-soft: #ef67b3;
+  --atlas-paper: #f5f1f4;
+  --atlas-focus: #ef67b3;
+  --atlas-radius-card: 24px;
+  --atlas-container-wide: 1380px;
+  --atlas-space-section: clamp(72px, 9vw, 144px);
+}
+
+/* Patrones semánticos adoptables sin reemplazar las clases históricas. */
+.atlas-hero {
+  isolation: isolate;
+}
+
+/* Fondo decorativo reutilizable: cada barra se configura con variables CSS. */
+.dynamic-bars {
+  position: absolute;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--bars-background, var(--atlas-navy));
+}
+
+.dynamic-bars__bar {
+  position: absolute;
+  top: -12%;
+  bottom: auto;
+  left: var(--bar-x, 0%);
+  width: var(--bar-width, 12%);
+  height: 124%;
+  opacity: var(--bar-opacity, .9);
+  background:
+    linear-gradient(180deg, transparent 0%, var(--bar-start, #5b3be0) 17%, var(--bar-end, #55e88b) 100%);
+  transform: translate3d(0, var(--bar-y, 0%), 0);
+  animation: dynamic-bar-shift var(--bar-speed, 18s) ease-in-out var(--bar-delay, 0s) infinite alternate;
+  will-change: transform;
+}
+
+.dynamic-bars__bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .2;
+  background: linear-gradient(90deg, rgba(255,255,255,.22), transparent 18%, rgba(11,30,53,.2));
+}
+
+@keyframes dynamic-bar-shift {
+  from {
+    transform: translate3d(0, var(--bar-y, 0%), 0);
+  }
+  to {
+    transform: translate3d(0, calc(var(--bar-y, 0%) + var(--bar-travel, 10%)), 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dynamic-bars__bar {
+    animation: none;
+    transform: translate3d(0, var(--bar-y, 0%), 0);
+  }
+}
+
+.atlas-nav a,
+.atlas-document-card,
+.atlas-contact a {
+  text-underline-offset: 0.2em;
+}
+
+.atlas-credits,
+.atlas-gallery,
+.atlas-callout,
+.atlas-footer {
+  position: relative;
+}
+
+.atlas-callout {
+  border-inline-start: 3px solid var(--atlas-magenta);
+}
+
+.atlas-media-status[hidden] {
+  display: none;
+}
+
+.atlas-media-status {
+  padding: 1rem;
+  border: 1px dashed currentColor;
+  border-radius: var(--atlas-radius-card);
+  font-size: 0.85rem;
+}
+
+:where(a, button, [tabindex]):focus-visible {
+  outline: 3px solid var(--atlas-focus);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

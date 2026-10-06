@@ -1,0 +1,3766 @@
+@font-face {
+  font-family: "Bricolage Grotesque MM26";
+  src: url("../fonts/mm2026/bricolage-grotesque-variable.ttf") format("truetype-variations");
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ziren MM26";
+  src: url("../fonts/mm2026/ziren-bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gopher MM26";
+  src: url("../fonts/mm2026/gopher-regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gopher MM26";
+  src: url("../fonts/mm2026/gopher-medium.otf") format("opentype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gopher MM26";
+  src: url("../fonts/mm2026/gopher-bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --mm26-violet: #4A0BAF;
+  --mm26-green: #54CF88;
+  --mm26-blue: #7281F1;
+  --mm26-yellow: #FFCB3E;
+  --mm26-lime: #F5F694;
+  --mm26-wine: #641E28;
+  --mm26-pink: #DF3760;
+  --mm26-dark-green: #325541;
+  --mm26-white: #FFFFFF;
+  --mm26-ink: #33077b;
+  --page-pad: clamp(18px, 3vw, 48px);
+  --content: 1440px;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --mm26-header-h: 72px;
+  --mm26-edition-h: 78px;
+  --mm-editions-bg: var(--mm26-violet);
+  --mm-editions-text: var(--mm26-white);
+  --mm-editions-border: rgba(84, 207, 136, 0.35);
+  --mm-editions-hover-bg: var(--mm26-green);
+  --mm-editions-hover-text: var(--mm26-violet);
+  --mm-editions-active-bg: var(--mm26-green);
+  --mm-editions-active-text: var(--mm26-violet);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--mm26-violet);
+}
+
+body {
+  margin: 0;
+  overflow-x: clip;
+  background: var(--mm26-violet);
+  color: var(--mm26-white);
+  font-family: "Gopher MM26", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+button,
+a {
+  cursor: default;
+}
+
+a,
+button {
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure {
+  margin: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1000;
+  padding: 12px 16px;
+  transform: translateY(-160%);
+  border-radius: 999px;
+  background: var(--mm26-lime);
+  color: var(--mm26-wine);
+  font-weight: 800;
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--mm26-lime);
+  outline-offset: 4px;
+}
+
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 4px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: var(--mm26-green);
+  will-change: transform;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  min-height: 72px;
+  padding: 10px var(--page-pad);
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  gap: clamp(10px, 1.6vw, 24px);
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,.18);
+  background: rgba(74,11,174,.9);
+  backdrop-filter: blur(18px);
+}
+
+.site-brand {
+  width: 48px;
+  border-radius: 50%;
+}
+
+.site-brand img {
+  width: 48px;
+  height: 48px;
+}
+
+.campaign-home {
+  width: 44px;
+  height: 44px;
+  padding: 5px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 50%;
+  transition: border-color .25s ease, background .25s ease, transform .25s var(--ease);
+}
+
+.campaign-home:hover,
+.campaign-home:focus-visible {
+  transform: rotate(8deg);
+  border-color: var(--mm26-green);
+  background: rgba(84,207,136,.15);
+}
+
+.campaign-home img {
+  width: 100%;
+  height: 100%;
+}
+
+.site-nav {
+  display: flex;
+  gap: clamp(18px, 3vw, 42px);
+  justify-self: center;
+}
+
+.site-nav a,
+.site-back {
+  font-size: .72rem;
+  font-weight: 800;
+}
+
+.site-nav a {
+  position: relative;
+}
+
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -7px;
+  left: 0;
+  height: 2px;
+  transform: scaleX(0);
+  background: var(--mm26-green);
+  transition: transform .25s ease;
+}
+
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.site-back {
+  justify-self: end;
+}
+
+.campaign-hero {
+  position: relative;
+  min-height: calc(100svh - 72px);
+  padding: clamp(54px, 7vh, 88px) var(--page-pad) 28px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(320px, .88fr);
+  grid-template-rows: auto 1fr auto;
+  gap: clamp(24px, 3vw, 44px);
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--mm26-violet);
+  background-image: url("../images/projects/maraton-medellin/2026/fondos-estaticos/banner-fondo-01.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.campaign-hero__meta {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.campaign-hero__meta span {
+  padding: 9px 13px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 999px;
+  background: rgba(74,11,174,.42);
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.campaign-hero__copy {
+  align-self: center;
+  max-width: 820px;
+  text-shadow: 0 2px 24px rgba(35, 2, 88, .25);
+}
+
+.campaign-hero__copy > p,
+.eyebrow {
+  color: var(--mm26-green);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.campaign-hero h1 {
+  margin-top: 22px;
+  font-family: "Bricolage Grotesque MM26", Arial, sans-serif;
+  font-size: clamp(3rem, 5.5vw, 6.8rem);
+  font-weight: 500;
+  font-variation-settings: "wdth" 100, "wght" 500, "opsz" 14;
+  line-height: .92;
+  letter-spacing: -.025em;
+}
+
+.campaign-hero h1 em {
+  display: block;
+  color: var(--mm26-green);
+  font-style: normal;
+}
+
+.campaign-hero__edition {
+  align-self: center;
+  justify-self: end;
+  width: min(40vw, 610px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: clamp(30px, 6vh, 72px);
+}
+
+.campaign-hero__logo {
+  width: min(52%, 290px);
+  height: auto;
+}
+
+.campaign-hero__year {
+  width: 100%;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.campaign-hero__footer {
+  grid-column: 1 / -1;
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: end;
+  border-top: 1px solid rgba(255,255,255,.22);
+}
+
+.campaign-hero__footer p {
+  max-width: 720px;
+  color: rgba(255,255,255,.78);
+  line-height: 1.7;
+}
+
+.campaign-hero__footer a {
+  flex: 0 0 auto;
+  font-size: .76rem;
+  font-weight: 800;
+}
+
+.campaign-hero__footer a span {
+  margin-left: 12px;
+  color: var(--mm26-green);
+}
+
+.case-intro,
+.identity-lab,
+.campaign-experience,
+.credits-section {
+  position: relative;
+  padding: clamp(72px, 8vw, 120px) var(--page-pad);
+}
+
+.section-lead {
+  width: min(var(--content), 100%);
+  margin-inline: auto;
+}
+
+.section-lead h2 {
+  margin-top: 22px;
+  max-width: 1220px;
+  font-family: "Bricolage Grotesque MM26", Arial, sans-serif;
+  font-size: clamp(2.6rem, 4.7vw, 5.5rem);
+  font-weight: 500;
+  font-variation-settings: "wdth" 100, "wght" 500, "opsz" 14;
+  line-height: .97;
+  letter-spacing: -.02em;
+}
+
+.section-lead--split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+  gap: clamp(40px, 8vw, 130px);
+  align-items: end;
+}
+
+.section-lead--split > p {
+  color: rgba(255,255,255,.76);
+  font-size: clamp(1rem, 1.25vw, 1.25rem);
+  line-height: 1.75;
+}
+
+.case-intro {
+  background: var(--mm26-violet);
+}
+
+.story-sequence {
+  width: min(var(--content), 100%);
+  margin: clamp(48px, 6vw, 78px) auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgba(114,129,241,.7);
+  border-bottom: 1px solid rgba(114,129,241,.7);
+}
+
+.story-sequence article {
+  min-height: 310px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(114,129,241,.7);
+}
+
+.story-sequence article:last-child {
+  border-right: 0;
+}
+
+.story-sequence span,
+.identity-rules article > span,
+.chapter-index {
+  color: var(--mm26-blue);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.story-sequence h3,
+.identity-rules h3 {
+  margin-top: 34px;
+  font-family: "Bricolage Grotesque MM26", Arial, sans-serif;
+  font-size: clamp(1.7rem, 2.35vw, 2.8rem);
+  font-weight: 500;
+  font-variation-settings: "wdth" 100, "wght" 500, "opsz" 14;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+}
+
+.story-sequence p,
+.identity-rules p {
+  margin-top: auto;
+  padding-top: 40px;
+  color: rgba(255,255,255,.7);
+  line-height: 1.7;
+}
+
+.identity-lab {
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--mm26-ink);
+}
+
+.identity-lab::after,
+.campaign-experience::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.kv-stage {
+  position: relative;
+  width: min(var(--content), 100%);
+  min-height: min(60vw, 680px);
+  margin: clamp(48px, 6vw, 78px) auto 0;
+  padding: clamp(28px, 6vw, 90px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--mm26-wine);
+  background-image: url("../images/projects/maraton-medellin/2026/fondos-estaticos/banner-fondo-02.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--mm26-yellow);
+}
+
+.kv-stage > img {
+  position: absolute;
+  top: clamp(28px, 4vw, 58px);
+  left: clamp(28px, 5vw, 76px);
+  width: min(22vw, 250px);
+  height: auto;
+}
+
+.kv-stage > strong {
+  font-family: "Bricolage Grotesque MM26", Arial, sans-serif;
+  max-width: 12ch;
+  font-size: clamp(3.8rem, 8vw, 8.8rem);
+  font-weight: 500;
+  font-variation-settings: "wdth" 100, "wght" 500, "opsz" 14;
+  line-height: .86;
+  letter-spacing: -.025em;
+  text-transform: uppercase;
+}
+
+.kv-stage__distances {
+  margin-top: clamp(18px, 3vw, 36px);
+  font-family: "Ziren MM26", sans-serif;
+  font-size: clamp(1.8rem, 4vw, 4.8rem);
+  letter-spacing: .01em;
+}
+
+.identity-rules {
+  width: min(var(--content), 100%);
+  margin: 22px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.identity-rules article {
+  min-height: 360px;
+  padding: clamp(24px, 3vw, 38px);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(114,129,241,.44);
+  background: rgba(74,11,174,.26);
+}
+
+.identity-rules__palette {
+  grid-column: 1 / -1;
+}
+
+.identity-rules__typography {
+  grid-column: 1 / -1;
+}
+
+.palette-system,
+.module-system,
+.type-lab,
+.distance-system {
+  margin-top: 34px;
+}
+
+.palette-system {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.palette-system div {
+  display: grid;
+  gap: 8px;
+}
+
+.palette-system i {
+  aspect-ratio: 1.55 / 1;
+  display: block;
+  background: var(--swatch);
+}
+
+.palette-system small,
+.palette-system b {
+  font-size: .62rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.palette-system small { color: var(--mm26-blue); }
+.palette-system b { color: rgba(255,255,255,.8); }
+
+.type-lab {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr;
+  gap: 1px;
+  border: 1px solid rgba(114,129,241,.42);
+  background: rgba(114,129,241,.42);
+}
+
+.type-lab__sample {
+  min-height: 260px;
+  padding: clamp(22px, 3vw, 38px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  overflow: hidden;
+  background: var(--mm26-violet);
+}
+
+.type-lab__sample small,
+.type-lab__sample span {
+  font-size: .64rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.type-lab__sample small { color: var(--mm26-blue); }
+.type-lab__sample span { color: rgba(255,255,255,.72); }
+
+.type-lab__sample--bricolage b {
+  color: var(--mm26-green);
+  font-family: "Bricolage Grotesque MM26", Arial, sans-serif;
+  font-size: clamp(2.4rem, 4.2vw, 5rem);
+  font-weight: 500;
+  font-variation-settings: "wdth" 100, "wght" 500, "opsz" 14;
+  line-height: .98;
+  letter-spacing: 0;
+}
+
+.type-lab__sample--gopher b {
+  max-width: 16ch;
+  font-family: "Gopher MM26", Arial, sans-serif;
+  font-size: clamp(1.8rem, 2.8vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.type-lab__sample--ziren b {
+  color: var(--mm26-blue);
+  font-family: "Ziren MM26", sans-serif;
+  font-size: clamp(2.2rem, 4vw, 4.8rem);
+  line-height: .92;
+}
+
+.distance-system {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.distance-system b {
+  padding: 18px 12px;
+  background: var(--mm26-green);
+  color: var(--mm26-violet);
+  font-family: "Ziren MM26", sans-serif;
+  font-size: clamp(2.2rem, 4vw, 4.7rem);
+  line-height: 1;
+}
+
+.module-system {
+  aspect-ratio: 3001 / 1265;
+  overflow: hidden;
+  background: var(--mm26-dark-green);
+}
+
+.module-system img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.campaign-experience {
+  isolation: isolate;
+  background: var(--mm26-violet);
+}
+
+.moment-tabs {
+  position: sticky;
+  top: 72px;
+  z-index: 20;
+  width: min(var(--content), 100%);
+  margin: clamp(40px, 5vw, 64px) auto 0;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 999px;
+  background: rgba(74,11,174,.88);
+  backdrop-filter: blur(18px);
+}
+
+.moment-tabs button {
+  min-height: 48px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255,255,255,.68);
+  font-size: .72rem;
+  font-weight: 800;
+  transition: color .25s ease, background .35s var(--ease), transform .25s var(--ease);
+}
+
+.moment-tabs button[aria-selected="true"] {
+  background: var(--mm26-green);
+  color: var(--mm26-violet);
+  transform: translateY(-1px);
+}
+
+.moment-stage {
+  width: min(var(--content), 100%);
+  margin: 30px auto 0;
+  perspective: 1200px;
+}
+
+.moment-view {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(33,4,90,.62);
+}
+
+.moment-view__ribbon {
+  height: clamp(10px, 1.2vw, 16px);
+  background-color: var(--mm26-violet);
+  background-image: var(--moment-background);
+  background-position: center var(--moment-focus, 50%);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.moment-view__header {
+  padding: clamp(28px, 3.5vw, 50px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: end;
+}
+
+.moment-view__header h3 {
+  margin-top: 20px;
+  max-width: 900px;
+  font-family: "Bricolage Grotesque MM26", Arial, sans-serif;
+  font-size: clamp(2.4rem, 3.8vw, 4.3rem);
+  font-weight: 500;
+  font-variation-settings: "wdth" 100, "wght" 500, "opsz" 14;
+  line-height: .98;
+  letter-spacing: -.02em;
+}
+
+.moment-view__header > p {
+  color: rgba(255,255,255,.72);
+  line-height: 1.75;
+}
+
+.moment-feature {
+  position: relative;
+  aspect-ratio: 16 / 5.25;
+  overflow: hidden;
+}
+
+.moment-feature img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.moment-feature figcaption {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  padding: 9px 13px;
+  border-radius: 999px;
+  background: rgba(74,11,174,.82);
+  font-size: .65rem;
+  font-weight: 800;
+  backdrop-filter: blur(10px);
+}
+
+.piece-rail-shell {
+  padding: clamp(20px, 2.8vw, 38px);
+}
+
+.piece-rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(340px, 48%);
+  gap: 18px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+  scrollbar-width: none;
+}
+
+.piece-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.piece-card {
+  min-height: 320px;
+  scroll-snap-align: start;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.18);
+  background: var(--mm26-violet);
+}
+
+.piece-card--media {
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.piece-card--media img {
+  width: 100%;
+  height: 100%;
+  min-height: 250px;
+  object-fit: cover;
+}
+
+.piece-card--contain img {
+  padding: 28px;
+  object-fit: contain;
+  background: var(--mm26-green);
+}
+
+.piece-card figcaption {
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.piece-card figcaption span,
+.piece-card--statement > span,
+.piece-card--code > span {
+  color: var(--mm26-blue);
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.piece-card figcaption strong {
+  font-size: .84rem;
+}
+
+.piece-card--statement,
+.piece-card--code {
+  padding: clamp(28px, 4vw, 52px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.piece-card--statement h4 {
+  margin-top: 36px;
+  color: var(--mm26-green);
+  font-family: "Bricolage Grotesque MM26", Arial, sans-serif;
+  font-size: clamp(2.2rem, 3.6vw, 4rem);
+  font-weight: 500;
+  font-variation-settings: "wdth" 100, "wght" 500, "opsz" 14;
+  line-height: .98;
+  letter-spacing: -.02em;
+}
+
+.piece-card--statement p {
+  max-width: 520px;
+  color: rgba(255,255,255,.72);
+  line-height: 1.7;
+}
+
+.piece-card--code {
+  background: var(--mm26-green);
+  color: var(--mm26-violet);
+}
+
+.piece-card--code strong {
+  font-family: "Ziren MM26", sans-serif;
+  font-size: clamp(3.4rem, 7vw, 7.5rem);
+  line-height: .75;
+  letter-spacing: -.08em;
+}
+
+.piece-card--code p {
+  font-weight: 800;
+}
+
+.piece-controls {
+  margin-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+
+.piece-progress {
+  position: relative;
+  width: min(240px, 28vw);
+  height: 2px;
+  margin-right: auto;
+  overflow: hidden;
+  background: rgba(255,255,255,.2);
+}
+
+.piece-progress i {
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: var(--moment-accent, var(--mm26-green));
+  transition: transform .15s linear;
+}
+
+.piece-controls button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--mm26-white);
+}
+
+.piece-controls button:hover {
+  background: var(--mm26-green);
+  color: var(--mm26-violet);
+}
+
+.piece-controls button:disabled {
+  opacity: .35;
+  pointer-events: none;
+}
+
+.piece-controls span {
+  color: rgba(255,255,255,.62);
+  font-size: .65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.credits-section {
+  background: var(--mm26-green);
+  color: var(--mm26-violet);
+}
+
+.credits-section .eyebrow,
+.credits-section .section-lead--split > p {
+  color: var(--mm26-violet);
+}
+
+.credit-list {
+  width: min(var(--content), 100%);
+  margin: clamp(56px, 7vw, 96px) auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.credit-list article {
+  min-height: 360px;
+  padding: clamp(26px, 3vw, 42px);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(74,11,174,.35);
+  border-right: 0;
+}
+
+.credit-list article:last-child {
+  border-right: 1px solid rgba(74,11,174,.35);
+}
+
+.credit-list span {
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.credit-list h3 {
+  margin-top: 34px;
+  font-family: "Bricolage Grotesque MM26", Arial, sans-serif;
+  font-size: clamp(1.8rem, 2.8vw, 3.3rem);
+  font-weight: 500;
+  font-variation-settings: "wdth" 100, "wght" 500, "opsz" 14;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+}
+
+.credit-list p {
+  margin-top: auto;
+  padding-top: 40px;
+  color: rgba(74,11,174,.74);
+  line-height: 1.7;
+}
+
+.credit-list__highlight {
+  background: var(--mm26-violet);
+  color: var(--mm26-green);
+}
+
+.credit-list__highlight p {
+  color: rgba(255,255,255,.74);
+}
+
+.case-closing {
+  min-height: 58svh;
+  padding: clamp(74px, 9vw, 130px) var(--page-pad);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: var(--mm26-violet);
+}
+
+.case-closing > p {
+  color: var(--mm26-green);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.case-closing h2 {
+  margin-top: 26px;
+  font-family: "Bricolage Grotesque MM26", Arial, sans-serif;
+  font-size: clamp(3.1rem, 6.4vw, 7.5rem);
+  font-weight: 500;
+  font-variation-settings: "wdth" 100, "wght" 500, "opsz" 14;
+  line-height: .92;
+  letter-spacing: -.025em;
+}
+
+.case-closing h2 em {
+  color: var(--mm26-green);
+  font-style: normal;
+}
+
+.case-closing a {
+  margin-top: 52px;
+  padding: 14px 18px;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 800;
+}
+
+.site-footer {
+  background: var(--mm26-violet);
+  color: rgba(255,255,255,.68);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.site-footer__bars {
+  min-height: clamp(72px, 9vw, 132px);
+  background-image: url("../images/projects/maraton-medellin/2026/fondos-estaticos/banner-fondo-01.webp");
+  background-position: center 72%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.site-footer__meta {
+  min-height: 92px;
+  padding: 24px var(--page-pad);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  border-top: 1px solid rgba(255,255,255,.18);
+}
+
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+
+html.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+html[data-motion="full"] .moment-view__ribbon {
+  animation: moment-ribbon-drift 24s ease-in-out infinite alternate;
+}
+
+html[data-motion="full"] .moment-stage.is-entering .moment-view {
+  animation: moment-enter .58s var(--ease) both;
+}
+
+html[data-motion="full"] .moment-stage.is-entering .moment-feature,
+html[data-motion="full"] .moment-stage.is-entering .piece-rail-shell {
+  animation: moment-content-enter .72s var(--ease) both;
+}
+
+html[data-motion="full"] .moment-stage.is-entering .piece-rail-shell {
+  animation-delay: .08s;
+}
+
+@keyframes moment-ribbon-drift {
+  from { background-position: 42% var(--moment-focus, 50%); }
+  to { background-position: 58% var(--moment-focus, 50%); }
+}
+
+@keyframes moment-enter {
+  from { opacity: .45; transform: translateY(12px) rotateX(1.5deg); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes moment-content-enter {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 1050px) {
+  .campaign-hero {
+    grid-template-columns: 1fr .75fr;
+  }
+
+  .story-sequence {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .story-sequence article:nth-child(2) {
+    border-right: 0;
+  }
+
+  .story-sequence article:nth-child(-n+2) {
+    border-bottom: 1px solid rgba(114,129,241,.7);
+  }
+
+  .identity-rules {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .identity-rules article {
+    min-height: 340px;
+  }
+
+  .identity-rules__palette {
+    grid-column: 1 / -1;
+  }
+
+  .type-lab {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .type-lab__sample--bricolage {
+    grid-column: 1 / -1;
+  }
+
+  .palette-system {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .site-header {
+    grid-template-columns: auto auto 1fr;
+  }
+
+  .site-nav {
+    display: none;
+  }
+
+  .site-back {
+    grid-column: 3;
+  }
+
+  .campaign-hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
+
+  .campaign-hero__copy {
+    padding-top: 40px;
+  }
+
+  .campaign-hero__edition {
+    width: min(86vw, 560px);
+    justify-self: center;
+    align-items: center;
+  }
+
+  .campaign-hero__footer,
+  .section-lead--split,
+  .moment-view__header {
+    grid-template-columns: 1fr;
+  }
+
+  .campaign-hero__footer {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .section-lead--split {
+    gap: 32px;
+  }
+
+  .kv-stage {
+    min-height: 580px;
+    background-position: 58% center;
+  }
+
+  .type-lab {
+    grid-template-columns: 1fr;
+  }
+
+  .type-lab__sample--bricolage {
+    grid-column: auto;
+  }
+
+  .moment-view__header {
+    gap: 30px;
+  }
+
+  .moment-feature {
+    aspect-ratio: 4 / 3;
+  }
+
+  .piece-rail {
+    grid-auto-columns: min(82vw, 520px);
+  }
+
+  .credit-list {
+    grid-template-columns: 1fr;
+  }
+
+  .credit-list article,
+  .credit-list article:last-child {
+    min-height: 300px;
+    border-right: 1px solid rgba(74,11,174,.35);
+    border-bottom: 0;
+  }
+
+  .credit-list article:last-child {
+    border-bottom: 1px solid rgba(74,11,174,.35);
+  }
+}
+
+@media (max-width: 560px) {
+  .site-header {
+    min-height: 64px;
+  }
+
+  .site-brand,
+  .site-brand img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .campaign-home {
+    width: 38px;
+    height: 38px;
+  }
+
+  .campaign-hero {
+    min-height: calc(100svh - 64px);
+    padding-top: 54px;
+  }
+
+  .campaign-hero__meta span:nth-child(2) {
+    display: none;
+  }
+
+  .campaign-hero h1 {
+    font-size: clamp(2.75rem, 11.5vw, 4.15rem);
+  }
+
+  .section-lead h2 {
+    font-size: clamp(2.45rem, 10.5vw, 3.8rem);
+  }
+
+  .story-sequence {
+    grid-template-columns: 1fr;
+  }
+
+  .story-sequence article {
+    min-height: 310px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(114,129,241,.7);
+  }
+
+  .story-sequence article:last-child {
+    border-bottom: 0;
+  }
+
+  .kv-stage {
+    min-height: 520px;
+  }
+
+  .kv-stage > strong {
+    font-size: clamp(3rem, 14vw, 4.9rem);
+  }
+
+  .kv-stage > img {
+    width: min(42vw, 190px);
+  }
+
+  .identity-rules {
+    grid-template-columns: 1fr;
+  }
+
+  .identity-rules__palette {
+    grid-column: auto;
+  }
+
+  .identity-rules__typography {
+    grid-column: auto;
+  }
+
+  .palette-system {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .moment-tabs {
+    top: 64px;
+    margin-inline: calc(var(--page-pad) * -1);
+    width: calc(100% + (var(--page-pad) * 2));
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+  }
+
+  .moment-tabs button {
+    min-height: 58px;
+    padding: 8px;
+    font-size: .62rem;
+  }
+
+  .moment-view__header h3 {
+    font-size: clamp(2.35rem, 9.8vw, 3.65rem);
+  }
+
+  .moment-feature {
+    aspect-ratio: 4 / 5;
+  }
+
+  .piece-rail-shell {
+    padding-inline: 14px;
+  }
+
+  .piece-rail {
+    grid-auto-columns: calc(100vw - 68px);
+  }
+
+  .piece-card {
+    min-height: 410px;
+  }
+
+  .piece-card--media img {
+    min-height: 330px;
+  }
+
+  .piece-controls {
+    justify-content: space-between;
+  }
+
+  .piece-progress {
+    width: 72px;
+  }
+
+  .case-closing {
+    min-height: 66svh;
+  }
+
+  .site-footer__meta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Fase: paleta cinética y escenario editorial de piezas */
+.site-header {
+  grid-template-columns: 1fr auto 1fr;
+  gap: clamp(18px, 3vw, 48px);
+}
+
+.site-nav {
+  align-items: center;
+}
+
+.campaign-home {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  padding: 2px;
+  border: 0;
+  background: transparent;
+}
+
+.campaign-home span {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: var(--mm26-green);
+  -webkit-mask: url("../images/projects/maraton-medellin/2026/lanzamiento/recursos-oficiales/flor-mm-borde-blanco.svg") center / contain no-repeat;
+  mask: url("../images/projects/maraton-medellin/2026/lanzamiento/recursos-oficiales/flor-mm-borde-blanco.svg") center / contain no-repeat;
+  transition: transform .28s var(--ease), background .28s ease;
+}
+
+.campaign-home:hover,
+.campaign-home:focus-visible,
+.campaign-home:active {
+  transform: none;
+  border-color: transparent;
+  background: transparent;
+}
+
+.campaign-home:hover span,
+.campaign-home:focus-visible span,
+.campaign-home:active span {
+  transform: scale(1.05);
+  background: var(--mm26-lime);
+}
+
+.identity-rules__palette {
+  min-height: auto !important;
+  min-width: 0;
+}
+
+.color-lab {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  margin-top: 34px;
+  overflow: hidden;
+  border: 1px solid rgba(114,129,241,.45);
+  background-color: var(--mm26-violet);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--active-color) 34%, var(--mm26-violet)), var(--mm26-violet) 62%);
+  transition: background .4s var(--ease);
+}
+
+.color-lab__families {
+  min-height: 54px;
+  padding: 8px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,.18);
+}
+
+.color-lab__families button {
+  min-height: 38px;
+  padding: 8px 14px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255,255,255,.68);
+  font-size: .66rem;
+  font-weight: 700;
+}
+
+.color-lab__families button[aria-pressed="true"] {
+  border-color: var(--mm26-green);
+  color: var(--mm26-green);
+}
+
+.color-lab__band {
+  height: clamp(150px, 15vw, 210px);
+  display: flex;
+  overflow: hidden;
+  background: var(--mm26-violet);
+}
+
+.color-module {
+  position: relative;
+  min-width: 0;
+  padding: 16px 8px;
+  flex: var(--module-grow) 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 5px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: var(--module-color);
+  color: #fff;
+  isolation: isolate;
+  transition: flex-grow .38s var(--ease), opacity .3s ease, transform .3s var(--ease);
+}
+
+.color-module::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  background: linear-gradient(180deg, transparent 25%, rgba(0,0,0,.42));
+  transition: opacity .3s ease;
+}
+
+.color-module span,
+.color-module b {
+  opacity: 0;
+  white-space: nowrap;
+  font-size: .58rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  transition: opacity .25s ease;
+}
+
+.color-module.is-active {
+  flex-grow: 2.15;
+  z-index: 2;
+}
+
+.color-module.is-active::after,
+.color-module.is-active span,
+.color-module.is-active b {
+  opacity: 1;
+}
+
+.color-module.is-family-muted {
+  opacity: .24;
+}
+
+.color-lab__content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr);
+  min-height: 310px;
+}
+
+.color-lab__content > * {
+  min-width: 0;
+}
+
+.color-technical,
+.color-application {
+  padding: clamp(24px, 3vw, 40px);
+}
+
+.color-technical {
+  background: rgba(37,3,88,.74);
+}
+
+.color-technical__heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: baseline;
+}
+
+.color-technical__heading p,
+.color-technical__role > span,
+.color-technical__pairs > span,
+.color-application > span {
+  color: var(--mm26-blue);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.color-technical h4 {
+  font-family: "Bricolage Grotesque MM26", Arial, sans-serif;
+  font-size: clamp(1.8rem, 2.8vw, 3.1rem);
+  font-weight: 500;
+  font-variation-settings: "wdth" 100, "wght" 500, "opsz" 14;
+  line-height: 1;
+}
+
+.color-technical dl {
+  margin: 28px 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid rgba(255,255,255,.18);
+}
+
+.color-technical dl div {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,.18);
+}
+
+.color-technical dt {
+  color: var(--mm26-blue);
+  font-size: .58rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.color-technical dd {
+  margin: 5px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: .82rem;
+  overflow-wrap: anywhere;
+}
+
+.color-technical dd small {
+  color: rgba(255,255,255,.56);
+  font-size: .62rem;
+}
+
+.color-technical__role,
+.color-technical__pairs {
+  margin-top: 20px;
+}
+
+.color-technical__role p {
+  margin-top: 6px;
+  padding: 0;
+  color: rgba(255,255,255,.8);
+}
+
+.color-technical__pairs > div {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.color-technical__pairs i {
+  padding: 8px 10px 8px 25px;
+  position: relative;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 999px;
+  font-size: .64rem;
+  font-style: normal;
+}
+
+.color-technical__pairs i::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: var(--pair);
+}
+
+.color-application {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--active-text);
+  background: linear-gradient(145deg, var(--gradient-from), var(--gradient-to));
+  transition: color .35s ease, background .4s var(--ease);
+}
+
+.color-application > span {
+  color: inherit;
+  opacity: .74;
+}
+
+.color-application h4 {
+  max-width: 9ch;
+  margin-top: 14px;
+  font-family: "Bricolage Grotesque MM26", Arial, sans-serif;
+  font-size: clamp(2.3rem, 4vw, 4.7rem);
+  font-weight: 500;
+  font-variation-settings: "wdth" 100, "wght" 500, "opsz" 14;
+  line-height: .94;
+}
+
+.color-application p {
+  max-width: 420px;
+  margin-top: 18px;
+  padding: 0;
+  color: inherit;
+  line-height: 1.55;
+}
+
+.color-application button {
+  width: fit-content;
+  min-height: 44px;
+  margin-top: 22px;
+  padding: 10px 16px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font-size: .7rem;
+  font-weight: 700;
+}
+
+.moment-tabs {
+  min-height: 68px;
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 0;
+  background: rgba(74,11,175,.94);
+}
+
+.moment-tabs button {
+  position: relative;
+  min-height: 68px;
+  padding: 12px clamp(14px, 2vw, 28px);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+  border-right: 1px solid rgba(255,255,255,.16);
+  border-radius: 0;
+  text-align: left;
+}
+
+.moment-tabs button:last-child {
+  border-right: 0;
+}
+
+.moment-tabs button::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: var(--mm26-green);
+  transition: transform .32s var(--ease);
+}
+
+.moment-tabs button span {
+  color: var(--mm26-blue);
+  font-family: "Ziren MM26", sans-serif;
+  font-size: 1rem;
+}
+
+.moment-tabs button strong {
+  font-size: .72rem;
+}
+
+.moment-tabs button[aria-selected="true"] {
+  transform: none;
+  background: var(--mm26-green);
+  color: var(--mm26-violet);
+}
+
+.moment-tabs button[aria-selected="true"]::after {
+  transform: scaleX(1);
+  background: var(--mm26-violet);
+}
+
+.moment-tabs button[aria-selected="true"] span {
+  color: var(--mm26-violet);
+}
+
+.moment-stage {
+  transition: opacity .2s ease, transform .2s var(--ease);
+}
+
+.moment-stage.is-changing {
+  opacity: .35;
+  transform: translateY(16px);
+}
+
+.moment-view {
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.2);
+  background: var(--mm26-violet);
+}
+
+.moment-view:focus {
+  outline: 0;
+}
+
+.moment-view:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--mm26-lime);
+}
+
+.moment-editorial__header {
+  min-height: 190px;
+  padding: clamp(24px, 3vw, 42px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr);
+  gap: clamp(28px, 4vw, 60px);
+  align-items: end;
+}
+
+.moment-editorial__header .chapter-index,
+.moment-editorial__header .eyebrow {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.moment-editorial__header h3 {
+  max-width: 850px;
+  margin-top: 15px;
+  font-family: "Bricolage Grotesque MM26", Arial, sans-serif;
+  font-size: clamp(2.2rem, 3.4vw, 4rem);
+  font-weight: 500;
+  font-variation-settings: "wdth" 100, "wght" 500, "opsz" 14;
+  line-height: .98;
+  letter-spacing: -.02em;
+}
+
+.moment-editorial__header > p {
+  color: rgba(255,255,255,.74);
+  line-height: 1.65;
+}
+
+.moment-collage {
+  min-height: 500px;
+  display: grid;
+  overflow: hidden;
+}
+
+.moment-collage--campana {
+  grid-template-columns: .85fr 1.25fr .62fr;
+  grid-template-rows: minmax(330px, 1fr) 142px;
+  grid-template-areas:
+    "flat mockup info"
+    "variants variants variants";
+  background: var(--mm26-blue);
+}
+
+.moment-collage--exporunners {
+  grid-template-columns: .62fr 1.28fr .65fr;
+  grid-template-rows: minmax(340px, 1fr) 128px;
+  grid-template-areas:
+    "flat mockup info"
+    "roles roles future";
+  background: var(--mm26-green);
+  color: var(--mm26-violet);
+}
+
+.moment-collage--carrera {
+  min-height: 500px;
+  background: var(--mm26-wine);
+}
+
+.editorial-media {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--mm26-violet);
+}
+
+.editorial-media--flat { grid-area: flat; }
+.editorial-media--mockup { grid-area: mockup; }
+
+.editorial-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.editorial-media--flat img {
+  padding: clamp(14px, 2vw, 28px);
+  object-fit: contain;
+  background: var(--mm26-green);
+}
+
+.editorial-media--mockup img {
+  object-fit: cover;
+}
+
+.editorial-media figcaption {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(74,11,175,.86);
+  color: #fff;
+  font-size: .6rem;
+  font-weight: 700;
+}
+
+.moment-editorial__info {
+  grid-area: info;
+  padding: clamp(22px, 2.5vw, 36px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: var(--mm26-violet);
+  color: #fff;
+}
+
+.moment-editorial__info > span {
+  color: var(--mm26-blue);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.moment-editorial__info h4 {
+  margin-top: 12px;
+  font-family: "Bricolage Grotesque MM26", Arial, sans-serif;
+  font-size: clamp(1.7rem, 2.5vw, 3rem);
+  font-weight: 500;
+  font-variation-settings: "wdth" 100, "wght" 500, "opsz" 14;
+  line-height: 1;
+}
+
+.moment-editorial__info p {
+  margin-top: 16px;
+  color: rgba(255,255,255,.7);
+  line-height: 1.55;
+}
+
+.campaign-variants {
+  grid-area: variants;
+  padding: 12px;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  background: var(--mm26-violet);
+}
+
+.campaign-thumb {
+  flex: 0 0 92px;
+  min-height: 116px;
+  padding: 6px;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 6px;
+  scroll-snap-align: start;
+  border: 1px solid rgba(255,255,255,.2);
+  background: transparent;
+  color: #fff;
+}
+
+.campaign-thumb[aria-pressed="true"] {
+  border-color: var(--mm26-green);
+  background: rgba(84,207,136,.12);
+}
+
+.campaign-thumb img {
+  width: 100%;
+  height: 76px;
+  object-fit: cover;
+}
+
+.campaign-thumb span {
+  font-size: .54rem;
+}
+
+.editorial-pending,
+.future-applications span,
+.carrera-pending i {
+  padding: 10px 12px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px dashed rgba(255,255,255,.34);
+  color: rgba(255,255,255,.62);
+  font-size: .58rem;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.role-selector {
+  grid-area: roles;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(70px, 1fr));
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.role-selector button {
+  min-height: 104px;
+  padding: 6px;
+  display: grid;
+  grid-template-rows: 70px auto;
+  gap: 5px;
+  border: 1px solid rgba(74,11,175,.25);
+  background: rgba(255,255,255,.16);
+  color: var(--mm26-violet);
+  font-size: .55rem;
+}
+
+.role-selector button[aria-pressed="true"] {
+  border-color: var(--mm26-violet);
+  background: var(--mm26-lime);
+}
+
+.role-selector img {
+  width: 100%;
+  height: 70px;
+  object-fit: contain;
+}
+
+.future-applications {
+  grid-area: future;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 6px;
+  background: var(--mm26-dark-green);
+}
+
+.moment-view--exporunners .editorial-media--flat img {
+  background: var(--mm26-lime);
+}
+
+.piece-type-selector {
+  min-height: 52px;
+  padding: 7px clamp(18px, 3vw, 42px);
+  display: flex;
+  gap: 8px;
+  border-top: 1px solid rgba(255,255,255,.18);
+  border-bottom: 1px solid rgba(255,255,255,.18);
+  background: var(--mm26-wine);
+}
+
+.piece-type-selector button,
+.carrera-variants button {
+  min-height: 38px;
+  padding: 7px 14px;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font-size: .64rem;
+  font-weight: 700;
+}
+
+.piece-type-selector button[aria-pressed="true"],
+.carrera-variants button[aria-pressed="true"] {
+  border-color: var(--mm26-yellow);
+  background: var(--mm26-yellow);
+  color: var(--mm26-wine);
+}
+
+.carrera-comparison {
+  min-height: 500px;
+  display: grid;
+  grid-template-columns: .9fr 1.3fr .62fr;
+  grid-template-rows: minmax(380px, 1fr) 72px;
+  grid-template-areas:
+    "flat mockup info"
+    "variants variants info";
+}
+
+.carrera-variants {
+  grid-area: variants;
+  padding: 12px clamp(18px, 3vw, 32px);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: var(--mm26-wine);
+}
+
+.moment-view--carrera .editorial-media--flat img {
+  background: var(--mm26-yellow);
+}
+
+.carrera-pending {
+  min-height: 500px;
+  padding: clamp(30px, 5vw, 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(145deg, var(--mm26-wine), var(--mm26-pink));
+}
+
+.carrera-pending > span {
+  color: var(--mm26-yellow);
+  font-size: .64rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.carrera-pending h4 {
+  margin-top: 16px;
+  font-family: "Bricolage Grotesque MM26", Arial, sans-serif;
+  font-size: clamp(2.7rem, 5vw, 6rem);
+  font-weight: 500;
+  font-variation-settings: "wdth" 100, "wght" 500, "opsz" 14;
+}
+
+.carrera-pending p {
+  max-width: 560px;
+  margin-top: 14px;
+}
+
+.carrera-pending > div {
+  margin-top: 28px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+html[data-motion="full"] .moment-stage.is-entering .editorial-media--mockup {
+  animation: editorial-media-enter .42s var(--ease) both;
+}
+
+html[data-motion="full"] .moment-stage.is-entering .editorial-media--flat {
+  animation: editorial-flat-enter .42s var(--ease) both;
+}
+
+@keyframes editorial-media-enter {
+  from { opacity: .4; transform: translateX(18px) scale(.985); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes editorial-flat-enter {
+  from { opacity: .4; transform: translateX(-16px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 1050px) {
+  .color-lab__content {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .moment-collage--campana,
+  .moment-collage--exporunners,
+  .carrera-comparison {
+    grid-template-columns: .9fr 1.1fr;
+    grid-template-rows: 300px auto 132px;
+    grid-template-areas:
+      "flat mockup"
+      "info info"
+      "variants variants";
+  }
+
+  .moment-collage--exporunners {
+    grid-template-areas:
+      "flat mockup"
+      "info info"
+      "roles future";
+  }
+
+  .moment-editorial__info {
+    min-height: 150px;
+  }
+
+  .role-selector {
+    display: flex;
+  }
+
+  .role-selector button {
+    flex: 0 0 92px;
+  }
+}
+
+@media (max-width: 800px) {
+  .site-header {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .site-nav {
+    display: flex;
+    min-width: 0;
+    gap: 18px;
+    justify-self: stretch;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .site-nav > a:not(.campaign-home) {
+    flex: 0 0 auto;
+  }
+
+  .campaign-home {
+    flex-basis: 40px;
+    width: 40px;
+    height: 44px;
+    padding: 2px;
+  }
+
+  .site-back {
+    display: none;
+  }
+
+  .color-lab__content {
+    grid-template-columns: 1fr;
+  }
+
+  .color-lab__band {
+    height: 150px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .color-module {
+    flex: 0 0 72px;
+    scroll-snap-align: start;
+  }
+
+  .color-module.is-active {
+    flex-grow: 0;
+    flex-basis: 112px;
+  }
+
+  .color-application {
+    min-height: 300px;
+  }
+
+  .moment-tabs {
+    top: 64px;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .moment-tabs button {
+    min-height: 60px;
+    padding: 8px 12px;
+  }
+
+  .moment-editorial__header {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
+
+@media (max-width: 560px) {
+  .campaign-home {
+    flex-basis: 36px;
+    width: 36px;
+    min-width: 44px;
+    height: 44px;
+    padding: 6px;
+  }
+
+  .site-nav {
+    gap: 10px;
+  }
+
+  .site-nav a,
+  .site-back {
+    font-size: .6rem;
+  }
+
+  .color-lab {
+    margin-inline: 0;
+  }
+
+  .color-lab__families {
+    overflow-x: auto;
+  }
+
+  .color-technical__heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .color-technical dl {
+    grid-template-columns: 1fr;
+  }
+
+  .color-application {
+    min-height: 280px;
+  }
+
+  .moment-tabs button {
+    min-height: 58px;
+    padding: 7px 8px;
+    gap: 7px;
+  }
+
+  .moment-tabs button span {
+    font-size: .8rem;
+  }
+
+  .moment-tabs button strong {
+    font-size: .58rem;
+  }
+
+  .moment-editorial__header {
+    min-height: 0;
+    padding: 24px 18px;
+  }
+
+  .moment-editorial__header h3 {
+    font-size: clamp(2.15rem, 9.4vw, 3.4rem);
+  }
+
+  .moment-collage--campana,
+  .moment-collage--exporunners,
+  .carrera-comparison {
+    grid-template-columns: 1fr;
+    grid-template-rows: 210px 230px auto 132px;
+    grid-template-areas:
+      "flat"
+      "mockup"
+      "info"
+      "variants";
+  }
+
+  .moment-collage--exporunners {
+    grid-template-rows: 230px 230px auto 126px 100px;
+    grid-template-areas:
+      "flat"
+      "mockup"
+      "info"
+      "roles"
+      "future";
+  }
+
+  .moment-editorial__info {
+    min-height: 170px;
+  }
+
+  .campaign-variants,
+  .role-selector {
+    scroll-snap-type: x mandatory;
+  }
+
+  .future-applications {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .piece-type-selector,
+  .carrera-variants {
+    overflow-x: auto;
+  }
+
+  .carrera-pending {
+    min-height: 460px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .color-module,
+  .color-lab,
+  .color-application,
+  .moment-stage,
+  .editorial-media {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Fase: ajustes finales de navegación y sistema de marca */
+.campaign-home img {
+  width: 40px;
+  height: 40px;
+  display: block;
+  object-fit: contain;
+  transition: transform .25s var(--ease);
+}
+
+.campaign-home:hover img,
+.campaign-home:focus-visible img {
+  transform: scale(1.05);
+}
+
+.campaign-home:active img {
+  transform: scale(.98);
+}
+
+.edition-nav {
+  position: relative;
+  z-index: 18;
+  min-height: 48px;
+  padding-inline: var(--page-pad);
+  border-bottom: 1px solid rgba(255,255,255,.16);
+  background: #3e0794;
+}
+
+.edition-nav__track {
+  width: min(var(--content), 100%);
+  min-height: 48px;
+  margin-inline: auto;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+}
+
+.edition-nav__track > * {
+  min-width: 72px;
+  min-height: 44px;
+  padding: 0 18px;
+  display: grid;
+  place-items: center;
+  border-left: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.38);
+  font-size: .66rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  scroll-snap-align: end;
+}
+
+.edition-nav__track > *:last-child {
+  border-right: 1px solid rgba(255,255,255,.12);
+}
+
+.edition-nav__track [aria-disabled="true"] {
+  cursor: not-allowed;
+  user-select: none;
+}
+
+.edition-nav__track [aria-current="page"] {
+  color: var(--mm26-green);
+  background: rgba(84,207,136,.1);
+}
+
+.edition-nav__track a:hover {
+  background: rgba(84,207,136,.16);
+}
+
+#inicio,
+#historia,
+#identidad,
+#experiencia,
+#creditos {
+  scroll-margin-top: 72px;
+}
+
+.color-module {
+  flex: 1 1 0;
+}
+
+.color-module.is-active {
+  flex-grow: 2.15;
+}
+
+.identity-rules {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.identity-rules__palette,
+.identity-rules__typography {
+  grid-column: 1 / -1;
+}
+
+.identity-rules__distances {
+  grid-column: span 5;
+}
+
+.identity-rules__modules {
+  grid-column: span 7;
+}
+
+.identity-rules__distances,
+.identity-rules__modules {
+  min-height: 0 !important;
+}
+
+.type-lab {
+  grid-template-columns: 1fr;
+  gap: 1px;
+}
+
+.type-lab p,
+.type-lab h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.type-lab__sample {
+  min-height: 0;
+  padding: clamp(22px, 3vw, 38px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  overflow: hidden;
+}
+
+.type-lab__sample > header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.type-lab__sample h4 {
+  margin-top: 6px;
+  font-family: "Bricolage Grotesque MM26", Arial, sans-serif;
+  font-size: clamp(1.45rem, 2.2vw, 2.35rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.type-lab__sample output {
+  min-width: 76px;
+  padding: 8px 10px;
+  border: 1px solid rgba(84,207,136,.48);
+  color: var(--mm26-green);
+  font-size: .72rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.type-lab__preview {
+  width: 100%;
+  min-height: 1.15em;
+  overflow-x: auto;
+  overflow-y: hidden;
+  color: var(--mm26-green) !important;
+  font-size: var(--type-size) !important;
+  line-height: 1.02 !important;
+  letter-spacing: 0 !important;
+  white-space: nowrap;
+  scrollbar-width: thin;
+}
+
+.type-lab__sample--bricolage .type-lab__preview,
+.type-lab__sample--bricolage .type-specimen b {
+  font-family: "Bricolage Grotesque MM26", Arial, sans-serif;
+  font-weight: 500;
+  font-variation-settings: "wdth" 100, "wght" 500, "opsz" 14;
+}
+
+.type-lab__sample--gopher .type-lab__preview,
+.type-lab__sample--gopher .type-specimen b {
+  max-width: none;
+  font-family: "Gopher MM26", Arial, sans-serif;
+  font-weight: 500;
+}
+
+.type-lab__sample--ziren .type-lab__preview,
+.type-lab__sample--ziren .type-specimen b,
+.type-lab__ziren-distances {
+  font-family: "Ziren MM26", sans-serif;
+}
+
+.type-lab__sample--ziren .type-lab__preview {
+  color: var(--mm26-blue) !important;
+}
+
+.type-lab__controls {
+  display: grid;
+  grid-template-columns: auto minmax(160px, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+}
+
+.type-lab__controls label,
+.type-lab__field span,
+.type-specimen span,
+.type-lab__source {
+  color: var(--mm26-blue) !important;
+  font-family: "Gopher MM26", Arial, sans-serif;
+  font-size: .62rem !important;
+  font-weight: 700;
+  letter-spacing: .08em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.type-lab__controls input[type="range"] {
+  width: 100%;
+  accent-color: var(--mm26-green);
+}
+
+.type-lab__controls button {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid rgba(84,207,136,.5);
+  background: transparent;
+  color: var(--mm26-green);
+  font-size: .64rem;
+  font-weight: 800;
+}
+
+.type-lab__field {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+}
+
+.type-lab__field input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid rgba(114,129,241,.55);
+  background: rgba(0,0,0,.14);
+  color: #fff;
+  font: 500 1rem/1.3 "Gopher MM26", Arial, sans-serif;
+}
+
+.type-specimen {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(114,129,241,.35);
+}
+
+.type-specimen p {
+  min-width: 0;
+  padding: 15px !important;
+  display: grid;
+  gap: 8px;
+  overflow-x: auto;
+  background: rgba(74,11,174,.86);
+  scrollbar-width: thin;
+}
+
+.type-specimen b {
+  max-width: none;
+  color: #fff;
+  font-size: clamp(.92rem, 1.25vw, 1.15rem) !important;
+  font-weight: inherit;
+  line-height: 1.35 !important;
+  letter-spacing: .025em;
+  white-space: nowrap;
+}
+
+.type-lab__ziren-distances {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.type-lab__ziren-distances b {
+  padding: 8px 12px;
+  border: 1px solid rgba(114,129,241,.55);
+  color: var(--mm26-blue);
+  font-size: clamp(1.4rem, 2.3vw, 2.5rem) !important;
+  line-height: 1 !important;
+}
+
+.distance-system {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.distance-system__selector {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.distance-system__selector button {
+  min-width: 0;
+  min-height: 52px;
+  padding: 8px;
+  border: 1px solid rgba(114,129,241,.5);
+  background: rgba(74,11,174,.34);
+  color: var(--mm26-blue);
+  font-family: "Ziren MM26", sans-serif;
+  font-size: clamp(1.05rem, 1.8vw, 1.7rem);
+  line-height: 1;
+}
+
+.distance-system__selector button[aria-pressed="true"] {
+  border-color: var(--distance-accent);
+  background: var(--distance-accent);
+  color: var(--mm26-violet);
+}
+
+.distance-system__stage {
+  min-height: 360px;
+  padding: clamp(20px, 3vw, 34px);
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 20px;
+  overflow: hidden;
+  background: linear-gradient(145deg, var(--distance-from), var(--distance-to));
+  color: #fff;
+  transition: background .3s ease;
+}
+
+.distance-system__stage strong {
+  color: var(--distance-accent);
+  font-family: "Ziren MM26", sans-serif;
+  font-size: clamp(5rem, 10vw, 9.5rem);
+  line-height: .8;
+  transition: color .3s ease, transform .3s var(--ease);
+}
+
+.distance-system__stage span {
+  color: var(--distance-accent);
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.distance-system__stage h4 {
+  margin-top: 8px;
+  font-family: "Bricolage Grotesque MM26", Arial, sans-serif;
+  font-size: clamp(1.5rem, 2.4vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.distance-system__stage p,
+.module-system__note {
+  margin-top: 10px !important;
+  padding-top: 0 !important;
+  color: rgba(255,255,255,.78) !important;
+  line-height: 1.5 !important;
+}
+
+.module-system {
+  position: relative;
+  aspect-ratio: auto;
+  overflow: hidden;
+}
+
+.module-system img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.module-system__focus {
+  position: absolute;
+  top: 7%;
+  bottom: 7%;
+  left: 7%;
+  width: 24%;
+  border: 2px solid var(--mm26-lime);
+  background: rgba(245,246,148,.08);
+  pointer-events: none;
+  transition: left .32s var(--ease), width .32s var(--ease);
+}
+
+.module-system[data-focus="gradiente"] .module-system__focus {
+  left: 38%;
+  width: 29%;
+}
+
+.module-system[data-focus="continuidad"] .module-system__focus {
+  left: 70%;
+  width: 23%;
+}
+
+.module-system__legend {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.module-system__legend button {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid rgba(114,129,241,.5);
+  background: transparent;
+  color: var(--mm26-blue);
+  font-size: .64rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.module-system__legend button[aria-pressed="true"] {
+  border-color: var(--mm26-green);
+  background: var(--mm26-green);
+  color: var(--mm26-violet);
+}
+
+.credits-section {
+  padding-block: clamp(42px, 4vw, 58px);
+}
+
+.credits-section .section-lead {
+  align-items: start;
+}
+
+.credits-section .section-lead h2 {
+  margin-top: 12px;
+  font-size: clamp(2.2rem, 3.4vw, 3.7rem);
+}
+
+.credits-section .section-lead--split > p {
+  font-size: clamp(.92rem, 1vw, 1.05rem);
+  line-height: 1.5;
+}
+
+.credit-list {
+  margin-top: clamp(24px, 3vw, 36px);
+}
+
+.credit-list article {
+  min-height: 220px;
+  padding: clamp(20px, 2vw, 28px);
+}
+
+.credit-list h3 {
+  margin-top: 16px;
+  font-size: clamp(1.45rem, 2vw, 2.15rem);
+  line-height: 1.03;
+}
+
+.credit-list p {
+  margin-top: 18px;
+  padding-top: 0;
+  font-size: .88rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 1050px) {
+  .identity-rules__distances,
+  .identity-rules__modules {
+    grid-column: 1 / -1;
+  }
+
+  .distance-system__stage {
+    min-height: 310px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .credits-section {
+    padding-block: 42px;
+  }
+
+  .credits-section .section-lead h2 {
+    font-size: 3.3rem;
+  }
+
+  .credit-list {
+    margin-top: 28px;
+  }
+
+  .credit-list article {
+    min-height: 210px;
+    padding: 24px;
+  }
+
+  .credit-list h3 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .campaign-home img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .color-module {
+    flex: 0 0 72px;
+  }
+
+  .color-module.is-active {
+    flex: 0 0 112px;
+  }
+
+  .edition-nav {
+    padding-inline: 0;
+  }
+
+  .edition-nav__track {
+    justify-content: flex-start;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .edition-nav__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .edition-nav__track > * {
+    flex: 0 0 76px;
+  }
+
+  .type-lab__controls,
+  .type-lab__field {
+    grid-template-columns: 1fr;
+  }
+
+  .type-lab__controls button {
+    justify-self: start;
+  }
+
+  .type-specimen {
+    grid-template-columns: 1fr;
+  }
+
+  .credits-section .section-lead--split {
+    gap: 18px;
+  }
+
+  .credit-list article,
+  .credit-list article:last-child {
+    min-height: 0;
+    padding: 22px;
+  }
+}
+
+@media (max-width: 560px) {
+  #inicio,
+  #historia,
+  #identidad,
+  #experiencia,
+  #creditos {
+    scroll-margin-top: 64px;
+  }
+
+  .campaign-home img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .type-lab__sample {
+    padding: 18px;
+  }
+
+  .type-lab__sample > header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .type-lab__sample output {
+    align-self: flex-start;
+  }
+
+  .distance-system__selector {
+    overflow-x: auto;
+    grid-template-columns: repeat(4, minmax(72px, 1fr));
+    scroll-snap-type: x mandatory;
+  }
+
+  .distance-system__selector button {
+    scroll-snap-align: start;
+  }
+
+  .distance-system__stage {
+    min-height: 300px;
+  }
+
+  .module-system__focus {
+    border-width: 1px;
+  }
+
+  .credits-section {
+    padding-block: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .campaign-home img,
+  .distance-system__stage,
+  .distance-system__stage strong,
+  .module-system__focus {
+    transition: none !important;
+  }
+}
+
+/* Fase KV + archivo de ediciones: ajustes aditivos para preservar el micrositio vigente. */
+.edition-nav {
+  position: sticky;
+  top: var(--mm26-header-h);
+  z-index: 80;
+  min-height: 78px;
+  background: #35077f;
+}
+
+.edition-nav__inner {
+  width: min(var(--content), 100%);
+  min-height: 78px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) auto;
+  align-items: stretch;
+  gap: 28px;
+}
+
+.edition-nav__inner > p {
+  max-width: 470px;
+  align-self: center;
+  color: rgba(255, 255, 255, .82);
+  font-size: .78rem;
+  line-height: 1.35;
+}
+
+.edition-nav__inner > p span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--mm26-green);
+  font-size: .61rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.edition-nav__track {
+  width: auto;
+  min-height: 78px;
+  margin: 0;
+}
+
+.edition-nav__track > * {
+  min-width: 68px;
+  min-height: 78px;
+  color: rgba(255, 255, 255, .68);
+}
+
+.edition-nav__track a:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 3px solid var(--mm26-green);
+  outline-offset: -3px;
+}
+
+#inicio,
+#historia,
+#identidad,
+#experiencia,
+#creditos {
+  scroll-margin-top: calc(var(--mm26-header-h) + var(--mm26-edition-h) + 16px);
+}
+
+.story-sequence article {
+  outline: 0;
+  transition: background-color .32s var(--ease), color .32s var(--ease), opacity .32s var(--ease), transform .32s var(--ease);
+}
+
+.story-sequence article:is(:hover, :focus-visible) {
+  z-index: 1;
+  color: var(--mm26-violet);
+  background: var(--mm26-green);
+  transform: translateY(-8px);
+}
+
+.story-sequence article:is(:hover, :focus-visible) span,
+.story-sequence article:is(:hover, :focus-visible) p {
+  color: var(--mm26-violet);
+}
+
+.story-sequence article:focus-visible {
+  outline: 3px solid var(--mm26-lime);
+  outline-offset: -3px;
+}
+
+.story-sequence:has(article:is(:hover, :focus-visible)) article:not(:is(:hover, :focus-visible)) {
+  opacity: .44;
+}
+
+.logo-applications {
+  width: min(var(--content), calc(100% - (2 * var(--page-pad))));
+  margin: clamp(48px, 7vw, 96px) auto 0;
+}
+
+.logo-applications__header {
+  margin-bottom: 28px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, .55fr);
+  gap: clamp(28px, 6vw, 90px);
+  align-items: end;
+}
+
+.logo-applications__header span {
+  color: var(--mm26-blue);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.logo-applications__header h3 {
+  max-width: 780px;
+  margin-top: 12px;
+  font-family: "Bricolage Grotesque MM26", Arial, sans-serif;
+  font-size: clamp(2rem, 3.6vw, 4.5rem);
+  font-weight: 500;
+  font-variation-settings: "wdth" 100, "wght" 500, "opsz" 14;
+  line-height: .98;
+  letter-spacing: -.025em;
+}
+
+.logo-applications__header p {
+  color: rgba(255, 255, 255, .72);
+  line-height: 1.65;
+}
+
+.logo-applications__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.logo-application {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 1 / 1;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: var(--app-logo);
+  background: var(--app-bg);
+  outline: 0;
+  transition: transform .28s var(--ease), filter .28s var(--ease);
+}
+
+.logo-application:is(:hover, :focus-visible) {
+  z-index: 2;
+  transform: scale(1.035);
+  filter: saturate(1.06);
+}
+
+.logo-application:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: -7px;
+}
+
+.logo-application__mark {
+  width: 72%;
+  aspect-ratio: 465 / 235;
+  display: block;
+  background: currentColor;
+  -webkit-mask: url("../images/projects/maraton-medellin/2026/lanzamiento/recursos-oficiales/logo-vertical-blanco-mm26.svg") center / contain no-repeat;
+  mask: url("../images/projects/maraton-medellin/2026/lanzamiento/recursos-oficiales/logo-vertical-blanco-mm26.svg") center / contain no-repeat;
+}
+
+.logo-application figcaption {
+  position: absolute;
+  inset: auto 12px 10px;
+  color: currentColor;
+  font-size: .61rem;
+  font-weight: 800;
+  letter-spacing: .07em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1100px) {
+  .logo-applications__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  :root {
+    --mm26-edition-h: 52px;
+  }
+
+  .edition-nav {
+    min-height: var(--mm26-edition-h);
+    padding-inline: 0;
+  }
+
+  .edition-nav__inner {
+    min-height: var(--mm26-edition-h);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .edition-nav__inner > p {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .edition-nav__track {
+    width: 100%;
+    min-height: var(--mm26-edition-h);
+  }
+
+  .edition-nav__track > * {
+    min-height: var(--mm26-edition-h);
+  }
+
+  .logo-applications__header {
+    grid-template-columns: 1fr;
+  }
+
+  .logo-applications__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --mm26-header-h: 64px;
+  }
+}
+
+@media (hover: none) and (max-width: 800px) {
+  .story-sequence article,
+  .story-sequence article:is(:hover, :focus-visible) {
+    opacity: 1;
+    color: inherit;
+    background: transparent;
+    transform: none;
+  }
+
+  .story-sequence article:is(:hover, :focus-visible) span {
+    color: var(--mm26-blue);
+  }
+
+  .story-sequence article:is(:hover, :focus-visible) p {
+    color: rgba(255, 255, 255, .7);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-sequence article,
+  .logo-application {
+    transition: none !important;
+  }
+
+  .story-sequence article:is(:hover, :focus-visible),
+  .logo-application:is(:hover, :focus-visible) {
+    transform: none;
+  }
+}
+
+/* Fase V5: navegación MM unificada y módulo Estudio en créditos. */
+.site-header {
+  width: 100%;
+  grid-template-columns: 1fr auto 1fr;
+  gap: clamp(18px, 3vw, 48px);
+  padding: 10px var(--page-pad);
+}
+
+.site-brand {
+  justify-self: start;
+  width: 48px;
+  height: 48px;
+}
+
+.site-brand img {
+  width: 48px;
+  height: 48px;
+}
+
+.site-nav {
+  width: auto;
+  justify-self: center;
+  align-items: center;
+  gap: clamp(18px, 3vw, 42px);
+}
+
+.campaign-home {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  padding: 5px;
+}
+
+.campaign-home img,
+.campaign-home:hover img,
+.campaign-home:focus-visible img,
+.campaign-home:active img {
+  width: 34px;
+  height: 34px;
+}
+
+.site-back {
+  justify-self: end;
+}
+
+.edition-nav {
+  min-height: var(--mm26-edition-h);
+  padding-inline: var(--page-pad);
+  border-bottom-color: var(--mm-editions-border);
+  background: var(--mm-editions-bg);
+}
+
+.edition-nav__inner,
+.edition-nav__track,
+.edition-nav__track > * {
+  min-height: var(--mm26-edition-h);
+}
+
+.edition-nav__inner > p,
+.edition-nav__track > * {
+  color: var(--mm-editions-text);
+}
+
+.edition-nav__inner > p span {
+  color: var(--mm-editions-active-bg);
+}
+
+.edition-nav__track > * {
+  border-color: var(--mm-editions-border);
+}
+
+.edition-nav__track [aria-current="page"] {
+  color: var(--mm-editions-active-text);
+  background: var(--mm-editions-active-bg);
+}
+
+.edition-nav__track a:hover,
+.edition-nav__track a:focus-visible {
+  color: var(--mm-editions-hover-text);
+  background: var(--mm-editions-hover-bg);
+}
+
+.edition-nav__track a:focus-visible {
+  outline-color: var(--mm-editions-active-bg);
+}
+
+.credit-list {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 1050px) {
+  .credit-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .credit-list article:nth-child(even) {
+    border-right: 1px solid rgba(74, 11, 174, .35);
+  }
+}
+
+@media (max-width: 800px) {
+  .site-header {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .site-nav {
+    min-width: 0;
+    justify-self: stretch;
+    justify-content: flex-start;
+  }
+
+  .site-back {
+    display: none;
+  }
+
+  .edition-nav {
+    padding-inline: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .site-brand,
+  .site-brand img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .site-nav {
+    gap: 10px;
+  }
+
+  .campaign-home,
+  .campaign-home img,
+  .campaign-home:hover img,
+  .campaign-home:focus-visible img,
+  .campaign-home:active img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .credit-list {
+    grid-template-columns: 1fr;
+  }
+
+  .credit-list article,
+  .credit-list article:nth-child(even) {
+    border-right: 1px solid rgba(74, 11, 174, .35);
+  }
+}
+
+/* Fase 29-sep-2026: rótulo del archivo de ediciones en verde MM2026 (navegación compartida). */
+:root { --mm-editions-label: var(--mm-editions-active-bg); }
+
+/* Fase 29-sep-2026: mockups de dorsal y escarapela completos, sin recorte. */
+.editorial-media.editorial-media--mockup img { object-fit: contain; }
+
+/* ==========================================================================
+   Fase 29-sep-2026 — Barras en movimiento vertical (mm26-bars.js)
+   El fondo oficial queda debajo como respaldo; las barras vivas lo cubren.
+   ========================================================================== */
+.has-mm26-bars { position: relative; isolation: isolate; }
+
+.mm26-bars {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mm26-bars__stage {
+  position: absolute;
+  display: flex;
+}
+
+.mm26-bars__col {
+  position: relative;
+  flex: 0 0 auto;
+  height: 100%;
+  overflow: hidden;
+}
+
+.mm26-bars__col > i {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -30%;
+  height: 160%;
+  will-change: transform;
+  animation: mm26-bar-drift var(--dur, 9s) cubic-bezier(.45, 0, .55, 1) var(--delay, 0s) infinite alternate;
+}
+
+.mm26-bars.is-paused .mm26-bars__col > i { animation-play-state: paused; }
+
+@keyframes mm26-bar-drift {
+  from { transform: translate3d(0, calc(var(--amp, 6%) * -1), 0); }
+  to   { transform: translate3d(0, var(--amp, 6%), 0); }
+}
+
+.mm26-bars__grain {
+  position: absolute;
+  inset: 0;
+  background: url("../images/projects/maraton-medellin/2026/fondos-estaticos/grano-barras.webp") 0 0 / 256px 256px repeat;
+  mix-blend-mode: overlay;
+  opacity: var(--grain, .4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mm26-bars { display: none; }
+}
+
+/* Fase 29-sep-2026: laboratorio tipográfico por pestañas y muestras sin recorte */
+.type-lab__tabs { display: none; }
+.type-lab__tabs.is-ready {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+}
+.type-lab__tabs button {
+  min-height: 64px;
+  padding: 12px clamp(12px, 2vw, 22px);
+  display: grid;
+  align-content: center;
+  gap: 4px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.72);
+  font: 500 clamp(.9rem, 1.3vw, 1.1rem)/1.1 "Bricolage Grotesque MM26", Arial, sans-serif;
+  text-align: left;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.type-lab__tabs button small {
+  font: 800 .6rem/1.2 "Gopher MM26", Arial, sans-serif;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  opacity: .72;
+}
+.type-lab__tabs button:hover { background: rgba(84,207,136,.1); color: #fff; }
+.type-lab__tabs button[aria-selected="true"] {
+  color: var(--mm26-green);
+  background: rgba(84,207,136,.12);
+  border-bottom-color: var(--mm26-green);
+}
+.type-lab__tabs button:focus-visible { outline: 3px solid var(--mm26-green); outline-offset: -3px; }
+
+.type-lab__preview {
+  white-space: normal !important;
+  overflow: visible !important;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+.type-specimen b { overflow-wrap: anywhere; }
+
+@media (max-width: 560px) {
+  .type-lab__tabs.is-ready { grid-template-columns: minmax(0, 1fr); }
+  .type-lab__tabs button { min-height: 52px; }
+}
+.type-lab__sample[hidden] { display: none !important; }
+
+/* Fase 5-oct-2026: créditos estándar en tres tarjetas. */
+@media (min-width: 901px) { .credit-list { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* ==========================================================================
+   Fase 5-oct-2026 (b)
+   ========================================================================== */
+/* KV: la virgulilla de la Ñ chocaba con la línea superior */
+.kv-stage > strong { line-height: .98; }
+
+/* Composición modular viva (banner-fondo-03 reconstruido) */
+.module-system.has-mm26-bars { aspect-ratio: 3001 / 1265; cursor: crosshair; }
+.module-system.has-mm26-bars > img { opacity: 0; }
+.module-system .mm26-bars__col > i { transition: translate .45s cubic-bezier(.2,.7,.2,1); }
+.mm26-bars.mode-gradiente .mm26-bars__col > i {
+  animation: mm26-bar-sweep 5.5s ease-in-out infinite alternate;
+  animation-delay: 0s;
+}
+.mm26-bars.mode-continuidad .mm26-bars__col > i {
+  animation: mm26-bar-wave 4.8s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -0.42s);
+}
+@keyframes mm26-bar-sweep {
+  from { transform: translate3d(0, -14%, 0); }
+  to   { transform: translate3d(0, 14%, 0); }
+}
+@keyframes mm26-bar-wave {
+  0%, 100% { transform: translate3d(0, -10%, 0); }
+  50%      { transform: translate3d(0, 10%, 0); }
+}
+.module-system.has-mm26-bars .module-system__focus { z-index: 2; }
+.module-system__hint { margin: 10px 0 0; color: rgba(255,255,255,.6); font-size: .74rem; }
+
+/* Distancias: altimetría oficial con barras contiguas de la campaña (5-oct-2026) */
+.distance-system__stage { position: relative; isolation: isolate; padding-bottom: calc(clamp(20px, 3vw, 34px) + 196px); }
+.distance-system__stage > * { position: relative; z-index: 1; }
+.mm26-alt {
+  position: absolute !important; z-index: 0 !important;
+  left: clamp(20px, 3vw, 34px); right: clamp(20px, 3vw, 34px); bottom: clamp(14px, 2vw, 22px);
+  display: grid; gap: 8px;
+}
+.mm26-alt__head, .mm26-alt__axis {
+  display: flex; justify-content: space-between; gap: 12px;
+  font: 800 .66rem/1.2 "Gopher MM26", Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase;
+}
+.mm26-alt__head span { color: var(--distance-accent); font: inherit; letter-spacing: inherit; }
+.mm26-alt__head em { font-style: normal; color: rgba(255,255,255,.82); text-align: right; }
+.mm26-alt__axis { color: rgba(255,255,255,.62); }
+.mm26-alt__plot {
+  position: relative; height: 150px;
+  display: flex; align-items: flex-end;
+  cursor: crosshair;
+}
+.mm26-alt__bar {
+  position: relative; flex: 1 0 auto; margin-right: -1px; height: calc(var(--h) * 100%);
+  overflow: hidden;
+  transition: height .7s cubic-bezier(.2,.7,.2,1), flex-basis .7s cubic-bezier(.2,.7,.2,1);
+}
+.mm26-alt__bar > i {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: calc(100% / var(--h));
+  background-size: 100% 100%;
+}
+.mm26-alt.is-switching .mm26-alt__bar { animation: mm26-alt-rise .8s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i) * 14ms); transform-origin: bottom; }
+@keyframes mm26-alt-rise { from { transform: scaleY(.04); } to { transform: scaleY(1); } }
+.mm26-alt__bar > i::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: url("../images/projects/maraton-medellin/2026/fondos-estaticos/grano-barras.webp") 0 0 / 256px 256px repeat;
+  mix-blend-mode: overlay; opacity: .55;
+}
+.mm26-alt__cursor {
+  position: absolute; top: 0; bottom: 0; width: 1px; z-index: 2;
+  background: rgba(255,255,255,.9); opacity: 0; transition: opacity .2s ease; pointer-events: none;
+}
+.mm26-alt__readout {
+  position: absolute; top: 4px; z-index: 3; transform: translateX(-50%);
+  padding: 4px 8px; border-radius: 999px; white-space: nowrap;
+  background: #fff; color: #1d0b4a; font: 800 .64rem/1.2 "Gopher MM26", Arial, sans-serif; letter-spacing: .04em;
+  opacity: 0; transition: opacity .2s ease; pointer-events: none;
+}
+.distance-system__stage .mm26-alt__readout { color: #1d0b4a; font-size: .64rem; text-transform: none; }
+.mm26-alt.is-reading .mm26-alt__cursor, .mm26-alt.is-reading .mm26-alt__readout { opacity: 1; }
+@media (max-width: 760px) {
+  .distance-system__stage { padding-bottom: 196px; }
+  .mm26-alt__plot { height: 104px; }
+  .mm26-alt__head { flex-direction: column; gap: 2px; }
+  .mm26-alt__head em { text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) { .mm26-alt.is-switching .mm26-alt__bar { animation: none; } .mm26-alt__bar { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .module-system.has-mm26-bars > img { opacity: 1; } .module-system__hint { display: none; } }
+
+/* =====================================================================
+   Fase 5-oct-2026 (b) — ficha, trayectoria, recorrido oficial y cierre
+   ===================================================================== */
+
+/* Ficha del proyecto */
+.case-sheet {
+  padding: clamp(26px, 3vw, 40px) var(--page-pad);
+  background: var(--mm26-ink);
+  border-bottom: 1px solid rgba(114,129,241,.35);
+}
+.case-sheet__grid {
+  width: min(var(--content), 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  border-left: 1px solid rgba(114,129,241,.35);
+}
+.case-sheet__grid > div { padding: 4px clamp(14px, 1.6vw, 24px); border-right: 1px solid rgba(114,129,241,.35); }
+.case-sheet dt { color: var(--mm26-green); font-size: .62rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.case-sheet dd { margin: 10px 0 0; color: #fff; font-size: .9rem; line-height: 1.4; }
+.case-sheet__seal {
+  width: min(var(--content), 100%);
+  margin: clamp(18px, 2vw, 26px) auto 0;
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.case-sheet__seal span {
+  padding: 7px 12px; border: 1px solid rgba(84,207,136,.45); border-radius: 999px;
+  color: rgba(255,255,255,.82); font-size: .66rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+}
+@media (max-width: 1080px) {
+  .case-sheet__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 22px; }
+}
+@media (max-width: 560px) {
+  .case-sheet__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Banda +30 años */
+.legacy-band {
+  position: relative; isolation: isolate; overflow: hidden;
+  padding: clamp(64px, 7vw, 104px) var(--page-pad) 0;
+  background: var(--mm26-wine);
+  display: grid; gap: clamp(36px, 5vw, 64px);
+}
+.legacy-band::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(40,6,12,.55), rgba(40,6,12,.1) 45%, rgba(40,6,12,.75));
+}
+.legacy-band__head { width: min(var(--content), 100%); margin: 0 auto; text-align: center; }
+.legacy-band__head .eyebrow { color: var(--mm26-yellow); }
+.legacy-band__head h2 {
+  margin-top: 14px;
+  font-family: "Ziren MM26", sans-serif; font-weight: 700;
+  font-size: clamp(4.6rem, 13vw, 12rem); line-height: .82; letter-spacing: -.01em;
+  text-transform: uppercase; color: #fff;
+}
+.legacy-band__head > p:last-child { max-width: 560px; margin: 18px auto 0; color: rgba(255,255,255,.86); line-height: 1.6; }
+.legacy-band__timeline {
+  width: min(var(--content), 100%); margin: 0 auto; padding: 0; list-style: none;
+  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); align-items: end;
+  height: clamp(220px, 24vw, 320px);
+}
+.legacy-band__timeline li { height: 100%; display: flex; align-items: flex-end; }
+.legacy-band__timeline li > a,
+.legacy-band__timeline li.is-origin {
+  position: relative; width: 100%; height: calc(var(--y) * 100%);
+  display: flex; flex-direction: column; justify-content: flex-start; gap: 6px;
+  padding: 14px clamp(10px, 1.2vw, 18px);
+  background: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.04));
+  border-top: 2px solid rgba(255,255,255,.55);
+  backdrop-filter: blur(2px);
+  transition: height .5s var(--ease), background .3s ease, border-color .3s ease;
+}
+.legacy-band__timeline li.is-origin { background: transparent; border-top-style: dashed; }
+.legacy-band__timeline li > a:is(:hover, :focus-visible) {
+  height: calc(min(1, var(--y) + .08) * 100%);
+  background: linear-gradient(180deg, var(--mm26-yellow), rgba(255,203,62,.2));
+  border-color: var(--mm26-yellow); color: var(--mm26-wine);
+}
+.legacy-band__timeline li.is-current > a { background: linear-gradient(180deg, var(--mm26-green), rgba(84,207,136,.25)); border-color: var(--mm26-green); color: var(--mm26-violet); }
+.legacy-band__year { font-family: "Ziren MM26", sans-serif; font-size: clamp(1.1rem, 2vw, 1.9rem); line-height: 1; }
+.legacy-band__note { font-size: .7rem; line-height: 1.35; opacity: .85; }
+@media (max-width: 760px) {
+  .legacy-band__timeline { grid-template-columns: repeat(7, 112px); overflow-x: auto; scroll-snap-type: x mandatory; height: 220px; margin-inline: calc(var(--page-pad) * -1); padding-inline: var(--page-pad); width: auto; }
+  .legacy-band__timeline li { scroll-snap-align: start; }
+}
+
+/* Recorrido oficial */
+.route-section {
+  --route-a: #54CF88; --route-b: #7281F1; --route-bg: #2a0a6b; --route-u: 1;
+  position: relative;
+  padding: clamp(72px, 8vw, 120px) var(--page-pad);
+  background: #1b0647;
+}
+.route-board {
+  width: min(var(--content), 100%);
+  margin: clamp(40px, 5vw, 64px) auto 0;
+  display: grid;
+  grid-template-columns: minmax(280px, .8fr) minmax(0, 1.2fr);
+  grid-template-areas: "panel map" "alt alt";
+  border: 1px solid rgba(114,129,241,.35);
+  background: rgba(10, 2, 30, .55);
+}
+.route-panel { grid-area: panel; padding: clamp(22px, 2.6vw, 36px); display: flex; flex-direction: column; gap: 14px; border-right: 1px solid rgba(114,129,241,.35); }
+.route-panel__selector { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.route-panel__selector button {
+  min-height: 42px; border: 1px solid rgba(114,129,241,.5); border-radius: 999px; background: transparent;
+  color: #fff; font: 700 .95rem/1 "Ziren MM26", sans-serif; cursor: pointer;
+  transition: background .25s ease, color .25s ease, border-color .25s ease;
+}
+.route-panel__selector button[aria-pressed="true"] { background: var(--route-a); border-color: var(--route-a); color: #1b0647; }
+.route-panel__date { margin-top: 8px; color: var(--route-a); font-size: .66rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.route-panel__mark { color: var(--route-a); font: 700 clamp(4.4rem, 8vw, 7.4rem)/.82 "Ziren MM26", sans-serif; transition: color .3s ease; }
+.route-panel h3 { font-family: "Bricolage Grotesque MM26", Arial, sans-serif; font-size: clamp(1.5rem, 2.2vw, 2.2rem); font-weight: 500; line-height: 1; }
+.route-panel__place { color: rgba(255,255,255,.7); font-size: .86rem; line-height: 1.5; }
+.route-panel__stats { margin: 6px 0 0; display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(255,255,255,.14); }
+.route-panel__stats > div { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+.route-panel__stats > div:nth-child(odd) { padding-right: 14px; border-right: 1px solid rgba(255,255,255,.14); }
+.route-panel__stats > div:nth-child(even) { padding-left: 14px; }
+.route-panel__stats dt { color: rgba(255,255,255,.55); font-size: .6rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.route-panel__stats dd { margin: 6px 0 0; font: 700 clamp(1.15rem, 1.6vw, 1.5rem)/1 "Ziren MM26", sans-serif; }
+.route-panel__legend { margin: auto 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 14px; color: rgba(255,255,255,.7); font-size: .72rem; }
+.route-panel__legend li { display: flex; align-items: center; gap: 8px; }
+.route-panel__legend b { color: #fff; font-weight: 800; }
+.route-panel__legend i { width: 12px; height: 12px; flex: 0 0 12px; display: inline-block; }
+.route-panel__legend .is-end { border-radius: 3px; background: #fff; }
+.route-panel__legend .is-km { border-radius: 50%; border: 2px solid var(--route-a); }
+.route-panel__legend .is-hyd { border-radius: 50%; background: #5fd0ff; }
+.route-panel__legend .is-med { background: linear-gradient(#ff5d73,#ff5d73) center/100% 4px no-repeat, linear-gradient(#ff5d73,#ff5d73) center/4px 100% no-repeat; }
+
+.route-map { grid-area: map; position: relative; margin: 0; min-height: 560px; background: radial-gradient(120% 90% at 70% 30%, color-mix(in srgb, var(--route-bg) 80%, #000 0%), #0d0326 75%); transition: background .4s ease; overflow: hidden; }
+.route-map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.route-map__grid line { stroke: rgba(255,255,255,.06); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.route-map__ghost { fill: none; stroke: rgba(255,255,255,.1); stroke-width: 2; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+.route-map__under { fill: none; stroke: rgba(0,0,0,.45); stroke-linejoin: round; stroke-linecap: round; }
+.route-map__line { fill: none; stroke-linejoin: round; stroke-linecap: round; transition: stroke-dashoffset 2.2s cubic-bezier(.45,.05,.2,1); filter: drop-shadow(0 0 6px color-mix(in srgb, var(--route-a) 60%, transparent)); }
+.route-map__km { fill: #1b0647; stroke: var(--route-a); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.route-map__km.is-major { fill: var(--route-a); stroke: #1b0647; }
+.route-map text { fill: #1b0647; font-family: "Gopher MM26", Arial, sans-serif; font-weight: 700; text-anchor: middle; pointer-events: none; }
+.route-map__hyd { fill: #5fd0ff; stroke: #0d0326; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.route-map__med path { fill: #ff5d73; }
+.route-map__end rect { fill: #fff; }
+.route-map__end--f rect { fill: var(--route-a); }
+.route-map__halo { fill: color-mix(in srgb, var(--route-a) 30%, transparent); animation: route-pulse 1.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.route-map__dot { fill: #fff; stroke: var(--route-a); stroke-width: 3; vector-effect: non-scaling-stroke; }
+@keyframes route-pulse { 0%, 100% { transform: scale(.7); opacity: .9; } 50% { transform: scale(1.15); opacity: .35; } }
+.route-map__play {
+  position: absolute; right: 18px; bottom: 46px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 10px; padding: 11px 18px 11px 14px;
+  border: 0; border-radius: 999px; background: var(--route-a); color: #1b0647;
+  font: 800 .74rem/1 "Gopher MM26", Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+.route-map__play b { width: 0; height: 0; border-left: 10px solid currentColor; border-top: 6px solid transparent; border-bottom: 6px solid transparent; }
+.route-map__play[aria-pressed="true"] b { width: 10px; height: 12px; border: 0; border-left: 3px solid currentColor; border-right: 3px solid currentColor; }
+.route-map figcaption { position: absolute; left: 18px; bottom: 16px; right: 18px; color: rgba(255,255,255,.45); font-size: .62rem; letter-spacing: .06em; text-transform: uppercase; }
+
+.route-alt { grid-area: alt; padding: clamp(18px, 2vw, 26px) clamp(22px, 2.6vw, 36px) clamp(18px, 2vw, 24px); border-top: 1px solid rgba(114,129,241,.35); }
+.route-alt__head, .route-alt__axis { display: flex; justify-content: space-between; gap: 12px; font-size: .64rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.route-alt__head span { color: var(--route-a); }
+.route-alt__head output { color: #fff; letter-spacing: .04em; text-transform: none; font-size: .78rem; }
+.route-alt__axis { margin-top: 8px; color: rgba(255,255,255,.5); }
+.route-alt__plot { position: relative; height: 120px; margin-top: 12px; display: flex; align-items: flex-end; cursor: ew-resize; touch-action: pan-y; outline-offset: 6px; }
+.route-alt__bar { position: relative; flex: 1 0 auto; margin-right: -1px; height: calc(var(--h) * 100%); overflow: hidden; opacity: .38; transition: height .7s cubic-bezier(.2,.7,.2,1), opacity .25s ease; }
+.route-alt__bar.is-run { opacity: 1; }
+.route-alt__bar > i { position: absolute; left: 0; right: 0; bottom: 0; height: calc(100% / var(--h)); }
+.route-alt__bar > i::after { content: ""; position: absolute; inset: 0; background: url("../images/projects/maraton-medellin/2026/fondos-estaticos/grano-barras.webp") 0 0 / 256px 256px repeat; mix-blend-mode: overlay; opacity: .55; }
+.route-alt__cursor { position: absolute; top: -6px; bottom: 0; width: 2px; margin-left: -1px; background: #fff; pointer-events: none; }
+
+@media (max-width: 900px) {
+  .route-board { grid-template-columns: 1fr; grid-template-areas: "panel" "map" "alt"; }
+  .route-panel { border-right: 0; border-bottom: 1px solid rgba(114,129,241,.35); }
+  .route-map { min-height: 460px; }
+  .route-alt__plot { height: 90px; }
+  .route-map__play { top: 14px; bottom: auto; right: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .route-map__line, .route-alt__bar { transition: none; }
+  .route-map__halo { animation: none; }
+}
+
+/* Cierre de campaña */
+.case-finale {
+  position: relative; isolation: isolate; overflow: hidden;
+  padding: clamp(80px, 9vw, 140px) var(--page-pad) clamp(56px, 6vw, 90px);
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  background: var(--mm26-violet);
+}
+.case-finale::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(27,6,71,.72), rgba(27,6,71,.3) 50%, rgba(27,6,71,.85)); pointer-events: none; }
+.case-finale__year { width: min(720px, 86%); height: auto; filter: brightness(0) invert(1); opacity: .95; }
+.case-finale__eyebrow { margin-top: clamp(28px, 4vw, 48px); color: var(--mm26-green); font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.case-finale h2 { margin-top: 18px; font-family: "Bricolage Grotesque MM26", Arial, sans-serif; font-size: clamp(2.8rem, 5.6vw, 6.4rem); font-weight: 500; line-height: .94; letter-spacing: -.025em; }
+.case-finale h2 em { color: var(--mm26-green); font-style: normal; }
+.case-finale__facts { width: min(980px, 100%); margin: clamp(40px, 5vw, 64px) 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid rgba(255,255,255,.2); }
+.case-finale__facts li { padding: 20px 12px; display: grid; gap: 8px; }
+.case-finale__facts li + li { border-left: 1px solid rgba(255,255,255,.2); }
+.case-finale__facts strong { color: var(--mm26-green); font: 700 clamp(2rem, 3.6vw, 3.4rem)/1 "Ziren MM26", sans-serif; }
+.case-finale__facts span { color: rgba(255,255,255,.75); font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.case-finale__index { width: min(var(--content), 100%); margin-top: clamp(40px, 5vw, 64px); display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+.case-finale__index a {
+  display: grid; gap: 18px; padding: 16px; text-align: left;
+  border: 1px solid rgba(255,255,255,.2); border-radius: 14px; background: rgba(27,6,71,.45);
+  font-size: .9rem; font-weight: 500; transition: background .25s ease, border-color .25s ease, transform .25s var(--ease);
+}
+.case-finale__index small { color: var(--mm26-green); font-size: .64rem; font-weight: 800; letter-spacing: .12em; }
+.case-finale__index a:is(:hover, :focus-visible) { background: var(--mm26-green); border-color: var(--mm26-green); color: var(--mm26-violet); transform: translateY(-3px); }
+.case-finale__index a:is(:hover, :focus-visible) small { color: var(--mm26-violet); }
+.case-finale__index a.is-top { background: transparent; }
+@media (max-width: 900px) {
+  .case-finale__facts { grid-template-columns: repeat(2, 1fr); }
+  .case-finale__facts li:nth-child(3) { border-left: 0; }
+  .case-finale__facts li:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.2); }
+  .case-finale__index { grid-template-columns: repeat(2, 1fr); }
+}

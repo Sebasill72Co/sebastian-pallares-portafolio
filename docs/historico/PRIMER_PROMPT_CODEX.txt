@@ -1,0 +1,22 @@
+Lee primero `AGENTS.md`, `docs/CODEX_BRIEF.md` y `docs/ROADMAP_V2.md`.
+
+Realiza únicamente la auditoría inicial de PROJECT ATLAS.
+
+1. Inspecciona todo el repositorio sin rediseñarlo.
+2. Confirma la estructura real.
+3. Revisa `index.html` y `proyectos/maraton-medellin/2026/index.html`.
+4. Detecta rutas rotas, recursos inexistentes, duplicados y nombres problemáticos.
+5. Revisa CSS y JavaScript duplicado o contradictorio.
+6. Comprueba móvil y escritorio.
+7. Revisa los créditos de MIRAPALTECHO.
+8. No elimines archivos.
+9. No hagas push.
+10. No cambies el diseño salvo errores técnicos críticos.
+11. Crea `docs/AUDITORIA_INICIAL.md` con:
+   - estado general;
+   - problemas críticos;
+   - problemas medios;
+   - mejoras recomendadas;
+   - archivos involucrados;
+   - plan incremental.
+12. Resume los hallazgos y espera aprobación antes de implementar cambios.

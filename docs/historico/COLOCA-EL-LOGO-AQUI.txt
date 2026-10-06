@@ -1,0 +1,9 @@
+Mueve aquí tu archivo:
+
+logo-personal-sebastian-pallares.svg
+
+Ruta final exacta:
+
+assets/images/brand/logo-personal-sebastian-pallares.svg
+
+No cambies el nombre del archivo porque el Home y los casos de estudio ya buscan esa ruta.

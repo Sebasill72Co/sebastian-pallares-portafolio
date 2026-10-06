@@ -1,0 +1,22 @@
+PROJECT ATLAS — HERO PROFESIONAL DE PROYECTO
+
+Reemplaza o agrega estos elementos dentro del repositorio oficial:
+
+1. proyectos/maraton-medellin/2026/index.html
+2. assets/css/project.css
+3. assets/js/project.js
+4. assets/images/projects/maraton-medellin/2026/lanzamiento/vista-completa-campana.png
+
+Esta actualización:
+- Corrige las rutas relativas desde la página del proyecto.
+- Crea un hero de pantalla completa.
+- Añade contexto, rol, equipo y dirección creativa.
+- Incluye créditos de MIRAPALTECHO.
+- Agrega navegación por años.
+- Crea una base profesional para personalizar las siguientes secciones.
+- Es responsive para computador y celular.
+
+Después de reemplazar:
+1. Abre proyectos/maraton-medellin/2026/index.html con Live Server.
+2. Recarga con Cmd + Shift + R.
+3. No hagas Commit ni Push hasta aprobar el resultado visual.

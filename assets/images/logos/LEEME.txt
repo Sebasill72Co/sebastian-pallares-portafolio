@@ -1,0 +1,18 @@
+LOGOS DE LA FRANJA “HE TRABAJADO CON”
+
+Estos archivos SVG son marcadores temporales para visualizar la sección.
+
+Reemplaza cada archivo por el logo oficial conservando exactamente el mismo nombre:
+
+- maraton-medellin.svg
+- media-maraton-del-mar.svg
+- expoinmobiliaria.svg
+- tres-trigos.svg
+- korswill.svg
+
+Recomendaciones:
+- Usa SVG siempre que sea posible.
+- Elimina fondos blancos.
+- Conserva un margen interno razonable alrededor del logo.
+- No cambies los nombres ni las rutas.
+- Si usas PNG o WEBP, también debes cambiar la extensión correspondiente en index.html.

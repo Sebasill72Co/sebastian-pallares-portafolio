@@ -1,0 +1,160 @@
+PROJECT ATLAS — SEGUNDA TAREA: MIGRACIÓN INCREMENTAL A COMPONENTES
+
+Trabaja directamente en la carpeta local oficial del repositorio sebastian-pallares-portafolio que está abierta en Codex. No trabajes sobre una copia llamada sebastian-pallares-portafolio-trabajo, un ZIP descomprimido ni otra ubicación. Antes de modificar archivos, muestra o registra la ruta raíz detectada y confirma que allí existen, como mínimo, index.html, assets/, proyectos/, docs/ y el repositorio Git.
+
+OBJETIVO
+
+Construir una base reutilizable de componentes para PROJECT ATLAS sin rediseñar visualmente el sitio. La migración debe ser incremental, reversible y compatible con el Home actual y con el caso de estudio Maratón Medellín 2026. Debes reducir duplicación progresivamente, no intentar una reescritura total.
+
+REGLAS OBLIGATORIAS DE SEGURIDAD
+
+1. Ejecuta git status antes de cualquier cambio. Documenta el estado inicial, incluyendo archivos modificados y no rastreados. No descartes, sobrescribas ni incluyas cambios ajenos sin entenderlos.
+2. Antes de editar, crea un punto de respaldo local seguro:
+   - Si el árbol de trabajo está limpio, crea una rama local con un nombre como codex/migracion-componentes-v2 o un commit de respaldo local claramente identificado.
+   - Si existen cambios sin confirmar, no los mezcles ciegamente. Crea una rama local y, solo si es seguro y los cambios pertenecen al proyecto, crea un commit de respaldo local que preserve exactamente el estado actual. Si no puedes distinguir su propiedad o hacerlo sin riesgo, detente y explica el bloqueo.
+   - No uses git reset --hard, git clean, checkout destructivo ni comandos equivalentes.
+3. No hagas git push, no publiques, no despliegues y no modifiques el remoto.
+4. No borres archivos ni carpetas. Los duplicados se conservarán hasta recibir aprobación.
+5. No renombres todavía carpetas o archivos que contengan tildes, eñes, espacios u otras convenciones antiguas. Registra esos casos para una fase posterior.
+6. No modifiques, comprimas, muevas, renombres ni elimines PDFs originales.
+7. Mantén toda la interfaz y documentación dirigida al visitante en español.
+8. No cambies la dirección de arte, composición, tipografías, paleta, animaciones ni jerarquía visual salvo el ajuste mínimo indispensable para mantener el aspecto existente durante la extracción de componentes.
+9. Conserva las rutas actuales que funcionen. Corrige una ruta rota únicamente cuando puedas demostrar la ubicación real del recurso y documenta el cambio.
+10. Respeta el trabajo ya realizado y las modificaciones locales del usuario.
+
+CRÉDITOS OBLIGATORIOS
+
+En todos los proyectos desarrollados bajo MIRAPALTECHO debe mantenerse este marco:
+
+- Dirección creativa: Pablo Molina.
+- Equipo habitual y compañeros de trabajo: Jorge Zapata y Santiago Ospina.
+- Rol de Sebastián Pallares Ruiz: debe describirse con precisión según cada caso, sin atribuirle individualmente trabajo desarrollado en equipo.
+- Las excepciones de participación se documentarán por proyecto cuando el usuario las indique, pero Pablo Molina debe mantenerse como director creativo en los proyectos de MIRAPALTECHO.
+
+ALCANCE TÉCNICO
+
+A. Auditoría previa enfocada
+
+- Lee completamente AGENTS.md y las instrucciones aplicables antes de actuar.
+- Revisa docs/AUDITORIA_INICIAL.md, docs/CODEX_BRIEF.md, docs/ROADMAP_V2.md y docs/PLAN_MIGRACION_COMPONENTES.md si existen.
+- Inventaría los HTML, CSS y JS que realmente participan en el Home y en Maratón Medellín 2026.
+- Identifica dependencias, orden de carga, selectores compartidos, rutas relativas, datos de galerías y comportamiento responsive.
+- No amplíes la primera intervención a todos los proyectos placeholder.
+
+B. Mapa de migración
+
+Crea docs/MAPA_MIGRACION_COMPONENTES.md antes de hacer la migración principal. Debe incluir:
+
+- archivo y bloque de origen;
+- componente reutilizable propuesto;
+- consumidores actuales y futuros;
+- CSS y JS asociados;
+- estrategia incremental de adopción;
+- compatibilidad o fallback necesario;
+- riesgo y validación por componente;
+- duplicados que permanecerán temporalmente.
+
+C. Base reutilizable
+
+Construye una base compartida y pequeña, compatible con HTML, CSS y JavaScript existentes. Elige nombres y ubicación después de inspeccionar el repositorio; evita imponer una arquitectura que rompa rutas. Se permite crear nuevos archivos de componentes o capas compartidas, pero no eliminar los anteriores.
+
+Define, como mínimo, componentes o patrones reutilizables para:
+
+1. Hero de página o proyecto.
+2. Navegación principal y navegación interna del caso de estudio.
+3. Bloque de créditos y equipo.
+4. Galería de imágenes con estados de carga, error y contenido vacío.
+5. Tarjetas o enlaces para documentos, sin alterar los PDFs originales.
+6. Callouts o notas editoriales.
+7. Footer y bloque de contacto.
+
+Cada componente debe contemplar:
+
+- HTML semántico y atributos de accesibilidad;
+- variantes necesarias sin duplicar todo el componente;
+- estilos responsive;
+- reducción de movimiento cuando aplique;
+- rutas relativas seguras;
+- contenido en español;
+- estado de error claro para recursos inexistentes.
+
+D. Unificación incremental de CSS
+
+- Identifica tokens ya existentes de color, tipografía, espaciado, radios, contenedores y capas.
+- Crea o consolida una capa compartida de variables y componentes sin cambiar la apariencia aprobada.
+- Migra primero solo reglas inequívocamente compartidas por el Home y Maratón Medellín 2026.
+- Mantén CSS específico de proyecto cuando su identidad o composición sea particular.
+- No elimines CSS antiguo. Marca en el mapa qué reglas podrían retirarse después de la aprobación.
+- Evita !important salvo que exista una razón documentada.
+
+E. Unificación incremental de JavaScript
+
+- Extrae utilidades compartidas solo cuando tengan al menos dos consumidores reales o una función transversal clara.
+- Mantén separados los datos de Maratón Medellín 2026 y la lógica específica del proyecto.
+- Evita frameworks, dependencias nuevas y procesos de compilación salvo que ya existan y sean indispensables.
+- Usa mejora progresiva: el contenido principal debe seguir siendo accesible si JavaScript falla.
+- No conviertas la migración en una SPA ni introduzcas un CMS.
+
+F. Primera adopción controlada
+
+- Aplica la base común al Home y a proyectos/maraton-medellin/2026/index.html solo en componentes de bajo riesgo.
+- Conserva el hero profesional, la imagen configurada, la paleta del logo personal, las galerías y los bastones animados existentes.
+- No rediseñes ni completes proyectos que todavía sean placeholders.
+- Si una migración amenaza con cambiar visualmente una sección, conserva la implementación actual y documenta la propuesta en vez de forzarla.
+
+VALIDACIONES OBLIGATORIAS
+
+1. Ejecuta una comprobación de rutas locales referenciadas desde HTML, CSS y JS para el Home y Maratón Medellín 2026. Distingue entre recursos realmente faltantes, rutas generadas dinámicamente y enlaces externos.
+2. Verifica que las hojas de estilo y scripts carguen en el orden correcto desde ambas profundidades de URL.
+3. Sirve el sitio localmente mediante el mecanismo disponible y revisa, como mínimo:
+   - Home en 1440 px, 1024 px, 768 px y 390 px.
+   - Maratón Medellín 2026 en 1440 px, 768 px y 390 px.
+   - navegación por teclado y foco visible;
+   - ausencia de desbordamiento horizontal;
+   - lectura y contraste de textos;
+   - carga del logo, foto de perfil, hero y galerías;
+   - enlace de WhatsApp;
+   - comportamiento con prefers-reduced-motion;
+   - consola del navegador sin errores atribuibles a la migración.
+4. Si no dispones de navegador automatizado, realiza las validaciones estáticas posibles y deja una lista exacta de pruebas manuales pendientes. No declares como verificado lo que no probaste.
+5. Ejecuta las comprobaciones o tests existentes. Si no hay tests, no agregues una infraestructura compleja solo para esta tarea.
+6. Ejecuta git diff --check y revisa git status al finalizar.
+
+DOCUMENTACIÓN FINAL
+
+Crea docs/MIGRACION_COMPONENTES_RESULTADO.md con:
+
+- ruta del repositorio trabajada;
+- rama o commit local de respaldo creado;
+- estado Git inicial y final;
+- archivos creados y modificados;
+- componentes implementados y dónde se usan;
+- decisiones de arquitectura;
+- rutas corregidas y evidencia;
+- validaciones ejecutadas y resultados;
+- pruebas manuales pendientes;
+- riesgos o limitaciones;
+- lista de duplicados conservados;
+- candidatos a limpieza futura;
+- instrucciones para revertir localmente sin perder trabajo;
+- siguiente paso recomendado que requiera aprobación.
+
+CRITERIOS DE FINALIZACIÓN
+
+La tarea termina únicamente cuando:
+
+- existe un respaldo local previo verificable;
+- existe docs/MAPA_MIGRACION_COMPONENTES.md;
+- existe una base reutilizable para los siete componentes solicitados;
+- Home y Maratón Medellín 2026 conservan su presentación y contenido;
+- las validaciones posibles fueron ejecutadas y documentadas;
+- existe docs/MIGRACION_COMPONENTES_RESULTADO.md;
+- no se borró ni renombró material existente;
+- no se tocaron PDFs originales;
+- no se hizo push;
+- no se inició limpieza de duplicados.
+
+ENTREGA
+
+Al finalizar, resume los cambios y señala con claridad qué requiere revisión visual del usuario. Después detente. Espera aprobación explícita antes de eliminar duplicados, renombrar carpetas, normalizar nombres con tildes, optimizar PDFs, ampliar la migración a otros proyectos o hacer push.
+
